@@ -31,6 +31,10 @@ public class Product {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+    
+    public void modifyAmount(int number){
+        amount += number;
+    }
 
     public int getLotNumber() {
         return lotNumber;

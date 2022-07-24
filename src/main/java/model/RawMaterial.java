@@ -63,4 +63,8 @@ public class RawMaterial {
         this.amount = amount;
     }
     
+    public void modifyAmount(int number){
+        amount += number;
+    }
+    
 }
