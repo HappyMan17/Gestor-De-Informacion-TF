@@ -11,4 +11,11 @@
         <maven.compiler.target>11</maven.compiler.target>
         <exec.mainClass>modelo.TFPI</exec.mainClass>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE140</version>
+        </dependency>
+    </dependencies>
 </project>
