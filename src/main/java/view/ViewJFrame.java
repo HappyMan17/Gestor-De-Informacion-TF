@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfazpi;
+package view;
 
 /**
  *
@@ -32,14 +32,14 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jPanelProductos = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
         jPanelProveedores = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         jPanelClientes = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanelEmpleados = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -63,13 +63,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelBarraLateral.setBackground(new java.awt.Color(40, 70, 85));
         jPanelBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelLogoBarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/logo peque.png"))); // NOI18N
+        jLabelLogoBarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_peque.png"))); // NOI18N
         jPanelBarraLateral.add(jLabelLogoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 110));
 
         jPanelMateriaPrima.setBackground(new java.awt.Color(231, 231, 216));
         jPanelMateriaPrima.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/seeds_122867 (1).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seeds_122867 (1).png"))); // NOI18N
         jPanelMateriaPrima.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
 
         jLabel4.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
@@ -82,13 +82,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelProductos.setBackground(new java.awt.Color(231, 231, 216));
         jPanelProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/d0e057c0f1324dffe016a4ec4ef1e928-icono-de-golpe-de-empanada.png"))); // NOI18N
-        jPanelProductos.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
-
         jLabel6.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(127, 119, 119));
         jLabel6.setText("productos");
         jPanelProductos.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, 40));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/d0e057c0f1324dffe016a4ec4ef1e928-icono-de-golpe-de-empanada.png"))); // NOI18N
+        jPanelProductos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
         jPanelBarraLateral.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 40));
         jPanelProductos.getAccessibleContext().setAccessibleName("");
@@ -96,33 +96,33 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelProveedores.setBackground(new java.awt.Color(231, 231, 216));
         jPanelProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/proveedor.png"))); // NOI18N
-        jPanelProveedores.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-
         jLabel8.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(127, 119, 119));
         jLabel8.setText("PROVEEDORES");
         jPanelProveedores.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 20));
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proveedor.png")));
+        jPanelProveedores.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
         jPanelBarraLateral.add(jPanelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 40));
 
         jPanelClientes.setBackground(new java.awt.Color(231, 231, 216));
         jPanelClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/male3_85205.png"))); // NOI18N
-        jPanelClientes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, -1, -1));
-
         jLabel10.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(127, 119, 119));
         jLabel10.setText("CLIENTES");
         jPanelClientes.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 100, 20));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/male3_85205.png"))); // NOI18N
+        jPanelClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
         jPanelBarraLateral.add(jPanelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 40));
 
         jPanelEmpleados.setBackground(new java.awt.Color(231, 231, 216));
         jPanelEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/empleado.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/empleado.png"))); // NOI18N
         jPanelEmpleados.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
 
         jLabel12.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
@@ -135,7 +135,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelEmpleados1.setBackground(new java.awt.Color(231, 231, 216));
         jPanelEmpleados1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/interfazpi/images/salir.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salir.png"))); // NOI18N
         jPanelEmpleados1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
 
         jLabel14.setFont(new java.awt.Font("Mesa Grande", 0, 12)); // NOI18N
@@ -283,13 +283,13 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogoBarra;
     private javax.swing.JPanel jPaneMateriaPrimaTabbed;
     private javax.swing.JPanel jPanel6;
