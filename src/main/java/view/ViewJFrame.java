@@ -401,7 +401,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnModificarAño6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         btnModificarAño7.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
-        btnModificarAño7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update.png"))); // NOI18N
         btnModificarAño7.setText("Actualizar");
         btnModificarAño7.setBorderPainted(false);
         btnModificarAño7.setContentAreaFilled(false);

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package conection;
+package connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,18 +15,17 @@ import javax.swing.JOptionPane;
  * @author happy
  */
 
-public class ServiceConection {
+public class ServiceConnection {
     private static Connection con = null;
     
     public static Connection getConnection(){
         try
         {
-            if(con == null){
-                //Determina cuando se termina el programa
+            if(con == null || con.isClosed()){
+                
                 Runtime.getRuntime().addShutdownHook(new MiShDwnHook());
-                //Recupera los parámetros de conexión del archivo 
-                //jdbc.properties
-                ResourceBundle rb = ResourceBundle.getBundle("conection.jdbc");
+                
+                ResourceBundle rb = ResourceBundle.getBundle("jdbc");
                 String driver = rb.getString("driver");
                 String url = rb.getString("url");
                 String pwd = rb.getString("pwd");
@@ -45,12 +44,11 @@ public class ServiceConection {
     }
     
     static class MiShDwnHook extends Thread{
-        //Justo antes de finaliza el programa la JVM invocará
-        //este método donde podemos cerra la conexión
+        
         @Override
         public void run(){
             try{
-                Connection con = ServiceConection.getConnection();
+                Connection con = ServiceConnection.getConnection();
                 con.close();                     
             }
             catch (Exception ex){

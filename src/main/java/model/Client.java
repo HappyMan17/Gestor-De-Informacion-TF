@@ -14,6 +14,8 @@ public class Client {
     private int clientId;
     
     //Methods
+    public Client(){}
+    
     public Client(String clientName, int clientId){
         this.clientName = clientName;
         this.clientId = clientId;
