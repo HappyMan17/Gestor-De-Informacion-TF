@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Client;
 import model.Product;
 
 /**
@@ -58,6 +57,7 @@ public class ProductDAO {
                 product.setAmount(rs.getInt("amount"));
                 product.setPrice(rs.getDouble("price"));
                 product.setLotNumber(rs.getString("lot_number"));
+                product.setDatabaseId(rs.getInt("product_id"));
 
                 listado.add(product);
             }

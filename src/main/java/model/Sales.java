@@ -19,6 +19,7 @@ public class Sales {
     private ArrayList<Product> productSell;
     private Double totalSold;
     private Seller seller;
+    private int databaseId;
     
     //Methods
     public Sales(int quantitySold, Client client, Seller seller){
@@ -104,4 +105,13 @@ public class Sales {
     public void addProductToSell(Product product){
         this.productSell.add(product);
     }
+
+    public int getDatabaseId() {
+        return databaseId;
+    }
+
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
+    }
+    
 }

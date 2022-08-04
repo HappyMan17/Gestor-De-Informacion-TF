@@ -12,6 +12,7 @@ public class Production extends Recepies{
     //Attribute
     private String productName;
     private Product newProduct;
+    private int databaseId;
     
     //Methods
     public Production(){
@@ -53,4 +54,14 @@ public class Production extends Recepies{
                 }
         }
     }
+
+    public int getDatabaseId() {
+        return databaseId;
+    }
+
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
+    }
+    
+    
 }

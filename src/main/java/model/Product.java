@@ -19,6 +19,7 @@ public class Product {
     private ArrayList<RawMaterial> ingredients;
     private String name;
     private int accumulator;
+    private int databaseId;
     
     //Methods
     public Product(){}
@@ -83,6 +84,14 @@ public class Product {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public int getDatabaseId() {
+        return databaseId;
+    }
+
+    public void setDatabaseId(int databaseId) {
+        this.databaseId = databaseId;
     }
     
 }
