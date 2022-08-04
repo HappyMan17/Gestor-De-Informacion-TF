@@ -12,50 +12,53 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Client;
+import model.Product;
+import model.ProductPackage;
 
 /**
  *
  * @author happy
  */
-public class ClientDAO {
+public class ProductPackageDAO {
+    private ProductDAO productDAO;
+    
+    public ProductPackageDAO(ProductDAO productDAO) {
+        this.productDAO = productDAO;
+    }
 
-    public ClientDAO() {}
-
-    public ArrayList<Client> getClients(int clientCode) {
+    public ArrayList<ProductPackage> getClients(int packageCode) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
-        ArrayList<Client> listado = new ArrayList<>();
+        ArrayList<ProductPackage> listado = new ArrayList<>();
         try {
 
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (clientCode == 0) {
-                sql = "SELECT * FROM application.client ORDER BY client_id";
+            if (packageCode == 0) {
+                sql = "SELECT * FROM application.package ORDER BY package_code";
             } else {
-                sql = "SELECT * FROM application.client where client_code = ? "
-                        + "ORDER BY client_id";
+                sql = "SELECT * FROM application.package where package_code = ? "
+                        + "ORDER BY package_id";
             }
 
             pstm = con.prepareStatement(sql);
 
-            if (clientCode != 0) {
-                pstm.setInt(1, clientCode);
+            if (packageCode != 0) {
+                pstm.setInt(1, packageCode);
             }
 
             rs = pstm.executeQuery();
-
-            Client client = null;
+            ProductPackage productPackage = null;
 
             while (rs.next()) {
-                client = new Client();
-                client.setClientName(rs.getString("name"));
-                client.setClientId(rs.getInt("client_code"));
+                Product product = productDAO.getProducts(rs.getInt("product_id")+"").get(0);
+                productPackage = new ProductPackage(product);
 
-                listado.add(client);
+                listado.add(productPackage);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -75,8 +78,8 @@ public class ClientDAO {
         }
         return listado;
     }
-
-    public void setClients(Client client) {
+    
+    public void setProductPackage(ProductPackage productPackage) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -84,10 +87,12 @@ public class ClientDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String clientName = client.getClientName();
-            int clientCode = client.getClientId();
+            int productPackageCode = productPackage.getPackageCode();
+            int productPackageAmount = productPackage.getProductAmount();
+            Double productPackagePrice = productPackage.getSalePrice();
+            //int idProduct = productPackage.getProductDbId();
             
-            sql = "INSERT INTO application.client (name, client_code) values (?,?)";
+            sql = "INSERT INTO application.package (sales_price, client_code) values (?,?)";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientName);
@@ -180,5 +185,4 @@ public class ClientDAO {
             }
         }
     }
-    
 }

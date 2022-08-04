@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Store {
     //Attributes
     private String storeName;
-    private int NIT;
+    private int NIT, dbId;
     private ArrayList<ProductPackage> productsPackages;
     private ArrayList<Product> products;
     
@@ -62,4 +62,13 @@ public class Store {
     public void addProducts(Product product) {
         this.products.add(product);
     }
+
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
+    
 }

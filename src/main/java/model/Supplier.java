@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Supplier {
     //Attribute
     private String supplierName;
-    private int supplierNit;
+    private int supplierNit, dbId;
     private ArrayList <RawMaterial> rawMaterial;
     private int supplierCode;
 
@@ -53,6 +53,14 @@ public class Supplier {
 
     public void setSupplierCode(int supplierCode) {
         this.supplierCode = supplierCode;
+    }
+
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
     }
     
 }

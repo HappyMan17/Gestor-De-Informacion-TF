@@ -11,7 +11,7 @@ package model;
 public class ProductPackage {
     //Attributes
     private double salePrice;
-    private int productAmount, packageCode;
+    private int productAmount, packageCode, dbID;
     private Product product;
     
     //Methods
@@ -55,6 +55,18 @@ public class ProductPackage {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public int getDbID() {
+        return dbID;
+    }
+
+    public void setDbID(int dbID) {
+        this.dbID = dbID;
+    }
+    
+    public int getProductDbId(){
+        return product.getDatabaseId();
     }
     
 }

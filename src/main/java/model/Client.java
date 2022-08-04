@@ -12,6 +12,7 @@ public class Client {
     //Attributes
     private String clientName;
     private int clientId;
+    private int dbId;
     
     //Methods
     public Client(){}
@@ -36,4 +37,13 @@ public class Client {
     public void setClientId(int clientId) {
         this.clientId = clientId;
     }
+
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
+    }
+    
 }

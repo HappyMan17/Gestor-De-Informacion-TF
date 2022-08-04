@@ -11,7 +11,7 @@ package model;
 public class RawMaterial {
     //Attribute
     private String name;
-    private int unitPrice, code, supplierCode, amount;
+    private int unitPrice, code, supplierCode, amount, dbId;
     
     //Methods
     public RawMaterial(String name, int unitPrice, int code, int supplierCode, 
@@ -65,6 +65,14 @@ public class RawMaterial {
     
     public void modifyAmount(int number){
         amount += number;
+    }
+
+    public int getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(int dbId) {
+        this.dbId = dbId;
     }
     
 }
