@@ -89,7 +89,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel1.setText("G E S T I O N   D E   L A   E M P R E S A");
         jPanelBarraSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, 20));
 
-        getContentPane().add(jPanelBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 620, 50));
+        getContentPane().add(jPanelBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 620, 30));
 
         jPanelBarraLateral.setBackground(new java.awt.Color(40, 70, 85));
         jPanelBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -401,6 +401,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnModificarAño6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         btnModificarAño7.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnModificarAño7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update2.png"))); // NOI18N
         btnModificarAño7.setText("Actualizar");
         btnModificarAño7.setBorderPainted(false);
         btnModificarAño7.setContentAreaFilled(false);

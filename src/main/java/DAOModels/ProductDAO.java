@@ -12,51 +12,54 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import model.Client;
+import model.Product;
 
 /**
  *
  * @author happy
  */
-public class ClientDAO {
+public class ProductDAO {
 
-    public ClientDAO() {
+    public ProductDAO() {
     }
 
-    public ArrayList<Client> getClients(int clientCode) {
+    public ArrayList<Product> getProducts(String productName) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
-        ArrayList<Client> listado = new ArrayList<>();
+        ArrayList<Product> listado = new ArrayList<>();
         try {
 
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (clientCode == 0) {
-                sql = "SELECT * FROM application.client ORDER BY client_id";
+            if (productName == null) {
+                sql = "SELECT * FROM application.products ORDER BY name";
             } else {
-                sql = "SELECT * FROM application.client where client_code = ? "
-                        + "ORDER BY client_id";
+                sql = "SELECT * FROM application.products where name = ? "
+                        + "ORDER BY name";
             }
 
             pstm = con.prepareStatement(sql);
 
-            if (clientCode != 0) {
-                pstm.setInt(1, clientCode);
+            if (productName != null) {
+                pstm.setString(1, productName);
             }
 
             rs = pstm.executeQuery();
 
-            Client client = null;
+            Product product = null;
 
             while (rs.next()) {
-                client = new Client();
-                client.setClientName(rs.getString("name"));
-                client.setClientId(rs.getInt("client_code"));
+                product = new Product();
+                product.setName(rs.getString("name"));
+                product.setAmount(rs.getInt("amount"));
+                product.setPrice(rs.getDouble("price"));
+                product.setLotNumber(rs.getString("lot_number"));
 
-                listado.add(client);
+                listado.add(product);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "

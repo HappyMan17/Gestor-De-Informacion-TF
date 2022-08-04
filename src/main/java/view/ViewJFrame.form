@@ -39,7 +39,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="200" y="0" width="620" height="50"/>
+          <AbsoluteConstraints x="200" y="0" width="620" height="30"/>
         </Constraint>
       </Constraints>
 
@@ -737,6 +737,9 @@
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri Light" size="12" style="1"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/update2.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Actualizar"/>
                     <Property name="borderPainted" type="boolean" value="false"/>

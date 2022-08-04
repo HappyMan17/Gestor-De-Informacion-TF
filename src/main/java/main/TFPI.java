@@ -5,6 +5,7 @@
 
 package main;
 
+import java.time.LocalDate;
 import view.ViewJFrame;
 
 /**
@@ -14,9 +15,11 @@ import view.ViewJFrame;
 public class TFPI {
 
     public static void main(String[] args) {
-        
+        LocalDate todaysDate = LocalDate.now();
+        System.out.println(todaysDate + "001");
+        /**
         ViewJFrame view = new ViewJFrame();
         view.setVisible(true);
-        
+        */
     }
 }
