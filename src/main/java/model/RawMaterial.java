@@ -11,9 +11,12 @@ package model;
 public class RawMaterial {
     //Attribute
     private String name;
-    private int unitPrice, code, supplierCode, amount, dbId;
+    private int code, supplierCode, amount, dbId;
+    private double unitPrice;
     
     //Methods
+    public RawMaterial(){}
+    
     public RawMaterial(String name, int unitPrice, int code, int supplierCode, 
         int amount){
         this.name = name;
@@ -31,11 +34,11 @@ public class RawMaterial {
         this.name = name;
     }
 
-    public int getUnitPrice() {
+    public Double getUnitPrice() {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(Double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -47,11 +50,11 @@ public class RawMaterial {
         this.code = code;
     }
 
-    public int getSupplierCode() {
+    public int getSupplierId() {
         return supplierCode;
     }
 
-    public void setSupplierCode(int supplierCode) {
+    public void setSupplierId(int supplierCode) {
         this.supplierCode = supplierCode;
     }
 

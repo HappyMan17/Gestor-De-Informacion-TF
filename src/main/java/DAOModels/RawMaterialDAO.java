@@ -11,55 +11,54 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Product;
-import model.ProductPackage;
+import model.RawMaterial;
 
 /**
  *
  * @author happy
  */
-public class ProductPackageDAO {
+public class RawMaterialDAO {
 
-    private ProductDAO productDAO;
+    public RawMaterialDAO() {}
 
-    public ProductPackageDAO(ProductDAO productDAO) {
-        this.productDAO = productDAO;
-    }
-
-    public ArrayList<ProductPackage> getPackage(int packageCode) {
+    public ArrayList<RawMaterial> getRawMaterial(int rawMaterialCode) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
-        ArrayList<ProductPackage> listado = new ArrayList<>();
+        ArrayList<RawMaterial> listado = new ArrayList<>();
         try {
 
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (packageCode == 0) {
-                sql = "SELECT * FROM application.package ORDER BY package_id";
+            if (rawMaterialCode == 0) {
+                sql = "SELECT * FROM application.rm_inventory ORDER BY raw_material_id";
             } else {
-                sql = "SELECT * FROM application.package where package_code = ? "
-                        + "ORDER BY package_id";
+                sql = "SELECT * FROM application.rm_inventory where code = ? "
+                        + "ORDER BY raw_material_id";
             }
 
             pstm = con.prepareStatement(sql);
 
-            if (packageCode != 0) {
-                pstm.setInt(1, packageCode);
+            if (rawMaterialCode != 0) {
+                pstm.setInt(1, rawMaterialCode);
             }
 
             rs = pstm.executeQuery();
-            ProductPackage productPackage = null;
+            RawMaterial rawMaterial = null;
 
             while (rs.next()) {
-                Product product = productDAO.getProducts(
-                    rs.getInt("product_id")).get(0);
-                productPackage = new ProductPackage(product);
+                rawMaterial = new RawMaterial();
+                rawMaterial.setName(rs.getString("name"));
+                rawMaterial.setUnitPrice(rs.getDouble("price"));
+                rawMaterial.setAmount(rs.getInt("amount"));
+                rawMaterial.setSupplierId(rs.getInt("supplier_id"));
+                rawMaterial.setCode(rs.getInt("code"));
+                rawMaterial.setDbId(rs.getInt("raw_material_id"));
 
-                listado.add(productPackage);
+                listado.add(rawMaterial);
             }
             
         } catch (SQLException ex) {
@@ -83,7 +82,7 @@ public class ProductPackageDAO {
         return listado;
     }
 
-    public void setProductPackage(ProductPackage productPackage) {
+    public void setRawMaterial(RawMaterial rawMaterial) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -91,18 +90,20 @@ public class ProductPackageDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int productPackageCode = productPackage.getPackageCode();
-            int productPackageAmount = productPackage.getProductAmount();
-            Double productPackagePrice = productPackage.getSalePrice();
-            int idProduct = productPackage.getProductDbId();
+            String rawMaterialName = rawMaterial.getName();
+            Double rawMaterialPrice = rawMaterial.getUnitPrice();
+            int rawMaterialAmount = rawMaterial.getAmount();
+            int rawMaterialSupplierId = rawMaterial.getSupplierId();
+            int rawMaterialCode = rawMaterial.getCode();
 
-            sql = "INSERT INTO application.package (sales_price, product_amount, package_code, product_id) values (?,?,?,?)";
+            sql = "INSERT INTO application.rm_inventory (name, price, amount, supplier_id, code) values (?,?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setDouble(1, productPackagePrice);
-            pstm.setInt(2, productPackageAmount);
-            pstm.setInt(3, productPackageCode);
-            pstm.setInt(4, idProduct);
+            pstm.setString(1, rawMaterialName);
+            pstm.setDouble(2, rawMaterialPrice);
+            pstm.setInt(3, rawMaterialAmount);
+            pstm.setInt(4, rawMaterialSupplierId);
+            pstm.setInt(5, rawMaterialCode);
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
@@ -126,7 +127,7 @@ public class ProductPackageDAO {
      *
      * @param productPackage
      */
-    public void updateProductPackage(ProductPackage productPackage) {
+    public void updateRawMaterial(RawMaterial rawMaterial) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -134,18 +135,22 @@ public class ProductPackageDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int productPackageCode = productPackage.getPackageCode();
-            int productPackageId = productPackage.getDbID();
-            int productPackageAmount = productPackage.getProductAmount();
-            Double productPackagePrice = productPackage.getSalePrice();
+            String rawMaterialName = rawMaterial.getName();
+            Double rawMaterialPrice = rawMaterial.getUnitPrice();
+            int rawMaterialAmount = rawMaterial.getAmount();
+            int rawMaterialSupplierId = rawMaterial.getSupplierId();
+            int rawMaterialCode = rawMaterial.getCode();
+            int rawMaterialDbId = rawMaterial.getDbId();
 
-            sql = "update application.package set (sales_price, product_amount, package_code) = (?, ?, ?) where package_id = ?";
+            sql = "update application.rm_inventory set (name, price, amount, supplier_id, code) = (?, ?, ?, ?, ?) where rm_inventory = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setDouble(1, productPackagePrice);
-            pstm.setInt(2, productPackageAmount);
-            pstm.setInt(3, productPackageCode);
-            pstm.setInt(4, productPackageId);
+            pstm.setString(1, rawMaterialName);
+            pstm.setDouble(2, rawMaterialPrice);
+            pstm.setInt(3, rawMaterialAmount);
+            pstm.setInt(4, rawMaterialSupplierId);
+            pstm.setInt(5, rawMaterialCode);
+            pstm.setInt(6, rawMaterialDbId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
@@ -165,7 +170,7 @@ public class ProductPackageDAO {
         }
     }
 
-    public void deleteClient(ProductPackage productPackage) {
+    public void deleteRawMaterial(RawMaterial rawMaterial) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -173,14 +178,14 @@ public class ProductPackageDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int productPackageCode = productPackage.getPackageCode();
-            int productPackageId = productPackage.getDbID();
+            int rawMaterialCode = rawMaterial.getCode();
+            int rawMaterialId = rawMaterial.getDbId();
 
-            sql = "delete from application.package where package_code = ? and package_id = ?";
+            sql = "delete from application.rm_inventory where code = ? and raw_material_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, productPackageCode);
-            pstm.setInt(2, productPackageId);
+            pstm.setInt(1, rawMaterialCode);
+            pstm.setInt(2, rawMaterialId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted :" + deleted);
