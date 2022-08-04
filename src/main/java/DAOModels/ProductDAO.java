@@ -94,7 +94,6 @@ public class ProductDAO {
             String lotNumber = product.getLotNumber();
 
             sql = "INSERT INTO application.products (amount, name, price, lot_number) values (?,?,?,?)";
-            
 
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, productAmount);
@@ -118,4 +117,75 @@ public class ProductDAO {
             }
         }
     }
+
+    public boolean updateProduct(Product product) {
+        Connection con = null;
+        PreparedStatement pstm = null;
+
+        boolean update = false;
+        String productName = product.getName();
+        String productLote = product.getLotNumber();
+
+        String sql = "UPDATE aplication.products SET name = ? where product_id = ?";
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, productName);
+            pstm.setString(2, productLote);
+            update = true;
+
+            int updated = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError clase ProductDAO, método update: " + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError clase ProductDAO, método update: " + ex.getMessage());
+            }
+        }
+        return update;
+    }
+    
+    public boolean deleteProduct(Product product) {
+        Connection con = null;
+        PreparedStatement pstm = null;
+
+        boolean delete = false;
+        String productName = product.getName();
+        String productLote = product.getLotNumber();
+
+        String sql = "delete from application.products where name = ? and product_id = ?";
+        try {
+            
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, productName);
+            pstm.setString(2, productLote);
+            delete = true;
+
+            int delated = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows deleted: " + delated);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError clase ProductDAO, método delete: " + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError clase ProductDAO, método delete: " + ex.getMessage());
+            }
+        }
+        return delete;
+    }
+
 }
