@@ -89,6 +89,7 @@ public class SellerDAO {
             sql = "INSERT INTO application.seller (sellerName,sellerCode) values (?,?)";
 
             pstm = con.prepareStatement(sql);
+            
             pstm.setString(1, sellerName);
             pstm.setInt(2, sellerCode);
 
@@ -116,11 +117,16 @@ public class SellerDAO {
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
+            
             String sellerName = seller.getSellerName();
+            int sellerId = seller.getDatabaseId();
 
-            sql = "UPDATE aplication.seller SET name = ?";
+            sql = "UPDATE aplication.seller SET name = ? where seller_id = ?";
+            
             pstm = con.prepareStatement(sql);
+            
             pstm.setString(1, sellerName);
+            pstm.setInt(2, sellerId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
@@ -152,6 +158,7 @@ public class SellerDAO {
             int sellerCode = seller.getSellerId();
 
             sql = "delete from application.seller where name = ? and seller_code = ?";
+            
             pstm = con.prepareStatement(sql);
             pstm.setString(1, sellerName);
             pstm.setInt(2, sellerCode);
