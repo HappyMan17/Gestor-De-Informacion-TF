@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -12,16 +13,20 @@ import java.util.ArrayList;
  */
 public class Product {
     //Attribute
-    private int amount, lotNumber;
+    private int amount;
+    private String lotNumber;
     private Double price;
     private ArrayList<RawMaterial> ingredients;
     private String name;
+    private int accumulator;
     
     //Methods
     public Product(int amount, Double price, String name){
         this.amount = amount;
         this.price = price;
         this.name = name;
+        setLotNumber();
+        
     }
     
     public int getAmount() {
@@ -36,12 +41,18 @@ public class Product {
         amount += number;
     }
 
-    public int getLotNumber() {
+    public String getLotNumber() {
         return lotNumber;
     }
 
-    public void setLotNumber(int lotNumber) {
-        this.lotNumber = lotNumber;
+    public void setLotNumber(String newLotNumber){
+        this.lotNumber = newLotNumber;
+    }
+    
+    public void setLotNumber() {
+        LocalDate date = LocalDate.now();
+        lotNumber = date+" - "+accumulator;
+        accumulator++;
     }
 
     public ArrayList<RawMaterial> getIngredients() {

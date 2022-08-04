@@ -15,6 +15,7 @@ public class Supplier {
     private String supplierName;
     private int supplierNit;
     private ArrayList <RawMaterial> rawMaterial;
+    private int supplierCode;
 
     //Methods
     public Supplier(String supplierName, int supplierNit){
@@ -45,6 +46,13 @@ public class Supplier {
     public void setRawMaterial(ArrayList<RawMaterial> rawMaterial) {
         this.rawMaterial = rawMaterial;
     }
-    
+
+    public int getSupplierCode() {
+        return supplierCode;
+    }
+
+    public void setSupplierCode(int supplierCode) {
+        this.supplierCode = supplierCode;
+    }
     
 }
