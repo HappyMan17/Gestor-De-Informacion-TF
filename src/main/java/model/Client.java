@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sebastian grisales
@@ -11,8 +13,10 @@ package model;
 public class Client {
     //Attributes
     private String clientName;
-    private int clientId;
-    private int dbId;
+    private int clientId, dbId, NIT;
+    private ArrayList<ProductPackage> productsPackages;
+    private ArrayList<Product> products;
+    private boolean isStore;
     
     //Methods
     public Client(){}
@@ -45,5 +49,39 @@ public class Client {
     public void setDbId(int dbId) {
         this.dbId = dbId;
     }
+
+    public int getNIT() {
+        return NIT;
+    }
+
+    public void setNIT(int NIT) {
+        this.NIT = NIT;
+    }
+
+    public ArrayList<ProductPackage> getProductsPackages() {
+        return productsPackages;
+    }
+
+    public void setProductsPackages(ArrayList<ProductPackage> productsPackages) {
+        this.productsPackages = productsPackages;
+    }
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
+    }
+
+    public boolean getIsIsStore() {
+        return isStore;
+    }
+
+    public void setIsStore(boolean isStore) {
+        this.isStore = isStore;
+    }
+    
+    
     
 }

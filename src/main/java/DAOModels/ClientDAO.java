@@ -52,8 +52,13 @@ public class ClientDAO {
 
             while (rs.next()) {
                 client = new Client();
+                if(rs.getBoolean("is_store")){
+                    client.setIsStore(true);
+                    client.setNIT(rs.getInt("nit"));
+                }
                 client.setClientName(rs.getString("name"));
                 client.setClientId(rs.getInt("client_code"));
+                client.setDbId(rs.getInt("client_id"));
 
                 listado.add(client);
             }
@@ -86,12 +91,23 @@ public class ClientDAO {
 
             String clientName = client.getClientName();
             int clientCode = client.getClientId();
+            int clientNIT = client.getNIT();
             
-            sql = "INSERT INTO application.client (name, client_code) values (?,?)";
+            if( client.getIsIsStore() ){
+                sql = "INSERT INTO application.client (name, client_code, nit) values (?,?,?)";
+            }else{
+                sql = "INSERT INTO application.client (name, client_code) values (?,?)";
+            }
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, clientName);
-            pstm.setInt(1, clientCode);
+            if(client.getIsIsStore()){
+                pstm.setString(1, clientName);
+                pstm.setInt(2, clientCode);
+                pstm.setInt(3, clientNIT);
+            }else{
+                pstm.setString(1, clientName);
+                pstm.setInt(2, clientCode);
+            }
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: "+inserted);
@@ -121,12 +137,14 @@ public class ClientDAO {
             
             String clientNewName = client.getClientName();
             int clientCode = client.getClientId();
+            int clientNIT = client.getNIT();
             
-            sql = "update application.client set name = ? where client_code = ?";
+            sql = "update application.client set name = ?, nit = ? where client_code = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientNewName);
-            pstm.setInt(2, clientCode);
+            pstm.setInt(2, clientNIT);
+            pstm.setInt(3, clientCode);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: "+updated);

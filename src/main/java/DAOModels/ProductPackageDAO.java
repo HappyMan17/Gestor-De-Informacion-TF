@@ -20,13 +20,14 @@ import model.ProductPackage;
  * @author happy
  */
 public class ProductPackageDAO {
+
     private ProductDAO productDAO;
-    
+
     public ProductPackageDAO(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
 
-    public ArrayList<ProductPackage> getClients(int packageCode) {
+    public ArrayList<ProductPackage> getPackage(int packageCode) {
 
         Connection con = null;
         PreparedStatement pstm = null;
@@ -39,7 +40,7 @@ public class ProductPackageDAO {
             String sql = "";
 
             if (packageCode == 0) {
-                sql = "SELECT * FROM application.package ORDER BY package_code";
+                sql = "SELECT * FROM application.package ORDER BY package_id";
             } else {
                 sql = "SELECT * FROM application.package where package_code = ? "
                         + "ORDER BY package_id";
@@ -55,15 +56,18 @@ public class ProductPackageDAO {
             ProductPackage productPackage = null;
 
             while (rs.next()) {
-                Product product = productDAO.getProducts(rs.getInt("product_id")+"").get(0);
+                Product product = productDAO.getProducts(
+                    rs.getInt("product_id")).get(0);
                 productPackage = new ProductPackage(product);
 
                 listado.add(productPackage);
             }
+            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
+            
             try {
                 if (rs != null) {
                     rs.close();
@@ -75,10 +79,11 @@ public class ProductPackageDAO {
                 JOptionPane.showMessageDialog(null, "Código : "
                         + ex.getErrorCode() + "\nError :" + ex.getMessage());
             }
+            
         }
         return listado;
     }
-    
+
     public void setProductPackage(ProductPackage productPackage) {
         Connection con = null;
         PreparedStatement pstm = null;
@@ -90,16 +95,18 @@ public class ProductPackageDAO {
             int productPackageCode = productPackage.getPackageCode();
             int productPackageAmount = productPackage.getProductAmount();
             Double productPackagePrice = productPackage.getSalePrice();
-            //int idProduct = productPackage.getProductDbId();
-            
-            sql = "INSERT INTO application.package (sales_price, client_code) values (?,?)";
+            int idProduct = productPackage.getProductDbId();
+
+            sql = "INSERT INTO application.package (sales_price, product_amount, package_code, product_id) values (?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, clientName);
-            pstm.setInt(1, clientCode);
+            pstm.setDouble(1, productPackagePrice);
+            pstm.setInt(2, productPackageAmount);
+            pstm.setInt(3, productPackageCode);
+            pstm.setInt(4, idProduct);
 
             int inserted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows inserted: "+inserted);
+            JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -115,26 +122,34 @@ public class ProductPackageDAO {
             }
         }
     }
-    
-    public void updateClientName(Client client){
+
+    /**
+     *
+     * @param productPackage
+     */
+    public void updateProductPackage(ProductPackage productPackage) {
         Connection con = null;
         PreparedStatement pstm = null;
 
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
-            
-            String clientNewName = client.getClientName();
-            int clientCode = client.getClientId();
-            
-            sql = "update application.client set name = ? where client_code = ?";
+
+            int productPackageCode = productPackage.getPackageCode();
+            int productPackageId = productPackage.getDbID();
+            int productPackageAmount = productPackage.getProductAmount();
+            Double productPackagePrice = productPackage.getSalePrice();
+
+            sql = "update application.package set (sales_price, product_amount, package_code) = (productPackagePrice, productPackageAmount, productPackageCode) where package_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, clientNewName);
-            pstm.setInt(2, clientCode);
+            pstm.setDouble(1, productPackagePrice);
+            pstm.setInt(2, productPackageAmount);
+            pstm.setInt(3, productPackageCode);
+            pstm.setInt(4, productPackageId);
 
             int updated = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows updated: "+updated);
+            JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -150,26 +165,26 @@ public class ProductPackageDAO {
             }
         }
     }
-    
-    public void deleteClient(Client client){
+
+    public void deleteClient(ProductPackage productPackage) {
         Connection con = null;
         PreparedStatement pstm = null;
 
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
-            
-            String clientNewName = client.getClientName();
-            int clientCode = client.getClientId();
-            
-            sql = "delete from application.client where name = ? and client_code = ?";
+
+            int productPackageCode = productPackage.getPackageCode();
+            int productPackageId = productPackage.getDbID();
+
+            sql = "delete from application.package where package_code = ? and package_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, clientNewName);
-            pstm.setInt(2, clientCode);
+            pstm.setInt(1, productPackageCode);
+            pstm.setInt(2, productPackageId);
 
             int deleted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows deleted :"+deleted);
+            JOptionPane.showMessageDialog(null, "Rows deleted :" + deleted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
