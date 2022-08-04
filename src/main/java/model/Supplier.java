@@ -18,6 +18,8 @@ public class Supplier {
     private int supplierCode;
 
     //Methods
+    public Supplier(){}
+    
     public Supplier(String supplierName, int supplierNit){
         this.supplierName = supplierName;
         this.supplierNit = supplierNit;
