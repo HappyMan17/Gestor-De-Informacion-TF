@@ -118,24 +118,24 @@ public class ProductDAO {
         }
     }
 
-    public boolean updateProduct(Product product) {
+    public void updateProduct(Product product) {
         Connection con = null;
         PreparedStatement pstm = null;
 
-        boolean update = false;
-        String productName = product.getName();
-        String productLote = product.getLotNumber();
-
-        String sql = "UPDATE aplication.products SET name = ? where product_id = ?";
         try {
-            
+            con = ServiceConnection.getConnection();
+            String sql = "";
+            String productName = product.getName();
+            String productLote = product.getLotNumber();
+
+            sql = "UPDATE aplication.products SET name = ? lot_number = ?";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
-            update = true;
 
             int updated = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
+            JOptionPane.showMessageDialog(null, "Rows updated: " + updated
+                    + "\n was updated " + productName);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -150,27 +150,26 @@ public class ProductDAO {
                         + ex.getErrorCode() + "\nError clase ProductDAO, método update: " + ex.getMessage());
             }
         }
-        return update;
     }
-    
-    public boolean deleteProduct(Product product) {
+
+    public void deleteProduct(Product product) {
         Connection con = null;
         PreparedStatement pstm = null;
 
-        boolean delete = false;
-        String productName = product.getName();
-        String productLote = product.getLotNumber();
-
-        String sql = "delete from application.products where name = ? and product_id = ?";
         try {
-            
+            con = ServiceConnection.getConnection();
+            String sql = "";
+            String productName = product.getName();
+            String productLote = product.getLotNumber();
+
+            sql = "delete from application.products where name = ? and lot_number = ?";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
-            delete = true;
 
-            int delated = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows deleted: " + delated);
+            int deleted = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows deleted: " + deleted
+                    + "\n was deleted " + productName);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -185,7 +184,6 @@ public class ProductDAO {
                         + ex.getErrorCode() + "\nError clase ProductDAO, método delete: " + ex.getMessage());
             }
         }
-        return delete;
     }
 
 }
