@@ -37,8 +37,8 @@ public class ProductDAO {
             if (dbId == 0){
                 sql = "SELECT * FROM application.products ORDER BY name";
             } else {
-                sql = "SELECT * FROM application.products where name = ? "
-                        + "ORDER BY name";
+                sql = "SELECT * FROM application.products where product_id = ? "
+                        + "ORDER BY product_id";
             }
 
             pstm = con.prepareStatement(sql);
@@ -58,7 +58,7 @@ public class ProductDAO {
                 product.setPrice(rs.getDouble("price"));
                 product.setLotNumber(rs.getString("lot_number"));
                 product.setDatabaseId(rs.getInt("product_id"));
-
+                //detail
                 listado.add(product);
             }
         } catch (SQLException ex) {
@@ -127,11 +127,13 @@ public class ProductDAO {
             String sql = "";
             String productName = product.getName();
             String productLote = product.getLotNumber();
+            int productId = product.getDatabaseId();
 
-            sql = "UPDATE aplication.products SET name = ? lot_number = ?";
+            sql = "UPDATE aplication.products SET name = ?, lot_number = ? where product_id = ?";
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
+            pstm.setInt(3, productId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
@@ -163,6 +165,7 @@ public class ProductDAO {
             String productLote = product.getLotNumber();
 
             sql = "delete from application.products where name = ? and lot_number = ?";
+            
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
