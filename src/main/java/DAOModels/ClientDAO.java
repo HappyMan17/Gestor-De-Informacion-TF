@@ -94,7 +94,8 @@ public class ClientDAO {
             pstm.setString(1, clientName);
             pstm.setInt(1, clientCode);
 
-            pstm.executeQuery();
+            int inserted = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows inserted: "+inserted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -128,7 +129,43 @@ public class ClientDAO {
             pstm.setString(1, clientNewName);
             pstm.setInt(2, clientCode);
 
-            pstm.executeQuery();
+            int updated = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows updated: "+updated);
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+    }
+    
+    public void deleteClient(Client client){
+        Connection con = null;
+        PreparedStatement pstm = null;
+
+        try {
+            con = ServiceConnection.getConnection();
+            String sql = "";
+            
+            String clientNewName = client.getClientName();
+            int clientCode = client.getClientId();
+            
+            sql = "delete from application.client where name = ? and client_code = ?";
+
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, clientNewName);
+            pstm.setInt(2, clientCode);
+
+            int deleted = pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows deleted :"+deleted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "

@@ -102,7 +102,7 @@ public class ProductDAO {
             pstm.setDouble(3, productPrice);
             pstm.setString(4, lotNumber);
 
-            pstm.executeQuery();
+            pstm.executeUpdate();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
