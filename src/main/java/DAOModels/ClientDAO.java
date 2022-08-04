@@ -80,7 +80,6 @@ public class ClientDAO {
     public void setClients(Client cliente) {
         Connection con = null;
         PreparedStatement pstm = null;
-        ResultSet rs = null;
 
         try {
             con = ServiceConnection.getConnection();
@@ -88,27 +87,21 @@ public class ClientDAO {
 
             String clientName = cliente.getClientName();
             int clientCode = cliente.getClientId();
-
-            if (clientCode == 0) {
-                sql = "SELECT * FROM application.client ORDER BY client_id";
-            } else {
-                sql = "INSERT INTO application.client (name,client_code) values (?,?)";
-            }
+            
+            sql = "SELECT * FROM application.client ORDER BY client_id";
+            sql = "INSERT INTO application.client (name,client_code) values (?,?)";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientName);
             pstm.setInt(1, clientCode);
 
-            rs = pstm.executeQuery();
+            pstm.executeQuery();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
                 if (pstm != null) {
                     pstm.close();
                 }

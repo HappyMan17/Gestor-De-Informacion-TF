@@ -21,6 +21,8 @@ public class Product {
     private int accumulator;
     
     //Methods
+    public Product(){}
+    
     public Product(int amount, Double price, String name){
         this.amount = amount;
         this.price = price;

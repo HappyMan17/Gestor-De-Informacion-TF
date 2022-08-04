@@ -80,38 +80,35 @@ public class ProductDAO {
         return listado;
     }
 
-    public void setClients(Client cliente) {
+    public void setProduct(Product product) {
         Connection con = null;
         PreparedStatement pstm = null;
-        ResultSet rs = null;
 
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String clientName = cliente.getClientName();
-            int clientCode = cliente.getClientId();
+            int productAmount = product.getAmount();
+            String productName = product.getName();
+            Double productPrice = product.getPrice();
+            String lotNumber = product.getLotNumber();
 
-            if (clientCode == 0) {
-                sql = "SELECT * FROM application.client ORDER BY client_id";
-            } else {
-                sql = "INSERT INTO application.client (name,client_code) values (?,?)";
-            }
+            sql = "INSERT INTO application.products (amount, name, price, lot_number) values (?,?,?,?)";
+            
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, clientName);
-            pstm.setInt(1, clientCode);
+            pstm.setInt(1, productAmount);
+            pstm.setString(2, productName);
+            pstm.setDouble(3, productPrice);
+            pstm.setString(4, lotNumber);
 
-            rs = pstm.executeQuery();
+            pstm.executeQuery();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
                 if (pstm != null) {
                     pstm.close();
                 }
