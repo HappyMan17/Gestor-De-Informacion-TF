@@ -23,6 +23,10 @@ public class Seller {
         this.sellerId = sellerId;
         this.sellerName = sellerName;
     }
+    
+    public Seller(){
+        
+    }
 
     public int getSellerId() {
         return sellerId;

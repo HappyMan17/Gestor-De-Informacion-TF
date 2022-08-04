@@ -11,34 +11,34 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import model.Product;
+import model.Seller;
 
 /**
  *
  * @author happy
  */
-public class ProductDAO {
+public class SellerDAO {
 
-    public ProductDAO() {
+    public SellerDAO() {
     }
 
-    public ArrayList<Product> getProducts(int dbId){
+    public ArrayList<Seller> getSeller(int dbId) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
-        ArrayList<Product> listado = new ArrayList<>();
+        ArrayList<Seller> listado = new ArrayList<>();
         try {
 
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (dbId == 0){
-                sql = "SELECT * FROM application.products ORDER BY name";
+            if (dbId == 0) {
+                sql = "SELECT * FROM application.seller ORDER BY seller_id";
             } else {
-                sql = "SELECT * FROM application.products where name = ? "
-                        + "ORDER BY name";
+                sql = "SELECT * FROM application.seller where seller_id = ? "
+                        + "ORDER BY seller_id";
             }
 
             pstm = con.prepareStatement(sql);
@@ -49,38 +49,33 @@ public class ProductDAO {
 
             rs = pstm.executeQuery();
 
-            Product product = null;
+            Seller seller = null;
 
             while (rs.next()) {
-                product = new Product();
-                product.setName(rs.getString("name"));
-                product.setAmount(rs.getInt("amount"));
-                product.setPrice(rs.getDouble("price"));
-                product.setLotNumber(rs.getString("lot_number"));
-                product.setDatabaseId(rs.getInt("product_id"));
+                seller = new Seller();
+                seller.setDatabaseId(rs.getInt("seller_id"));
+                seller.setSellerId(rs.getInt("seller_code"));
+                seller.setSellerName(rs.getString("name"));
 
-                listado.add(product);
+                listado.add(seller);
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError clase SellerDAO, método get: " + ex.getMessage());
         } finally {
             try {
-                if (rs != null) {
-                    rs.close();
-                }
                 if (pstm != null) {
                     pstm.close();
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                        + ex.getErrorCode() + "\nError clase SellerDAO, método get: " + ex.getMessage());
             }
         }
         return listado;
     }
 
-    public void setProduct(Product product) {
+    public void setSeller(Seller seller) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -88,24 +83,20 @@ public class ProductDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int productAmount = product.getAmount();
-            String productName = product.getName();
-            Double productPrice = product.getPrice();
-            String lotNumber = product.getLotNumber();
+            String sellerName = seller.getSellerName();
+            int sellerCode = seller.getSellerId();
 
-            sql = "INSERT INTO application.products (amount, name, price, lot_number) values (?,?,?,?)";
+            sql = "INSERT INTO application.seller (sellerName,sellerCode) values (?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, productAmount);
-            pstm.setString(2, productName);
-            pstm.setDouble(3, productPrice);
-            pstm.setString(4, lotNumber);
+            pstm.setString(1, sellerName);
+            pstm.setInt(2, sellerCode);
 
             pstm.executeUpdate();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError clase SellerDAO, método set: " + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -113,33 +104,31 @@ public class ProductDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                        + ex.getErrorCode() + "\nError clase SellerDAO, método set: " + ex.getMessage());
             }
         }
     }
 
-    public void updateProduct(Product product) {
+    public void updateSeller(Seller seller) {
         Connection con = null;
         PreparedStatement pstm = null;
 
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
-            String productName = product.getName();
-            String productLote = product.getLotNumber();
+            String sellerName = seller.getSellerName();
 
-            sql = "UPDATE aplication.products SET name = ? lot_number = ?";
+            sql = "UPDATE aplication.seller SET name = ?";
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, productName);
-            pstm.setString(2, productLote);
+            pstm.setString(1, sellerName);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
-                    + "\n was updated " + productName);
+                    + "\n was updated " + sellerName);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError clase ProductDAO, método update: " + ex.getMessage());
+                    + ex.getErrorCode() + "\nError clase SellerDAO, método update: " + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -147,33 +136,33 @@ public class ProductDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError clase ProductDAO, método update: " + ex.getMessage());
+                        + ex.getErrorCode() + "\nError clase SellerDAO, método update: " + ex.getMessage());
             }
         }
     }
 
-    public void deleteProduct(Product product) {
+    public void deleteSeller(Seller seller) {
         Connection con = null;
         PreparedStatement pstm = null;
 
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
-            String productName = product.getName();
-            String productLote = product.getLotNumber();
+            String sellerName = seller.getSellerName();
+            int sellerCode = seller.getSellerId();
 
-            sql = "delete from application.products where name = ? and lot_number = ?";
+            sql = "delete from application.seller where name = ? and seller_code = ?";
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, productName);
-            pstm.setString(2, productLote);
+            pstm.setString(1, sellerName);
+            pstm.setInt(2, sellerCode);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted: " + deleted
-                    + "\n was deleted " + productName);
+                    + "\n was deleted " + sellerName);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError clase ProductDAO, método delete: " + ex.getMessage());
+                    + ex.getErrorCode() + "\nError clase SellerDAO, método delete: " + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -181,9 +170,8 @@ public class ProductDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError clase ProductDAO, método delete: " + ex.getMessage());
+                        + ex.getErrorCode() + "\nError clase SellerDAO, método delete: " + ex.getMessage());
             }
         }
     }
-
 }

@@ -14,7 +14,6 @@ public class Sales {
     //Attributes
     private int quantitySold;
     private Client client;
-    private Store storeClient;
     private ArrayList<ProductPackage> packageSell;
     private ArrayList<Product> productSell;
     private Double totalSold;
@@ -29,10 +28,13 @@ public class Sales {
         this.totalSold = 0.0;
     }
     
-    public Sales(int quantitySold, Store storeClient, Seller seller){
+    public Sales(int quantitySold, Seller seller){
         this.quantitySold = quantitySold;
-        this.storeClient = storeClient;
         this.seller = seller;
+    }
+    
+    public Sales(){
+        
     }
 
     public int getQuantitySold() {
@@ -64,14 +66,6 @@ public class Sales {
 
     public void setClient(Client client) {
         this.client = client;
-    }
-
-    public Store getStoreClient() {
-        return storeClient;
-    }
-
-    public void setStoreClient(Store storeClient) {
-        this.storeClient = storeClient;
     }
 
     public Seller getSeller() {
