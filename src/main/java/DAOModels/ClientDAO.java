@@ -77,7 +77,7 @@ public class ClientDAO {
         return listado;
     }
 
-    public void setClients(Client cliente) {
+    public void setClients(Client client) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -85,11 +85,10 @@ public class ClientDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String clientName = cliente.getClientName();
-            int clientCode = cliente.getClientId();
+            String clientName = client.getClientName();
+            int clientCode = client.getClientId();
             
-            sql = "SELECT * FROM application.client ORDER BY client_id";
-            sql = "INSERT INTO application.client (name,client_code) values (?,?)";
+            sql = "INSERT INTO application.client (name, client_code) values (?,?)";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientName);
@@ -111,4 +110,39 @@ public class ClientDAO {
             }
         }
     }
+    
+    public void updateClientName(Client client){
+        Connection con = null;
+        PreparedStatement pstm = null;
+
+        try {
+            con = ServiceConnection.getConnection();
+            String sql = "";
+            
+            String clientNewName = client.getClientName();
+            int clientCode = client.getClientId();
+            
+            sql = "update application.client set name = ? where client_code = ?";
+
+            pstm = con.prepareStatement(sql);
+            pstm.setString(1, clientNewName);
+            pstm.setInt(2, clientCode);
+
+            pstm.executeQuery();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Código : "
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+        } finally {
+            try {
+                if (pstm != null) {
+                    pstm.close();
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Código : "
+                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+            }
+        }
+    }
+    
 }
