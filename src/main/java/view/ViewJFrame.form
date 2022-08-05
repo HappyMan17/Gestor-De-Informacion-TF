@@ -877,7 +877,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanelBorrarProducto" min="-2" pref="143" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jPanelEdtiarProducto" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanelEditarProducto" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPaneProductos" alignment="1" min="-2" pref="574" max="-2" attributes="0"/>
                           <Component id="jLabel20" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -895,7 +895,7 @@
                       <Component id="jScrollPaneProductos" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelEdtiarProducto" min="-2" pref="172" max="-2" attributes="0"/>
+                          <Component id="jPanelEditarProducto" min="-2" pref="172" max="-2" attributes="0"/>
                           <Component id="jPanelAgregarProducto" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jPanelBorrarProducto" min="-2" pref="60" max="-2" attributes="0"/>
@@ -1166,7 +1166,7 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanelEdtiarProducto">
+            <Container class="javax.swing.JPanel" name="jPanelEditarProducto">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1276,18 +1276,18 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="barraBotonesProductos4" alignment="0" max="32767" attributes="0"/>
+                  <Component id="barraBotonesProveedores" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jPanelAgregarProducto4" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="jPanelAgregarProveedor" min="-2" pref="190" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jPanelBorrarProducto4" min="-2" pref="143" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="jPanelEdtiarProducto4" min="-2" max="-2" attributes="0"/>
+                              <Component id="jPanelEditarProveedor" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPaneProductos4" alignment="1" min="-2" pref="574" max="-2" attributes="0"/>
+                          <Component id="jScrollPaneProveedores" alignment="1" min="-2" pref="574" max="-2" attributes="0"/>
                           <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="17" max="32767" attributes="0"/>
@@ -1300,18 +1300,18 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPaneProductos4" min="-2" pref="122" max="-2" attributes="0"/>
+                      <Component id="jScrollPaneProveedores" min="-2" pref="122" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelEdtiarProducto4" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
-                          <Component id="jPanelAgregarProducto4" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
+                          <Component id="jPanelEditarProveedor" alignment="0" min="-2" pref="172" max="-2" attributes="0"/>
+                          <Component id="jPanelAgregarProveedor" alignment="1" min="-2" pref="161" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jPanelBorrarProducto4" min="-2" pref="60" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="29" max="32767" attributes="0"/>
-                      <Component id="barraBotonesProductos4" min="-2" max="-2" attributes="0"/>
+                      <Component id="barraBotonesProveedores" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1328,7 +1328,7 @@
                 <Property name="text" type="java.lang.String" value="P R O V E E D O R E S"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="barraBotonesProductos4">
+            <Container class="javax.swing.JPanel" name="barraBotonesProveedores">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="b9" green="d1" red="d1" type="rgb"/>
@@ -1339,7 +1339,7 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JButton" name="btnAgregarProducto4">
+                <Component class="javax.swing.JButton" name="btnAgregarProveedores">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri Light" size="12" style="1"/>
@@ -1347,14 +1347,14 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/create2.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Agregar Producto"/>
+                    <Property name="text" type="java.lang.String" value="Agregar Proveedor"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="verticalTextPosition" type="int" value="3"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarProducto4ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarProveedoresActionPerformed"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1362,7 +1362,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnEliminarProducto4">
+                <Component class="javax.swing.JButton" name="btnEliminarProveedores">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri Light" size="12" style="1"/>
@@ -1370,7 +1370,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/delete.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Eliminar Producto"/>
+                    <Property name="text" type="java.lang.String" value="Eliminar Proveedor"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1382,7 +1382,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnActualizarProducto4">
+                <Component class="javax.swing.JButton" name="btnActualizarProveedores">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Calibri Light" size="12" style="1"/>
@@ -1390,7 +1390,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/update2.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Actualizar Producto"/>
+                    <Property name="text" type="java.lang.String" value="Actualizar Proveedor"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="contentAreaFilled" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
@@ -1404,14 +1404,14 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JScrollPane" name="jScrollPaneProductos4">
+            <Container class="javax.swing.JScrollPane" name="jScrollPaneProveedores">
               <AuxValues>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTableProductos4">
+                <Component class="javax.swing.JTable" name="jTableProveedores">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -1445,11 +1445,11 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanelAgregarProducto4">
+            <Container class="javax.swing.JPanel" name="jPanelAgregarProveedor">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Crear Producto"/>
+                    <TitledBorder title="Contratar Proveedor"/>
                   </Border>
                 </Property>
               </Properties>
@@ -1458,17 +1458,17 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanelEligeProducto4">
+                <Container class="javax.swing.JPanel" name="jPanelNombreProveedor">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="3" title="Elige la Materia Prima"/>
+                        <TitledBorder justification="3" title="Nombre del Proveedor"/>
                       </Border>
                     </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="10" y="20" width="180" height="-1"/>
+                      <AbsoluteConstraints x="10" y="20" width="170" height="-1"/>
                     </Constraint>
                   </Constraints>
 
@@ -1476,50 +1476,37 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Component id="jComboBoxProductos4" min="-2" pref="142" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextField3" pref="148" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="jComboBoxProductos4" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="8" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JComboBox" name="jComboBoxProductos4">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Papa Rellena"/>
-                            <StringItem index="1" value="Empanada"/>
-                            <StringItem index="2" value="Tuki"/>
-                            <StringItem index="3" value="Tukin&apos;t"/>
-                          </StringArray>
-                        </Property>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
+                    <Component class="javax.swing.JTextField" name="jTextField3">
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanelCantidad5">
+                <Container class="javax.swing.JPanel" name="jPanelNitProveedor">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="3" title="Elige la Cantidad"/>
+                        <TitledBorder justification="3" title="NIT del Proveedor"/>
                       </Border>
                     </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="50" y="80" width="-1" height="50"/>
+                      <AbsoluteConstraints x="20" y="90" width="160" height="50"/>
                     </Constraint>
                   </Constraints>
 
@@ -1527,8 +1514,8 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="43" max="32767" attributes="0"/>
-                              <Component id="jTextField22" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jTextField22" pref="138" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1574,11 +1561,11 @@
                 </Component>
               </SubComponents>
             </Container>
-            <Container class="javax.swing.JPanel" name="jPanelEdtiarProducto4">
+            <Container class="javax.swing.JPanel" name="jPanelEditarProveedor">
               <Properties>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Editar Producto"/>
+                    <TitledBorder title="Editar Proveedor"/>
                   </Border>
                 </Property>
               </Properties>
@@ -1587,7 +1574,7 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Container class="javax.swing.JPanel" name="jPanelIdEditarProducto4">
+                <Container class="javax.swing.JPanel" name="jPanelIdAEditarProveedor">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -1626,7 +1613,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanelNombreNuevoProducto4">
+                <Container class="javax.swing.JPanel" name="jPanelNombreNuevoProveedor">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">

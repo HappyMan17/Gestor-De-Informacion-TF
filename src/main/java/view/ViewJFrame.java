@@ -103,30 +103,30 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jPanelBorrarProducto = new javax.swing.JPanel();
         jTextField7 = new javax.swing.JTextField();
-        jPanelEdtiarProducto = new javax.swing.JPanel();
+        jPanelEditarProducto = new javax.swing.JPanel();
         jPanelIdEditarProducto = new javax.swing.JPanel();
         jTextField9 = new javax.swing.JTextField();
         jPanelNombreNuevoProducto = new javax.swing.JPanel();
         jTextField10 = new javax.swing.JTextField();
         jPaneProveedoresTabbed = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
-        barraBotonesProductos4 = new javax.swing.JPanel();
-        btnAgregarProducto4 = new javax.swing.JButton();
-        btnEliminarProducto4 = new javax.swing.JButton();
-        btnActualizarProducto4 = new javax.swing.JButton();
-        jScrollPaneProductos4 = new javax.swing.JScrollPane();
-        jTableProductos4 = new javax.swing.JTable();
-        jPanelAgregarProducto4 = new javax.swing.JPanel();
-        jPanelEligeProducto4 = new javax.swing.JPanel();
-        jComboBoxProductos4 = new javax.swing.JComboBox<>();
-        jPanelCantidad5 = new javax.swing.JPanel();
+        barraBotonesProveedores = new javax.swing.JPanel();
+        btnAgregarProveedores = new javax.swing.JButton();
+        btnEliminarProveedores = new javax.swing.JButton();
+        btnActualizarProveedores = new javax.swing.JButton();
+        jScrollPaneProveedores = new javax.swing.JScrollPane();
+        jTableProveedores = new javax.swing.JTable();
+        jPanelAgregarProveedor = new javax.swing.JPanel();
+        jPanelNombreProveedor = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jPanelNitProveedor = new javax.swing.JPanel();
         jTextField22 = new javax.swing.JTextField();
         jPanelBorrarProducto4 = new javax.swing.JPanel();
         jTextField23 = new javax.swing.JTextField();
-        jPanelEdtiarProducto4 = new javax.swing.JPanel();
-        jPanelIdEditarProducto4 = new javax.swing.JPanel();
+        jPanelEditarProveedor = new javax.swing.JPanel();
+        jPanelIdAEditarProveedor = new javax.swing.JPanel();
         jTextField24 = new javax.swing.JTextField();
-        jPanelNombreNuevoProducto4 = new javax.swing.JPanel();
+        jPanelNombreNuevoProveedor = new javax.swing.JPanel();
         jTextField25 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -624,8 +624,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelBorrarProducto.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
 
-        jPanelEdtiarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Producto"));
-        jPanelEdtiarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelEditarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Producto"));
+        jPanelEditarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelIdEditarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Editar"));
 
@@ -646,7 +646,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jPanelEdtiarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 34, 172, -1));
+        jPanelEditarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 34, 172, -1));
 
         jPanelNombreNuevoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre nuevo"));
 
@@ -673,7 +673,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanelEdtiarProducto.add(jPanelNombreNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
+        jPanelEditarProducto.add(jPanelNombreNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
         javax.swing.GroupLayout jPaneProductosTabbedLayout = new javax.swing.GroupLayout(jPaneProductosTabbed);
         jPaneProductosTabbed.setLayout(jPaneProductosTabbedLayout);
@@ -688,7 +688,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jPanelEdtiarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addContainerGap(17, Short.MAX_VALUE))
@@ -702,7 +702,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEdtiarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneProductosTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -717,94 +717,92 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel24.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
         jLabel24.setText("P R O V E E D O R E S");
 
-        barraBotonesProductos4.setBackground(new java.awt.Color(209, 209, 185));
-        barraBotonesProductos4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        barraBotonesProveedores.setBackground(new java.awt.Color(209, 209, 185));
+        barraBotonesProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnAgregarProducto4.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
-        btnAgregarProducto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/create2.png"))); // NOI18N
-        btnAgregarProducto4.setText("Agregar Producto");
-        btnAgregarProducto4.setBorderPainted(false);
-        btnAgregarProducto4.setContentAreaFilled(false);
-        btnAgregarProducto4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnAgregarProducto4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnAgregarProducto4.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarProveedores.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnAgregarProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/create2.png"))); // NOI18N
+        btnAgregarProveedores.setText("Agregar Proveedor");
+        btnAgregarProveedores.setBorderPainted(false);
+        btnAgregarProveedores.setContentAreaFilled(false);
+        btnAgregarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAgregarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarProducto4ActionPerformed(evt);
+                btnAgregarProveedoresActionPerformed(evt);
             }
         });
-        barraBotonesProductos4.add(btnAgregarProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 59));
+        barraBotonesProveedores.add(btnAgregarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 59));
 
-        btnEliminarProducto4.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
-        btnEliminarProducto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
-        btnEliminarProducto4.setText("Eliminar Producto");
-        btnEliminarProducto4.setBorderPainted(false);
-        btnEliminarProducto4.setContentAreaFilled(false);
-        btnEliminarProducto4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnEliminarProducto4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        barraBotonesProductos4.add(btnEliminarProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
+        btnEliminarProveedores.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnEliminarProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        btnEliminarProveedores.setText("Eliminar Proveedor");
+        btnEliminarProveedores.setBorderPainted(false);
+        btnEliminarProveedores.setContentAreaFilled(false);
+        btnEliminarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        barraBotonesProveedores.add(btnEliminarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
-        btnActualizarProducto4.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
-        btnActualizarProducto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update2.png"))); // NOI18N
-        btnActualizarProducto4.setText("Actualizar Producto");
-        btnActualizarProducto4.setBorderPainted(false);
-        btnActualizarProducto4.setContentAreaFilled(false);
-        btnActualizarProducto4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnActualizarProducto4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        barraBotonesProductos4.add(btnActualizarProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
+        btnActualizarProveedores.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnActualizarProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/update2.png"))); // NOI18N
+        btnActualizarProveedores.setText("Actualizar Proveedor");
+        btnActualizarProveedores.setBorderPainted(false);
+        btnActualizarProveedores.setContentAreaFilled(false);
+        btnActualizarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnActualizarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        barraBotonesProveedores.add(btnActualizarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
-        jTableProductos4.setToolTipText("");
-        jScrollPaneProductos4.setViewportView(jTableProductos4);
-        if (jTableProductos4.getColumnModel().getColumnCount() > 0) {
-            jTableProductos4.getColumnModel().getColumn(0).setResizable(false);
-            jTableProductos4.getColumnModel().getColumn(1).setResizable(false);
-            jTableProductos4.getColumnModel().getColumn(2).setResizable(false);
-            jTableProductos4.getColumnModel().getColumn(3).setResizable(false);
+        jTableProveedores.setToolTipText("");
+        jScrollPaneProveedores.setViewportView(jTableProveedores);
+        if (jTableProveedores.getColumnModel().getColumnCount() > 0) {
+            jTableProveedores.getColumnModel().getColumn(0).setResizable(false);
+            jTableProveedores.getColumnModel().getColumn(1).setResizable(false);
+            jTableProveedores.getColumnModel().getColumn(2).setResizable(false);
+            jTableProveedores.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanelAgregarProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Producto"));
-        jPanelAgregarProducto4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelAgregarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Contratar Proveedor"));
+        jPanelAgregarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelEligeProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige la Materia Prima", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanelNombreProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del Proveedor", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jComboBoxProductos4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papa Rellena", "Empanada", "Tuki", "Tukin't" }));
-
-        javax.swing.GroupLayout jPanelEligeProducto4Layout = new javax.swing.GroupLayout(jPanelEligeProducto4);
-        jPanelEligeProducto4.setLayout(jPanelEligeProducto4Layout);
-        jPanelEligeProducto4Layout.setHorizontalGroup(
-            jPanelEligeProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEligeProducto4Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jComboBoxProductos4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelEligeProducto4Layout.setVerticalGroup(
-            jPanelEligeProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEligeProducto4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBoxProductos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanelAgregarProducto4.add(jPanelEligeProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, -1));
-
-        jPanelCantidad5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige la Cantidad", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-
-        javax.swing.GroupLayout jPanelCantidad5Layout = new javax.swing.GroupLayout(jPanelCantidad5);
-        jPanelCantidad5.setLayout(jPanelCantidad5Layout);
-        jPanelCantidad5Layout.setHorizontalGroup(
-            jPanelCantidad5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCantidad5Layout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanelNombreProveedorLayout = new javax.swing.GroupLayout(jPanelNombreProveedor);
+        jPanelNombreProveedor.setLayout(jPanelNombreProveedorLayout);
+        jPanelNombreProveedorLayout.setHorizontalGroup(
+            jPanelNombreProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNombreProveedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanelCantidad5Layout.setVerticalGroup(
-            jPanelCantidad5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelCantidad5Layout.createSequentialGroup()
+        jPanelNombreProveedorLayout.setVerticalGroup(
+            jPanelNombreProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNombreProveedorLayout.createSequentialGroup()
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
+        );
+
+        jPanelAgregarProveedor.add(jPanelNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
+
+        jPanelNitProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NIT del Proveedor", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        javax.swing.GroupLayout jPanelNitProveedorLayout = new javax.swing.GroupLayout(jPanelNitProveedor);
+        jPanelNitProveedor.setLayout(jPanelNitProveedorLayout);
+        jPanelNitProveedorLayout.setHorizontalGroup(
+            jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNitProveedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTextField22, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelNitProveedorLayout.setVerticalGroup(
+            jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNitProveedorLayout.createSequentialGroup()
                 .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        jPanelAgregarProducto4.add(jPanelCantidad5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 50));
+        jPanelAgregarProveedor.add(jPanelNitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
 
         jPanelBorrarProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProducto4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -816,31 +814,31 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelBorrarProducto4.add(jTextField23, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
 
-        jPanelEdtiarProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Producto"));
-        jPanelEdtiarProducto4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelEditarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Proveedor"));
+        jPanelEditarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelIdEditarProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Editar"));
+        jPanelIdAEditarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Editar"));
 
-        javax.swing.GroupLayout jPanelIdEditarProducto4Layout = new javax.swing.GroupLayout(jPanelIdEditarProducto4);
-        jPanelIdEditarProducto4.setLayout(jPanelIdEditarProducto4Layout);
-        jPanelIdEditarProducto4Layout.setHorizontalGroup(
-            jPanelIdEditarProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelIdEditarProducto4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelIdAEditarProveedorLayout = new javax.swing.GroupLayout(jPanelIdAEditarProveedor);
+        jPanelIdAEditarProveedor.setLayout(jPanelIdAEditarProveedorLayout);
+        jPanelIdAEditarProveedorLayout.setHorizontalGroup(
+            jPanelIdAEditarProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelIdAEditarProveedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField24)
                 .addContainerGap())
         );
-        jPanelIdEditarProducto4Layout.setVerticalGroup(
-            jPanelIdEditarProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelIdEditarProducto4Layout.createSequentialGroup()
+        jPanelIdAEditarProveedorLayout.setVerticalGroup(
+            jPanelIdAEditarProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelIdAEditarProveedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        jPanelEdtiarProducto4.add(jPanelIdEditarProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 34, 172, -1));
+        jPanelEditarProveedor.add(jPanelIdAEditarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 34, 172, -1));
 
-        jPanelNombreNuevoProducto4.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre nuevo"));
+        jPanelNombreNuevoProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre nuevo"));
 
         jTextField25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -848,40 +846,40 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanelNombreNuevoProducto4Layout = new javax.swing.GroupLayout(jPanelNombreNuevoProducto4);
-        jPanelNombreNuevoProducto4.setLayout(jPanelNombreNuevoProducto4Layout);
-        jPanelNombreNuevoProducto4Layout.setHorizontalGroup(
-            jPanelNombreNuevoProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreNuevoProducto4Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelNombreNuevoProveedorLayout = new javax.swing.GroupLayout(jPanelNombreNuevoProveedor);
+        jPanelNombreNuevoProveedor.setLayout(jPanelNombreNuevoProveedorLayout);
+        jPanelNombreNuevoProveedorLayout.setHorizontalGroup(
+            jPanelNombreNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNombreNuevoProveedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField25, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanelNombreNuevoProducto4Layout.setVerticalGroup(
-            jPanelNombreNuevoProducto4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreNuevoProducto4Layout.createSequentialGroup()
+        jPanelNombreNuevoProveedorLayout.setVerticalGroup(
+            jPanelNombreNuevoProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelNombreNuevoProveedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextField25)
                 .addContainerGap())
         );
 
-        jPanelEdtiarProducto4.add(jPanelNombreNuevoProducto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
+        jPanelEditarProveedor.add(jPanelNombreNuevoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
         javax.swing.GroupLayout jPaneProveedoresTabbedLayout = new javax.swing.GroupLayout(jPaneProveedoresTabbed);
         jPaneProveedoresTabbed.setLayout(jPaneProveedoresTabbedLayout);
         jPaneProveedoresTabbedLayout.setHorizontalGroup(
             jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraBotonesProductos4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(barraBotonesProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
                 .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanelBorrarProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(28, 28, 28)
-                        .addComponent(jPanelEdtiarProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneProductos4, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelEditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
@@ -891,16 +889,16 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneProductos4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addGroup(jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEdtiarProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarProducto4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelEditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelAgregarProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneProveedoresTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelBorrarProducto4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(barraBotonesProductos4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(barraBotonesProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Proveedores", jPaneProveedoresTabbed);
@@ -1006,9 +1004,9 @@ public class ViewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
-    private void btnAgregarProducto4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProducto4ActionPerformed
+    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProducto4ActionPerformed
+    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
     private void jTextField23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField23ActionPerformed
         // TODO add your handling code here:
@@ -1056,20 +1054,19 @@ public class ViewJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel barraBotonesMP;
     private javax.swing.JPanel barraBotonesProductos;
-    private javax.swing.JPanel barraBotonesProductos4;
+    private javax.swing.JPanel barraBotonesProveedores;
     private javax.swing.JButton btnActualizarMp;
     private javax.swing.JButton btnActualizarProducto;
-    private javax.swing.JButton btnActualizarProducto4;
+    private javax.swing.JButton btnActualizarProveedores;
     private javax.swing.JButton btnAgregarMp;
     private javax.swing.JButton btnAgregarProducto;
-    private javax.swing.JButton btnAgregarProducto4;
+    private javax.swing.JButton btnAgregarProveedores;
     private javax.swing.JButton btnEliminarMp;
     private javax.swing.JButton btnEliminarProducto;
-    private javax.swing.JButton btnEliminarProducto4;
+    private javax.swing.JButton btnEliminarProveedores;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxMP;
     private javax.swing.JComboBox<String> jComboBoxProductos;
-    private javax.swing.JComboBox<String> jComboBoxProductos4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1092,7 +1089,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPaneProveedoresTabbed;
     private javax.swing.JPanel jPanelAgregarMP;
     private javax.swing.JPanel jPanelAgregarProducto;
-    private javax.swing.JPanel jPanelAgregarProducto4;
+    private javax.swing.JPanel jPanelAgregarProveedor;
     private javax.swing.JPanel jPanelBarraLateral;
     private javax.swing.JPanel jPanelBarraSuperior;
     private javax.swing.JPanel jPanelBorrarMP;
@@ -1100,33 +1097,33 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBorrarProducto4;
     private javax.swing.JPanel jPanelCantidad;
     private javax.swing.JPanel jPanelCantidad1;
-    private javax.swing.JPanel jPanelCantidad5;
     private javax.swing.JPanel jPanelClientes;
+    private javax.swing.JPanel jPanelEditarProducto;
+    private javax.swing.JPanel jPanelEditarProveedor;
     private javax.swing.JPanel jPanelEdtiarMP;
-    private javax.swing.JPanel jPanelEdtiarProducto;
-    private javax.swing.JPanel jPanelEdtiarProducto4;
     private javax.swing.JPanel jPanelEligeMP;
     private javax.swing.JPanel jPanelEligeProducto;
-    private javax.swing.JPanel jPanelEligeProducto4;
     private javax.swing.JPanel jPanelEligeProveedor;
     private javax.swing.JPanel jPanelEmpleados;
+    private javax.swing.JPanel jPanelIdAEditarProveedor;
     private javax.swing.JPanel jPanelIdEditarMP;
     private javax.swing.JPanel jPanelIdEditarProducto;
-    private javax.swing.JPanel jPanelIdEditarProducto4;
     private javax.swing.JPanel jPanelMateriaPrima;
+    private javax.swing.JPanel jPanelNitProveedor;
     private javax.swing.JPanel jPanelNombreNuevoMP;
     private javax.swing.JPanel jPanelNombreNuevoProducto;
-    private javax.swing.JPanel jPanelNombreNuevoProducto4;
+    private javax.swing.JPanel jPanelNombreNuevoProveedor;
+    private javax.swing.JPanel jPanelNombreProveedor;
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelProveedores;
     private javax.swing.JPanel jPanelSalir;
     private javax.swing.JScrollPane jScrollPaneMateriaPrima;
     private javax.swing.JScrollPane jScrollPaneProductos;
-    private javax.swing.JScrollPane jScrollPaneProductos4;
+    private javax.swing.JScrollPane jScrollPaneProveedores;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableMateriaP;
     private javax.swing.JTable jTableProductos;
-    private javax.swing.JTable jTableProductos4;
+    private javax.swing.JTable jTableProveedores;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
@@ -1134,6 +1131,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
