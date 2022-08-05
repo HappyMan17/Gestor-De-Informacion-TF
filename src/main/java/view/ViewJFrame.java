@@ -47,9 +47,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanelBarraLateral = new javax.swing.JPanel();
         jLabelLogoBarra = new javax.swing.JLabel();
-        jPanelMateriaPrima = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jPanelProductos = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -65,7 +62,30 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelSalir = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jPanelVentas = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanelMateriaPrima = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPaneVentasTabbed = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        barraBotonesVentas = new javax.swing.JPanel();
+        btnComprar = new javax.swing.JButton();
+        btnDevolver = new javax.swing.JButton();
+        btnHistoricoDeVentas = new javax.swing.JButton();
+        jScrollPaneVentas = new javax.swing.JScrollPane();
+        jTableMateriaP1 = new javax.swing.JTable();
+        jPanelAgregarMP1 = new javax.swing.JPanel();
+        jPanelCantidad1 = new javax.swing.JPanel();
+        jTextFieldCantidadMP1 = new javax.swing.JTextField();
+        jPanelEligeProveedor2 = new javax.swing.JPanel();
+        jComboBoxElegirProveedor2 = new javax.swing.JComboBox<>();
+        jPanelEligeProveedor1 = new javax.swing.JPanel();
+        jComboBoxElegirProveedor1 = new javax.swing.JComboBox<>();
+        jPanelBorrarMP1 = new javax.swing.JPanel();
+        jTextFieldIdABorrarMP1 = new javax.swing.JTextField();
         jPaneMateriaPrimaTabbed = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         barraBotonesMP = new javax.swing.JPanel();
@@ -168,6 +188,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldIdAEditarEmpleado = new javax.swing.JTextField();
         jPanelNombreNuevoEmpleado = new javax.swing.JPanel();
         jTextFieldNombreNuevoEmpleado = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -188,33 +212,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelLogoBarra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logo_peque.png"))); // NOI18N
-        jPanelBarraLateral.add(jLabelLogoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 110));
-
-        jPanelMateriaPrima.setBackground(new java.awt.Color(209, 209, 185));
-        jPanelMateriaPrima.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jPanelMateriaPrimaMouseMoved(evt);
-            }
-        });
-        jPanelMateriaPrima.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPanelMateriaPrimaMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanelMateriaPrimaMouseExited(evt);
-            }
-        });
-        jPanelMateriaPrima.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seeds_122867 (1).png"))); // NOI18N
-        jPanelMateriaPrima.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
-
-        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(127, 119, 119));
-        jLabel4.setText("MATERIA PRIMA");
-        jPanelMateriaPrima.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 20));
-
-        jPanelBarraLateral.add(jPanelMateriaPrima, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 200, 40));
+        jPanelBarraLateral.add(jLabelLogoBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 140, 100));
 
         jPanelProductos.setBackground(new java.awt.Color(209, 209, 185));
         jPanelProductos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -240,7 +238,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/d0e057c0f1324dffe016a4ec4ef1e928-icono-de-golpe-de-empanada.png"))); // NOI18N
         jPanelProductos.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
-        jPanelBarraLateral.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 200, 40));
+        jPanelBarraLateral.add(jPanelProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 200, 40));
         jPanelProductos.getAccessibleContext().setAccessibleName("");
 
         jPanelProveedores.setBackground(new java.awt.Color(209, 209, 185));
@@ -267,7 +265,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proveedor.png"))); // NOI18N
         jPanelProveedores.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
-        jPanelBarraLateral.add(jPanelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 200, 40));
+        jPanelBarraLateral.add(jPanelProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 200, 40));
 
         jPanelClientes.setBackground(new java.awt.Color(209, 209, 185));
         jPanelClientes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -293,7 +291,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/male3_85205.png"))); // NOI18N
         jPanelClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
 
-        jPanelBarraLateral.add(jPanelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 200, 40));
+        jPanelBarraLateral.add(jPanelClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 200, 40));
 
         jPanelEmpleados.setBackground(new java.awt.Color(209, 209, 185));
         jPanelEmpleados.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -319,7 +317,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jLabel12.setText("EMPLEADOS");
         jPanelEmpleados.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 20));
 
-        jPanelBarraLateral.add(jPanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 200, 40));
+        jPanelBarraLateral.add(jPanelEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 200, 40));
 
         jPanelSalir.setBackground(new java.awt.Color(209, 209, 185));
         jPanelSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -347,7 +345,231 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelBarraLateral.add(jPanelSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 200, 60));
 
+        jPanelVentas.setBackground(new java.awt.Color(209, 209, 185));
+        jPanelVentas.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jPanelVentasMouseMoved(evt);
+            }
+        });
+        jPanelVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelVentasMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelVentasMouseExited(evt);
+            }
+        });
+        jPanelVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sell.png"))); // NOI18N
+        jPanelVentas.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
+
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(127, 119, 119));
+        jLabel9.setText("VENTAS");
+        jPanelVentas.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, 20));
+
+        jPanelBarraLateral.add(jPanelVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 200, 40));
+
+        jPanelMateriaPrima.setBackground(new java.awt.Color(209, 209, 185));
+        jPanelMateriaPrima.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jPanelMateriaPrimaMouseMoved(evt);
+            }
+        });
+        jPanelMateriaPrima.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanelMateriaPrimaMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanelMateriaPrimaMouseExited(evt);
+            }
+        });
+        jPanelMateriaPrima.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/seeds_122867 (1).png"))); // NOI18N
+        jPanelMateriaPrima.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
+
+        jLabel4.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(127, 119, 119));
+        jLabel4.setText("MATERIA PRIMA");
+        jPanelMateriaPrima.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, 20));
+
+        jPanelBarraLateral.add(jPanelMateriaPrima, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 200, 40));
+
         getContentPane().add(jPanelBarraLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 490));
+
+        jLabel21.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel21.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
+        jLabel21.setText("V E N T A S");
+
+        barraBotonesVentas.setBackground(new java.awt.Color(209, 209, 185));
+        barraBotonesVentas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnComprar.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnComprar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/create2.png"))); // NOI18N
+        btnComprar.setText("Comprar");
+        btnComprar.setBorderPainted(false);
+        btnComprar.setContentAreaFilled(false);
+        btnComprar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnComprar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        barraBotonesVentas.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 59));
+
+        btnDevolver.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnDevolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/delete.png"))); // NOI18N
+        btnDevolver.setText("Devolución");
+        btnDevolver.setBorderPainted(false);
+        btnDevolver.setContentAreaFilled(false);
+        btnDevolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnDevolver.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        barraBotonesVentas.add(btnDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
+
+        btnHistoricoDeVentas.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
+        btnHistoricoDeVentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/historicoVentas.png"))); // NOI18N
+        btnHistoricoDeVentas.setText("Historico de Ventas");
+        btnHistoricoDeVentas.setBorderPainted(false);
+        btnHistoricoDeVentas.setContentAreaFilled(false);
+        btnHistoricoDeVentas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnHistoricoDeVentas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnHistoricoDeVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHistoricoDeVentasMouseClicked(evt);
+            }
+        });
+        barraBotonesVentas.add(btnHistoricoDeVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, -1, 59));
+
+        jTableMateriaP1.setToolTipText("");
+        jScrollPaneVentas.setViewportView(jTableMateriaP1);
+        if (jTableMateriaP1.getColumnModel().getColumnCount() > 0) {
+            jTableMateriaP1.getColumnModel().getColumn(0).setResizable(false);
+            jTableMateriaP1.getColumnModel().getColumn(1).setResizable(false);
+            jTableMateriaP1.getColumnModel().getColumn(2).setResizable(false);
+            jTableMateriaP1.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jPanelAgregarMP1.setBorder(javax.swing.BorderFactory.createTitledBorder("Comprar "));
+        jPanelAgregarMP1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelCantidad1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige la Cantidad", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        javax.swing.GroupLayout jPanelCantidad1Layout = new javax.swing.GroupLayout(jPanelCantidad1);
+        jPanelCantidad1.setLayout(jPanelCantidad1Layout);
+        jPanelCantidad1Layout.setHorizontalGroup(
+            jPanelCantidad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelCantidad1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jTextFieldCantidadMP1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
+        );
+        jPanelCantidad1Layout.setVerticalGroup(
+            jPanelCantidad1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelCantidad1Layout.createSequentialGroup()
+                .addComponent(jTextFieldCantidadMP1)
+                .addContainerGap())
+        );
+
+        jPanelAgregarMP1.add(jPanelCantidad1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 130, 50));
+
+        jPanelEligeProveedor2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige el producto a comprar", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        jComboBoxElegirProveedor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxElegirProveedor2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelEligeProveedor2Layout = new javax.swing.GroupLayout(jPanelEligeProveedor2);
+        jPanelEligeProveedor2.setLayout(jPanelEligeProveedor2Layout);
+        jPanelEligeProveedor2Layout.setHorizontalGroup(
+            jPanelEligeProveedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEligeProveedor2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBoxElegirProveedor2, 0, 238, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelEligeProveedor2Layout.setVerticalGroup(
+            jPanelEligeProveedor2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEligeProveedor2Layout.createSequentialGroup()
+                .addComponent(jComboBoxElegirProveedor2)
+                .addContainerGap())
+        );
+
+        jPanelAgregarMP1.add(jPanelEligeProveedor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 260, 50));
+
+        jPanelEligeProveedor1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige el vendedor", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        jComboBoxElegirProveedor1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxElegirProveedor1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanelEligeProveedor1Layout = new javax.swing.GroupLayout(jPanelEligeProveedor1);
+        jPanelEligeProveedor1.setLayout(jPanelEligeProveedor1Layout);
+        jPanelEligeProveedor1Layout.setHorizontalGroup(
+            jPanelEligeProveedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEligeProveedor1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComboBoxElegirProveedor1, 0, 238, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanelEligeProveedor1Layout.setVerticalGroup(
+            jPanelEligeProveedor1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEligeProveedor1Layout.createSequentialGroup()
+                .addComponent(jComboBoxElegirProveedor1)
+                .addContainerGap())
+        );
+
+        jPanelAgregarMP1.add(jPanelEligeProveedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 260, 50));
+
+        jPanelBorrarMP1.setBorder(javax.swing.BorderFactory.createTitledBorder("ID de producto a devolver"));
+        jPanelBorrarMP1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldIdABorrarMP1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIdABorrarMP1ActionPerformed(evt);
+            }
+        });
+        jPanelBorrarMP1.add(jTextFieldIdABorrarMP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
+
+        javax.swing.GroupLayout jPaneVentasTabbedLayout = new javax.swing.GroupLayout(jPaneVentasTabbed);
+        jPaneVentasTabbed.setLayout(jPaneVentasTabbedLayout);
+        jPaneVentasTabbedLayout.setHorizontalGroup(
+            jPaneVentasTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(barraBotonesVentas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPaneVentasTabbedLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPaneVentasTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPaneVentasTabbedLayout.createSequentialGroup()
+                        .addGroup(jPaneVentasTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel21)
+                            .addComponent(jScrollPaneVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(17, Short.MAX_VALUE))
+                    .addGroup(jPaneVentasTabbedLayout.createSequentialGroup()
+                        .addComponent(jPanelAgregarMP1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelBorrarMP1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50))))
+        );
+        jPaneVentasTabbedLayout.setVerticalGroup(
+            jPaneVentasTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPaneVentasTabbedLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel21)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPaneVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGroup(jPaneVentasTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneVentasTabbedLayout.createSequentialGroup()
+                        .addComponent(jPanelAgregarMP1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneVentasTabbedLayout.createSequentialGroup()
+                        .addComponent(jPanelBorrarMP1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(37, 37, 37)))
+                .addComponent(barraBotonesVentas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jTabbedPane1.addTab("Ventas", jPaneVentasTabbed);
 
         jLabel19.setBackground(new java.awt.Color(187, 187, 187));
         jLabel19.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
@@ -1328,13 +1550,39 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Empleados", jPaneEmpleadosTabbed);
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Histórico de Ventas"));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 490, 370));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("HdV", jPanel1);
+
         getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 610, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelMateriaPrimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMateriaPrimaMouseClicked
-        jTabbedPane1.setSelectedIndex(0);
+        jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMateriaPrimaMouseClicked
 
     private void jPanelMateriaPrimaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMateriaPrimaMouseMoved
@@ -1346,7 +1594,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelMateriaPrimaMouseExited
 
     private void jPanelProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProductosMouseClicked
-        jTabbedPane1.setSelectedIndex(1);
+        jTabbedPane1.setSelectedIndex(2);
     }//GEN-LAST:event_jPanelProductosMouseClicked
 
     private void jPanelProductosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProductosMouseMoved
@@ -1358,7 +1606,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelProductosMouseExited
 
     private void jPanelProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProveedoresMouseClicked
-        jTabbedPane1.setSelectedIndex(2);
+        jTabbedPane1.setSelectedIndex(3);
     }//GEN-LAST:event_jPanelProveedoresMouseClicked
 
     private void jPanelProveedoresMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProveedoresMouseMoved
@@ -1366,7 +1614,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelProveedoresMouseMoved
 
     private void jPanelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientesMouseClicked
-        jTabbedPane1.setSelectedIndex(3);
+        jTabbedPane1.setSelectedIndex(4);
     }//GEN-LAST:event_jPanelClientesMouseClicked
 
     private void jPanelClientesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientesMouseMoved
@@ -1378,7 +1626,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelClientesMouseExited
 
     private void jPanelEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEmpleadosMouseClicked
-        jTabbedPane1.setSelectedIndex(4);
+        jTabbedPane1.setSelectedIndex(5);
     }//GEN-LAST:event_jPanelEmpleadosMouseClicked
 
     private void jPanelEmpleadosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEmpleadosMouseMoved
@@ -1469,6 +1717,34 @@ public class ViewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
 
+    private void jPanelVentasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseMoved
+        jPanelVentas.setBackground(new Color(216,200,232));
+    }//GEN-LAST:event_jPanelVentasMouseMoved
+
+    private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
+        jTabbedPane1.setSelectedIndex(0);
+    }//GEN-LAST:event_jPanelVentasMouseClicked
+
+    private void jPanelVentasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseExited
+        jPanelVentas.setBackground(new Color(231,231,216));
+    }//GEN-LAST:event_jPanelVentasMouseExited
+
+    private void jTextFieldIdABorrarMP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarMP1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarMP1ActionPerformed
+
+    private void jComboBoxElegirProveedor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirProveedor1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxElegirProveedor1ActionPerformed
+
+    private void jComboBoxElegirProveedor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirProveedor2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxElegirProveedor2ActionPerformed
+
+    private void btnHistoricoDeVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistoricoDeVentasMouseClicked
+        jTabbedPane1.setSelectedIndex(6);
+    }//GEN-LAST:event_btnHistoricoDeVentasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1510,6 +1786,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel barraBotonesMP;
     private javax.swing.JPanel barraBotonesProductos;
     private javax.swing.JPanel barraBotonesProveedores;
+    private javax.swing.JPanel barraBotonesVentas;
     private javax.swing.JButton btnActualizarClientes;
     private javax.swing.JButton btnActualizarEmpleados;
     private javax.swing.JButton btnActualizarMp;
@@ -1520,13 +1797,18 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarMp;
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnComprar;
+    private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnEliminarClientes;
     private javax.swing.JButton btnEliminarEmpleados;
     private javax.swing.JButton btnEliminarMp;
     private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnEliminarProveedores;
+    private javax.swing.JButton btnHistoricoDeVentas;
     private javax.swing.JComboBox<String> jComboBoxElegirMP;
     private javax.swing.JComboBox<String> jComboBoxElegirProveedor;
+    private javax.swing.JComboBox<String> jComboBoxElegirProveedor1;
+    private javax.swing.JComboBox<String> jComboBoxElegirProveedor2;
     private javax.swing.JComboBox<String> jComboBoxProductos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1538,6 +1820,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -1545,16 +1828,22 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelLogoBarra;
     private javax.swing.JPanel jPaneClientesTabbed;
     private javax.swing.JPanel jPaneEmpleadosTabbed;
     private javax.swing.JPanel jPaneMateriaPrimaTabbed;
     private javax.swing.JPanel jPaneProductosTabbed;
     private javax.swing.JPanel jPaneProveedoresTabbed;
+    private javax.swing.JPanel jPaneVentasTabbed;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelAgregarClientes;
     private javax.swing.JPanel jPanelAgregarEmpleado;
     private javax.swing.JPanel jPanelAgregarMP;
+    private javax.swing.JPanel jPanelAgregarMP1;
     private javax.swing.JPanel jPanelAgregarProducto;
     private javax.swing.JPanel jPanelAgregarProveedor;
     private javax.swing.JPanel jPanelBarraLateral;
@@ -1562,9 +1851,11 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelBorrarClientes;
     private javax.swing.JPanel jPanelBorrarEmpleado;
     private javax.swing.JPanel jPanelBorrarMP;
+    private javax.swing.JPanel jPanelBorrarMP1;
     private javax.swing.JPanel jPanelBorrarProducto;
     private javax.swing.JPanel jPanelBorrarProveedor;
     private javax.swing.JPanel jPanelCantidad;
+    private javax.swing.JPanel jPanelCantidad1;
     private javax.swing.JPanel jPanelCantidadProducto;
     private javax.swing.JPanel jPanelClientes;
     private javax.swing.JPanel jPanelEditarClientes;
@@ -1575,6 +1866,8 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEligeMP;
     private javax.swing.JPanel jPanelEligeProducto;
     private javax.swing.JPanel jPanelEligeProveedor;
+    private javax.swing.JPanel jPanelEligeProveedor1;
+    private javax.swing.JPanel jPanelEligeProveedor2;
     private javax.swing.JPanel jPanelEmpleados;
     private javax.swing.JPanel jPanelIdAEditarCliente;
     private javax.swing.JPanel jPanelIdAEditarEmpleado;
@@ -1596,22 +1889,29 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelProveedores;
     private javax.swing.JPanel jPanelSalir;
+    private javax.swing.JPanel jPanelVentas;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneClientes;
     private javax.swing.JScrollPane jScrollPaneEmpleados;
     private javax.swing.JScrollPane jScrollPaneMateriaPrima;
     private javax.swing.JScrollPane jScrollPaneProductos;
     private javax.swing.JScrollPane jScrollPaneProveedores;
+    private javax.swing.JScrollPane jScrollPaneVentas;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTableClientes;
     private javax.swing.JTable jTableEmpleados;
     private javax.swing.JTable jTableMateriaP;
+    private javax.swing.JTable jTableMateriaP1;
     private javax.swing.JTable jTableProductos;
     private javax.swing.JTable jTableProveedores;
     private javax.swing.JTextField jTextFieldCantidadMP;
+    private javax.swing.JTextField jTextFieldCantidadMP1;
     private javax.swing.JTextField jTextFieldCantidadProducto;
     private javax.swing.JTextField jTextFieldIdABorrarCliente;
     private javax.swing.JTextField jTextFieldIdABorrarEmpleado;
     private javax.swing.JTextField jTextFieldIdABorrarMP;
+    private javax.swing.JTextField jTextFieldIdABorrarMP1;
     private javax.swing.JTextField jTextFieldIdABorrarProducto;
     private javax.swing.JTextField jTextFieldIdABorrarProveedor;
     private javax.swing.JTextField jTextFieldIdAEditarCliente;
