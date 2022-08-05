@@ -11,54 +11,53 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import model.ProductionDetails;
 import model.RawMaterial;
 
 /**
  *
  * @author happy
  */
-public class RawMaterialDAO {
+public class ProductionDetailsDAO {
+    
+    public ProductionDetailsDAO() {}
 
-    public RawMaterialDAO() {}
-
-    public ArrayList<RawMaterial> getRawMaterial(int rawMaterialCode) {
+    public ArrayList<ProductionDetails> getProductionDetails(int productionDetailId) {
 
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
 
-        ArrayList<RawMaterial> listado = new ArrayList<>();
+        ArrayList<ProductionDetails> listado = new ArrayList<>();
         try {
 
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (rawMaterialCode == 0) {
-                sql = "SELECT * FROM application.rm_inventory ORDER BY raw_material_id";
+            if (productionDetailId == 0) {
+                sql = "SELECT * FROM application.production_details ORDER BY details_id";
             } else {
-                sql = "SELECT * FROM application.rm_inventory where code = ? "
-                        + "ORDER BY raw_material_id";
+                sql = "SELECT * FROM application.production_details where details_id = ? "
+                        + "ORDER BY details_id";
             }
 
             pstm = con.prepareStatement(sql);
 
-            if (rawMaterialCode != 0) {
-                pstm.setInt(1, rawMaterialCode);
+            if (productionDetailId != 0) {
+                pstm.setInt(1, productionDetailId);
             }
 
             rs = pstm.executeQuery();
-            RawMaterial rawMaterial = null;
+            ProductionDetails productionDetails = null;
 
             while (rs.next()) {
-                rawMaterial = new RawMaterial();
-                rawMaterial.setName(rs.getString("name"));
-                rawMaterial.setUnitPrice(rs.getDouble("price"));
-                rawMaterial.setAmount(rs.getInt("amount"));
-                rawMaterial.setSupplierId(rs.getInt("supplier_id"));
-                rawMaterial.setCode(rs.getInt("code"));
-                rawMaterial.setDbId(rs.getInt("raw_material_id"));
+                productionDetails = new ProductionDetails();
+                productionDetails.setRawMaterial_id(rs.getInt("raw_material_id"));
+                productionDetails.setAmountUsed(rs.getInt("amount_used"));
+                productionDetails.setProductionId(rs.getInt("production_id"));
+                productionDetails.setDetailsId(rs.getInt("details_id"));
 
-                listado.add(rawMaterial);
+                listado.add(productionDetails);
             }
             
         } catch (SQLException ex) {
@@ -82,7 +81,7 @@ public class RawMaterialDAO {
         return listado;
     }
 
-    public void setRawMaterial(RawMaterial rawMaterial) {
+    public void setProductionDetails(ProductionDetails productionDetails) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -90,20 +89,18 @@ public class RawMaterialDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String rawMaterialName = rawMaterial.getName();
-            Double rawMaterialPrice = rawMaterial.getUnitPrice();
-            int rawMaterialAmount = rawMaterial.getAmount();
-            int rawMaterialSupplierId = rawMaterial.getSupplierId();
-            int rawMaterialCode = rawMaterial.getCode();
+            int productionDetailsId = productionDetails.getDetailsId();
+            int productionDetailsRMId = productionDetails.getRawMaterial_id();
+            int productionDetailsAmount = productionDetails.getAmountUsed();
+            int productionDetailsProductionId = productionDetails.getProductionId();
 
-            sql = "INSERT INTO application.rm_inventory (name, price, amount, supplier_id, code) values (?,?,?,?,?)";
+            sql = "INSERT INTO application.production_details (details_id, raw_material_id, amount_used, production_id) values (?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, rawMaterialName);
-            pstm.setDouble(2, rawMaterialPrice);
-            pstm.setInt(3, rawMaterialAmount);
-            pstm.setInt(4, rawMaterialSupplierId);
-            pstm.setInt(5, rawMaterialCode);
+            pstm.setInt(1, productionDetailsId);
+            pstm.setInt(2, productionDetailsRMId);
+            pstm.setInt(3, productionDetailsAmount);
+            pstm.setInt(4, productionDetailsProductionId);
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
@@ -127,7 +124,7 @@ public class RawMaterialDAO {
      *
      * @param productPackage
      */
-    public void updateRawMaterial(RawMaterial rawMaterial) {
+    public void updateProductionDetails(ProductionDetails productionDetails) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -135,22 +132,18 @@ public class RawMaterialDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String rawMaterialName = rawMaterial.getName();
-            Double rawMaterialPrice = rawMaterial.getUnitPrice();
-            int rawMaterialAmount = rawMaterial.getAmount();
-            int rawMaterialSupplierId = rawMaterial.getSupplierId();
-            int rawMaterialCode = rawMaterial.getCode();
-            int rawMaterialDbId = rawMaterial.getDbId();
+            int productionDetailsId = productionDetails.getDetailsId();
+            int productionDetailsRMId = productionDetails.getRawMaterial_id();
+            int productionDetailsAmount = productionDetails.getAmountUsed();
+            int productionDetailsProductionId = productionDetails.getProductionId();
 
-            sql = "update application.rm_inventory set (name, price, amount, supplier_id, code) = (?, ?, ?, ?, ?) where raw_material_id = ?";
+            sql = "update application.production_details set (raw_material_id, amount_used, production_id) = (?, ?, ?) where details_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, rawMaterialName);
-            pstm.setDouble(2, rawMaterialPrice);
-            pstm.setInt(3, rawMaterialAmount);
-            pstm.setInt(4, rawMaterialSupplierId);
-            pstm.setInt(5, rawMaterialCode);
-            pstm.setInt(6, rawMaterialDbId);
+            pstm.setInt(1, productionDetailsRMId);
+            pstm.setInt(2, productionDetailsAmount);
+            pstm.setInt(3, productionDetailsProductionId);
+            pstm.setInt(4, productionDetailsId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
@@ -170,7 +163,7 @@ public class RawMaterialDAO {
         }
     }
 
-    public void deleteRawMaterial(RawMaterial rawMaterial) {
+    public void deleteProductionDetails(ProductionDetails productionDetails) {
         Connection con = null;
         PreparedStatement pstm = null;
 
@@ -178,14 +171,14 @@ public class RawMaterialDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int rawMaterialCode = rawMaterial.getCode();
-            int rawMaterialId = rawMaterial.getDbId();
+            int productionDetailsId = productionDetails.getDetailsId();
+            int productionDetailsProductionId = productionDetails.getProductionId();
 
-            sql = "delete from application.rm_inventory where code = ? and raw_material_id = ?";
+            sql = "delete from application.production_details where details_id = ? and production_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, rawMaterialCode);
-            pstm.setInt(2, rawMaterialId);
+            pstm.setInt(1, productionDetailsId);
+            pstm.setInt(2, productionDetailsProductionId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted :" + deleted);
