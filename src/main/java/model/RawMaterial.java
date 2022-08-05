@@ -17,7 +17,7 @@ public class RawMaterial {
     //Methods
     public RawMaterial(){}
     
-    public RawMaterial(String name, int unitPrice, int code, int supplierCode, 
+    public RawMaterial(String name, Double unitPrice, int code, int supplierCode, 
         int amount){
         this.name = name;
         this.unitPrice = unitPrice;

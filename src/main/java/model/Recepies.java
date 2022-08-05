@@ -42,7 +42,7 @@ public class Recepies {
             if( "arroz".equals(ingredient.getName()) ){
                 arroz = true;
             }
-            if( "huevo".equals(ingredient.getName()) ){
+            if( "huevo".equals(ingredient.getName()) || ingredient.getAmount() == 2 ){
                 huevo = true;
             }
         }
@@ -96,11 +96,5 @@ public class Recepies {
         this.harina = false;
         this.pollo = false;
     }
-    //Papa rellena.
-    //empanada
-    //Pastel de carne
-    //Pastel de pollo
-    //Dedos
-    //Hojaldra
     
 }

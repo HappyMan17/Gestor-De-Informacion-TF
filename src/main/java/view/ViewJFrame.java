@@ -45,8 +45,12 @@ public class ViewJFrame extends javax.swing.JFrame {
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
     
-     public void addListenerJComboBoxChooseMP(ActionListener listenController){
+    public void addListenerJComboBoxChooseMP(ActionListener listenController){
         jComboBoxElegirMP.addActionListener(listenController);
+    }
+     
+    public void addListenerRawMaterialPurchaseMenu(ActionListener listenController){
+        //jPanelAgregarMP.addAncestorListener(listenController);
     }
 
     public void activateRawMaterialPurchaseMenu(boolean activator) {
@@ -99,16 +103,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         return cantidad;
     }
 
-
-/////
-
-    
-    
-    /**
-     * SUPPLIER
-     */
-    
- 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -669,6 +663,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarMp.setContentAreaFilled(false);
         btnAgregarMp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarMp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarMp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarMpMouseClicked(evt);
+            }
+        });
         barraBotonesMP.add(btnAgregarMp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 59));
 
         btnEliminarMp.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1013,7 +1012,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1023,7 +1022,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneProductosTabbedLayout.setVerticalGroup(
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1203,7 +1202,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1213,7 +1212,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addComponent(jPanelEditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneProveedoresTabbedLayout.setVerticalGroup(
             jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1393,7 +1392,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneClientesTabbedLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneClientesTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelAgregarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1403,7 +1402,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addComponent(jPanelEditarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneClientesTabbedLayout.setVerticalGroup(
             jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1588,7 +1587,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneEmpleadosTabbedLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneEmpleadosTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1598,7 +1597,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addComponent(jPanelEditarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneEmpleadosTabbedLayout.setVerticalGroup(
             jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1641,7 +1640,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             .addGroup(jPaneHistoricoVentasLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("HdV", jPaneHistoricoVentas);
@@ -1822,6 +1821,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     private void jButtonBorrarMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarMPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBorrarMPActionPerformed
+
+    private void btnAgregarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMpMouseClicked
+        activateRawMaterialPurchaseMenu(true);
+    }//GEN-LAST:event_btnAgregarMpMouseClicked
 
     /**
      * @param args the command line arguments

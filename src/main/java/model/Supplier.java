@@ -20,9 +20,11 @@ public class Supplier {
     //Methods
     public Supplier(){}
     
-    public Supplier(String supplierName, int supplierNit){
+    public Supplier(String supplierName, int supplierNit, int supplierCode, int dbId){
         this.supplierName = supplierName;
         this.supplierNit = supplierNit;
+        this.supplierCode = supplierCode;
+        this.dbId = dbId;
     }
 
     public String getSupplierName() {
