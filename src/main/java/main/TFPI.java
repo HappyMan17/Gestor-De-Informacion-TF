@@ -5,6 +5,7 @@
 
 package main;
 
+import Controller.Controller;
 import java.time.LocalDate;
 import view.ViewJFrame;
 
@@ -18,6 +19,7 @@ public class TFPI {
         
         ViewJFrame view = new ViewJFrame();
         view.setVisible(true);
+        Controller controller = new Controller(view);
         
     }
 }

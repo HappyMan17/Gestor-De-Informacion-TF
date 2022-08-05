@@ -5,6 +5,7 @@
 package view;
 
 import java.awt.Color;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -17,6 +18,23 @@ public class ViewJFrame extends javax.swing.JFrame {
      */
     public ViewJFrame() {
         initComponents();
+    }
+    
+    public void addListenerBtnAgregarRawMaterial(ActionListener listenController){
+        btnModificarAño.addActionListener(listenController);
+    }
+    
+    public void addListenerBtnEliminarRawMaterial(ActionListener listenController){
+        btnModificarAño1.addActionListener(listenController);
+    }
+    
+    public void addListenerBtnLeerRawMaterial(ActionListener listenController){
+        btnModificarAño3.addActionListener(listenController);
+    }
+    
+    //Products Listeners
+    public void addListenerBtnAgregarProducto(ActionListener listenController){
+        btnModificarAño2.addActionListener(listenController);
     }
 
     /**

@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author happy
@@ -13,6 +15,7 @@ public class Production extends Recepies{
     private String productName;
     private Product newProduct;
     private int databaseId;
+    private String date;
     
     //Methods
     public Production(){
@@ -41,16 +44,19 @@ public class Production extends Recepies{
                 if (createPapaRellena()){
                     newProduct = new Product( 1, 2000.0, "papaRellena" );
                     resetIngredients();
+                    setDate();
                 }
             case 1:
                 if (createEmpanada()){
                     newProduct = new Product( 1, 1500.0, "empanada" );
                     resetIngredients();
+                    setDate();
                 }
             case 2:
                 if (createPastelDePollo()){
                     newProduct = new Product( 1, 3000.0, "pastelDePollo" );
                     resetIngredients();
+                    setDate();
                 }
         }
     }
@@ -63,5 +69,15 @@ public class Production extends Recepies{
         this.databaseId = databaseId;
     }
     
+    public void setDate(String date){
+        this.date = date;
+    }
     
+    public void setDate(){
+        date = LocalDate.now()+"";
+    }
+    
+    public String getDate(){
+        return date;
+    }
 }
