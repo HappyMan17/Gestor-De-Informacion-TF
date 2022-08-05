@@ -22,7 +22,6 @@ public class Controller {
         
         this.view.addListenerBtnAgregarRawMaterial(new CalculateListener());
         this.view.addListenerBtnEliminarRawMaterial(new CalculateListener());
-        this.view.addListenerBtnLeerRawMaterial(new CalculateListener());
         this.view.addListenerBtnAgregarProducto(new CalculateListener());
     }
     
