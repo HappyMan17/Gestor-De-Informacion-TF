@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import DAOModels.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.ViewJFrame;
@@ -15,10 +16,33 @@ import view.ViewJFrame;
 public class Controller {
     //Attributes
     private ViewJFrame view;
-    
+    private ClientDAO clientDAO;
+    private ProductDAO productDAO;
+    private ProductPackageDAO productPackageDAO;
+    private ProductionDAO productionDAO;
+    private ProductionDetailsDAO productionDetailsDAO;
+    private RawMaterialDAO rawMaterialDAO;
+    private SalesDetailsDAO salesDetailsDAO;
+    private SellerDAO sellerDAO;
+    private SupplierDAO supplierDAO;
+
     //Methods
-    public Controller(ViewJFrame view){
+    public Controller(ViewJFrame view, ClientDAO clientDAO, ProductDAO productDAO, 
+            ProductPackageDAO productPackageDAO, ProductionDAO productionDAO, 
+            ProductionDetailsDAO productionDetailsDAO, RawMaterialDAO rawMaterialDAO, 
+            SalesDetailsDAO salesDetailsDAO, SellerDAO sellerDAO, 
+            SupplierDAO supplierDAO) {
+        
         this.view = view;
+        this.clientDAO = clientDAO;
+        this.productDAO = productDAO;
+        this.productPackageDAO = productPackageDAO;
+        this.productionDAO = productionDAO;
+        this.productionDetailsDAO = productionDetailsDAO;
+        this.rawMaterialDAO = rawMaterialDAO;
+        this.salesDetailsDAO = salesDetailsDAO;
+        this.sellerDAO = sellerDAO;
+        this.supplierDAO = supplierDAO;
         
         this.view.addListenerBtnAgregarRawMaterial(new CalculateListener());
         this.view.addListenerBtnEliminarRawMaterial(new CalculateListener());
