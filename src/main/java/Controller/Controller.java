@@ -52,7 +52,7 @@ public class Controller {
         createSuppliers();
         
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
-        this.view.addListenerJComboBoxChooseMP(new CalculateListener());
+        //this.view.addListenerJComboBoxChooseMP(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
     }
     
@@ -79,11 +79,12 @@ public class Controller {
         Supplier supTwo = new Supplier("Enrico SAS", 10011, 002, 2);
         supTwo.setRawMaterial(rMSupplierTwo);
         Supplier supThree = new Supplier("Quesitos LTDA", 10010, 003, 3);
-        
         supThree.setRawMaterial(rMSupplierThree);
+
         suppliers.add(supOne);
         suppliers.add(supTwo);
         suppliers.add(supThree);
+        
         addToComboboxSupplier();
     }
     
@@ -96,7 +97,6 @@ public class Controller {
     class CalculateListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            System.out.println(e.getActionCommand());
             if (e.getActionCommand().equalsIgnoreCase("Agregar")){
                 
                 try{
@@ -161,7 +161,9 @@ public class Controller {
             
             //ComboBoxes:
             if (e.getActionCommand().equalsIgnoreCase("comboBoxChanged")){
+                    view.clearRMComboBox();
                 try{
+                    System.out.println(suppliers.get(0).getRawMaterial());
                     String supName = view.getFromComboBoxSupplier();
                     
                     for( Supplier sup : suppliers ){
@@ -172,8 +174,8 @@ public class Controller {
                             }
                             break;
                         }
+                        
                     }
-       
                 }catch(NullPointerException x){
                     System.out.println(x.getMessage());
                 }
@@ -191,6 +193,8 @@ public class Controller {
                             for( RawMaterial raw : sup.getRawMaterial() ){
                                 if( raw.getName().equals(rwName) ){
                                     if( raw.getAmount() > JtxtContenido ){
+                                        System.out.println(raw.getName()+" Size:"+
+                                            rawMaterials.size());
                                         rawMaterials.add(raw);
                                     }else {
                                         JOptionPane.showMessageDialog(null, 
@@ -201,9 +205,6 @@ public class Controller {
                             break;
                         }
                     }
-                    
-                    
-                    
                 }catch(NumberFormatException x){
                     System.out.println("Error No Lee");
                 }

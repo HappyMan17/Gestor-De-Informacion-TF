@@ -90,6 +90,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         content = jComboBoxElegirProveedor.getSelectedItem();
         return content.toString();
     }
+
+    public void clearRMComboBox(){
+        jComboBoxElegirMP.removeAllItems();
+    }
     
     public String getFromComboBoxRawMaterial(){
         Object content;
