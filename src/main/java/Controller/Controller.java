@@ -31,6 +31,8 @@ public class Controller {
     private SupplierDAO supplierDAO;
     private ArrayList<Supplier> suppliers = new ArrayList<>();
     private ArrayList<RawMaterial> rawMaterials = new ArrayList<>();
+    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Production> productions = new ArrayList<>();
 
     //Methods
     public Controller(ViewJFrame view) {
@@ -50,7 +52,6 @@ public class Controller {
         addToSuppliers();
         rawMaterials = rawMaterialDAO.getRawMaterial(0);
         view.addToRMTable(rawMaterials);
-
         
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
@@ -65,11 +66,6 @@ public class Controller {
         ArrayList<RawMaterial> rMSupplierTwo = new ArrayList<>();
         ArrayList<RawMaterial> rMSupplierThree = new ArrayList<>();
 
-        /**
-         * Supplier supOne = new Supplier("La miseria SAS", 10001, 001, 1);
-         * Supplier supTwo = new Supplier("Enrico SAS", 10011, 002, 2); Supplier
-         * supThree = new Supplier("Quesitos LTDA", 10010, 003, 3);
-         */
         int supOneCode = suppliers.get(0).getSupplierCode();
         int supTwoCode = suppliers.get(1).getSupplierCode();
         int supThreeCode = suppliers.get(2).getSupplierCode();
@@ -114,6 +110,11 @@ public class Controller {
         for (Supplier suppli : suppliers) {
             view.addToComboBoxSupplier(suppli.getSupplierName());
         }
+    }
+    
+    public void setProductsFromDb(){
+        products = productDAO.getProducts(0);
+        view.addToProductTable(products);
     }
 
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat) {
@@ -243,7 +244,7 @@ public class Controller {
                                         }
                                     } else {
                                         JOptionPane.showMessageDialog(null,
-                                                "El proveedor no cuenta con esa cantidad actualmente");
+                                            "El proveedor no cuenta con esa cantidad actualmente");
                                     }
                                 }
                             }
@@ -305,7 +306,37 @@ public class Controller {
 
             //Create Product
             if (e.getActionCommand().equalsIgnoreCase("Producción")) {
-
+                try{
+                    int cantidadAProducir = view.getFromProductAmount();
+                    String comboBoxProduct = view.getFromComboBoxProduct();
+                    
+                    Production production = new Production(comboBoxProduct);
+                    production.setIngredients(rawMaterials);
+                    production.createNewProduct(cantidadAProducir);
+                    Product product = production.getNewProduct();
+                    
+                    if(product != null){
+                        productionDAO.setProduction(production);
+                        productions = productionDAO.getProduction(0);
+                        
+                        for( RawMaterial raw : product.getIngredients() ){
+                            int rawId, rawAmount, productionId;
+                            rawId = raw.getDbId();
+                            rawAmount = raw.getAmount();
+                            productionId = productions.get(productions.size()-1).getDatabaseId();
+                            ProductionDetails details = new ProductionDetails(rawId, rawAmount, productionId);
+                            details.setProductId(product.getDatabaseId());
+                            productionDetailsDAO.setProductionDetails(details);
+                        }
+                        
+                        productDAO.setProduct(product);
+                        products = productDAO.getProducts(0);
+                        view.addToProductTable(products);
+                    }
+                    
+                }catch(NumberFormatException x) {
+                    System.out.println("Error No Lee");
+                }
             }
         }
     }

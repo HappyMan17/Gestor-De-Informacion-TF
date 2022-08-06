@@ -19,10 +19,12 @@ public class Production extends Recepies{
     private String date;
     
     //Methods
-    public Production(){
-        
-    }
+    public Production(){}
 
+    public Production(String productName){
+        this.productName = productName;
+    }
+    
     public String getProductName() {
         return productName;
     }
@@ -39,29 +41,35 @@ public class Production extends Recepies{
         this.newProduct = newProduct;
     }
     
-    public void createNewProduct(String productName, int productAmount){
+    public void createNewProduct(int productAmount){
         switch (productName){
             case "Papa Rellena":
                 if (createPapaRellena(productAmount)){
                     newProduct = new Product( productAmount, 2000.0, "papaRellena" );
+                    newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
                 }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                        + "necesarios para la papa");
             case "Empanada":
                 if (createEmpanada(productAmount)){
                     newProduct = new Product( productAmount, 1500.0, "empanada" );
+                    newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
                 }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                        + "necesarios para la empanada");
             case "Pastel de pollo":
                 if (createPastelDePollo(productAmount)){
                     newProduct = new Product( productAmount, 3000.0, "pastelDePollo" );
+                    newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
                 }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                        + "necesarios para el pastel de pollo");
         }
     }
 

@@ -13,10 +13,16 @@ public class ProductionDetails {
     private int detailsId;
     private int rawMaterial_id;
     private int amountUsed;
-    private int productionId;
+    private int productionId, productId;
     
     //Methods
     public ProductionDetails(){}
+    
+    public ProductionDetails(int rawMaterial_id, int amountUsed, int productionId){
+        this.rawMaterial_id = rawMaterial_id;
+        this.amountUsed = amountUsed;
+        this.productionId = productionId;
+    }
 
     public int getDetailsId() {
         return detailsId;
@@ -48,6 +54,14 @@ public class ProductionDetails {
 
     public void setProductionId(int productionId) {
         this.productionId = productionId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     

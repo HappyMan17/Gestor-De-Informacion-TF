@@ -38,7 +38,7 @@ public class ProductionDetailsDAO {
                 sql = "SELECT * FROM application.production_details ORDER BY details_id";
             } else {
                 sql = "SELECT * FROM application.production_details where details_id = ? "
-                        + "ORDER BY details_id";
+                    + "ORDER BY details_id";
             }
 
             pstm = con.prepareStatement(sql);
@@ -56,13 +56,14 @@ public class ProductionDetailsDAO {
                 productionDetails.setAmountUsed(rs.getInt("amount_used"));
                 productionDetails.setProductionId(rs.getInt("production_id"));
                 productionDetails.setDetailsId(rs.getInt("details_id"));
+                productionDetails.setProductId(rs.getInt("product_id"));
 
                 listado.add(productionDetails);
             }
             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
             
             try {
@@ -89,25 +90,27 @@ public class ProductionDetailsDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            int productionDetailsId = productionDetails.getDetailsId();
+            //int productionDetailsId = productionDetails.getDetailsId();
             int productionDetailsRMId = productionDetails.getRawMaterial_id();
             int productionDetailsAmount = productionDetails.getAmountUsed();
             int productionDetailsProductionId = productionDetails.getProductionId();
+            int productionDetailsProductId = productionDetails.getProductId();
 
-            sql = "INSERT INTO application.production_details (details_id, raw_material_id, amount_used, production_id) values (?,?,?,?)";
+            sql = "INSERT INTO application.production_details (raw_material_id, amount_used, production_id, product_id) values (?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, productionDetailsId);
-            pstm.setInt(2, productionDetailsRMId);
-            pstm.setInt(3, productionDetailsAmount);
-            pstm.setInt(4, productionDetailsProductionId);
+            //pstm.setInt(1, productionDetailsId);
+            pstm.setInt(1, productionDetailsRMId);
+            pstm.setInt(2, productionDetailsAmount);
+            pstm.setInt(3, productionDetailsProductionId);
+            pstm.setInt(4, productionDetailsProductId);
 
             int inserted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
+            JOptionPane.showMessageDialog(null, "Details inserted: " + inserted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -115,7 +118,7 @@ public class ProductionDetailsDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
             }
         }
     }
