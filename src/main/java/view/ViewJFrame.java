@@ -231,8 +231,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanelBarraSuperior = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanelBarraLateral = new javax.swing.JPanel();
         jLabelLogoBarra = new javax.swing.JLabel();
         jPanelProductos = new javax.swing.JPanel();
@@ -274,8 +272,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         jComboBoxElegirVendedor = new javax.swing.JComboBox<>();
         jPanelEligeProveedor3 = new javax.swing.JPanel();
         jComboBoxElegirCliente = new javax.swing.JComboBox<>();
+        btnComprarProducto = new javax.swing.JButton();
         jPanelBorrarVenta = new javax.swing.JPanel();
         jTextFieldIdProductoADevolver = new javax.swing.JTextField();
+        btnDevolverProducto = new javax.swing.JButton();
         jPaneMateriaPrimaTabbed = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         barraBotonesMP = new javax.swing.JPanel();
@@ -317,11 +317,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnProduction = new javax.swing.JButton();
         jPanelBorrarProducto = new javax.swing.JPanel();
         jTextFieldIdABorrarProducto = new javax.swing.JTextField();
+        btnBorrrarProducto = new javax.swing.JButton();
         jPanelEditarProducto = new javax.swing.JPanel();
         jPanelIdEditarProducto = new javax.swing.JPanel();
         jTextFieldIdAEditarProducto = new javax.swing.JTextField();
         jPanelNombreNuevoProducto = new javax.swing.JPanel();
         jTextFieldNombreNuevoProducto = new javax.swing.JTextField();
+        btnEditarProducto = new javax.swing.JButton();
         jPaneProveedoresTabbed = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         barraBotonesProveedores = new javax.swing.JPanel();
@@ -335,13 +337,16 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreProveedor = new javax.swing.JTextField();
         jPanelNitProveedor = new javax.swing.JPanel();
         jTextFieldNitProveedor = new javax.swing.JTextField();
+        btnContratar = new javax.swing.JButton();
         jPanelBorrarProveedor = new javax.swing.JPanel();
         jTextFieldIdABorrarProveedor = new javax.swing.JTextField();
+        btnBorrarProveedor = new javax.swing.JButton();
         jPanelEditarProveedor = new javax.swing.JPanel();
         jPanelIdAEditarProveedor = new javax.swing.JPanel();
         jTextFieldIdAEditarProveedor = new javax.swing.JTextField();
         jPanelNombreNuevoProveedor = new javax.swing.JPanel();
         jTextFieldNombreNuevoProveedor = new javax.swing.JTextField();
+        btnEditarProveedor = new javax.swing.JButton();
         jPaneClientesTabbed = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         barraBotonesClientes = new javax.swing.JPanel();
@@ -355,13 +360,16 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreCliente = new javax.swing.JTextField();
         jPanelIdCliente = new javax.swing.JPanel();
         jTextFieldIdCliente = new javax.swing.JTextField();
+        btnAgregarCliente = new javax.swing.JButton();
         jPanelBorrarClientes = new javax.swing.JPanel();
         jTextFieldIdABorrarCliente = new javax.swing.JTextField();
+        btnBorrarCliente = new javax.swing.JButton();
         jPanelEditarClientes = new javax.swing.JPanel();
         jPanelIdAEditarCliente = new javax.swing.JPanel();
         jTextFieldIdAEditarCliente = new javax.swing.JTextField();
         jPanelNombreNuevoCliente = new javax.swing.JPanel();
         jTextFieldNombreNuevoCliente = new javax.swing.JTextField();
+        btnEditarCliente = new javax.swing.JButton();
         jPaneEmpleadosTabbed = new javax.swing.JPanel();
         jLabel26 = new javax.swing.JLabel();
         barraBotonesEmpleados = new javax.swing.JPanel();
@@ -375,13 +383,16 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreEmpleado = new javax.swing.JTextField();
         jPanelIdEmpleado = new javax.swing.JPanel();
         jTextFieldIdEmpleado = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
         jPanelBorrarEmpleado = new javax.swing.JPanel();
         jTextFieldIdABorrarEmpleado = new javax.swing.JTextField();
+        btnBorrarEmpleado = new javax.swing.JButton();
         jPanelEditarEmpleado = new javax.swing.JPanel();
         jPanelIdAEditarEmpleado = new javax.swing.JPanel();
         jTextFieldIdAEditarEmpleado = new javax.swing.JTextField();
         jPanelNombreNuevoEmpleado = new javax.swing.JPanel();
         jTextFieldNombreNuevoEmpleado = new javax.swing.JTextField();
+        btnEditarEmpleado = new javax.swing.JButton();
         jPaneHistoricoVentas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -391,16 +402,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setForeground(java.awt.Color.gray);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanelBarraSuperior.setBackground(new java.awt.Color(40, 70, 85));
-        jPanelBarraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(187, 187, 187));
-        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jLabel1.setText("G E S T I O N   D E   L A   E M P R E S A");
-        jPanelBarraSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, 20));
-
-        getContentPane().add(jPanelBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 620, 20));
 
         jPanelBarraLateral.setBackground(new java.awt.Color(40, 70, 85));
         jPanelBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -749,6 +750,9 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelComprar.add(jPanelEligeProveedor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, 50));
 
+        btnComprarProducto.setText("Comprar Producto");
+        jPanelComprar.add(btnComprarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
         jPaneVentasTabbed.add(jPanelComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 330, 230));
 
         jPanelBorrarVenta.setBorder(javax.swing.BorderFactory.createTitledBorder("ID de producto a devolver"));
@@ -761,7 +765,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelBorrarVenta.add(jTextFieldIdProductoADevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
 
-        jPaneVentasTabbed.add(jPanelBorrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 169, 60));
+        btnDevolverProducto.setText("Devolver");
+        jPanelBorrarVenta.add(btnDevolverProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
+
+        jPaneVentasTabbed.add(jPanelBorrarVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 250, 169, 100));
 
         jTabbedPane1.addTab("Ventas", jPaneVentasTabbed);
 
@@ -1092,7 +1099,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                 btnProductionActionPerformed(evt);
             }
         });
-        jPanelAgregarProducto.add(btnProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        jPanelAgregarProducto.add(btnProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
         jPanelBorrarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1103,6 +1110,9 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         });
         jPanelBorrarProducto.add(jTextFieldIdABorrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
+
+        btnBorrrarProducto.setText("Borrar Producto");
+        jPanelBorrarProducto.add(btnBorrrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         jPanelEditarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Producto"));
         jPanelEditarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1123,10 +1133,10 @@ public class ViewJFrame extends javax.swing.JFrame {
             .addGroup(jPanelIdEditarProductoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextFieldIdAEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
-        jPanelEditarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 34, 172, -1));
+        jPanelEditarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 36, 172, 60));
 
         jPanelNombreNuevoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre nuevo"));
 
@@ -1155,23 +1165,26 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarProducto.add(jPanelNombreNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
+        btnEditarProducto.setText("Editar Producto");
+        jPanelEditarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, -1));
+
         javax.swing.GroupLayout jPaneProductosTabbedLayout = new javax.swing.GroupLayout(jPaneProductosTabbed);
         jPaneProductosTabbed.setLayout(jPaneProductosTabbedLayout);
         jPaneProductosTabbedLayout.setHorizontalGroup(
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         jPaneProductosTabbedLayout.setVerticalGroup(
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1180,22 +1193,29 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneProductosTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(barraBotonesProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jTabbedPane1.addTab("Productos", jPaneProductosTabbed);
 
+        jPaneProveedoresTabbed.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel24.setBackground(new java.awt.Color(187, 187, 187));
         jLabel24.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
         jLabel24.setText("P R O V E E D O R E S");
+        jPaneProveedoresTabbed.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 6, -1, -1));
 
         barraBotonesProveedores.setBackground(new java.awt.Color(209, 209, 185));
         barraBotonesProveedores.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1232,6 +1252,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         barraBotonesProveedores.add(btnActualizarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
+        jPaneProveedoresTabbed.add(barraBotonesProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
+
         jTableProveedores.setToolTipText("");
         jScrollPaneProveedores.setViewportView(jTableProveedores);
         if (jTableProveedores.getColumnModel().getColumnCount() > 0) {
@@ -1240,6 +1262,8 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableProveedores.getColumnModel().getColumn(2).setResizable(false);
             jTableProveedores.getColumnModel().getColumn(3).setResizable(false);
         }
+
+        jPaneProveedoresTabbed.add(jScrollPaneProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
         jPanelAgregarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Contratar Proveedor"));
         jPanelAgregarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1259,7 +1283,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPanelNombreProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNombreProveedorLayout.createSequentialGroup()
                 .addComponent(jTextFieldNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jPanelAgregarProveedor.add(jPanelNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
@@ -1272,17 +1296,22 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNitProveedorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldNitProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(jTextFieldNitProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelNitProveedorLayout.setVerticalGroup(
             jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelNitProveedorLayout.createSequentialGroup()
                 .addComponent(jTextFieldNitProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanelAgregarProveedor.add(jPanelNitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
+        jPanelAgregarProveedor.add(jPanelNitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 50));
+
+        btnContratar.setText("Contratar Proveedor");
+        jPanelAgregarProveedor.add(btnContratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 160, 30));
+
+        jPaneProveedoresTabbed.add(jPanelAgregarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 170));
 
         jPanelBorrarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1293,6 +1322,11 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         });
         jPanelBorrarProveedor.add(jTextFieldIdABorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
+
+        btnBorrarProveedor.setText("Borrar Proveedor");
+        jPanelBorrarProveedor.add(btnBorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        jPaneProveedoresTabbed.add(jPanelBorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 143, 110));
 
         jPanelEditarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Proveedor"));
         jPanelEditarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1345,47 +1379,19 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarProveedor.add(jPanelNombreNuevoProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
-        javax.swing.GroupLayout jPaneProveedoresTabbedLayout = new javax.swing.GroupLayout(jPaneProveedoresTabbed);
-        jPaneProveedoresTabbed.setLayout(jPaneProveedoresTabbedLayout);
-        jPaneProveedoresTabbedLayout.setHorizontalGroup(
-            jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraBotonesProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelBorrarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanelEditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPaneProveedoresTabbedLayout.setVerticalGroup(
-            jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPaneProveedoresTabbedLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel24)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPaneProveedoresTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEditarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarProveedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneProveedoresTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelBorrarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(barraBotonesProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnEditarProveedor.setText("Editar Proveedor");
+        jPanelEditarProveedor.add(btnEditarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, -1, -1));
+
+        jPaneProveedoresTabbed.add(jPanelEditarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 190, 210));
 
         jTabbedPane1.addTab("Proveedores", jPaneProveedoresTabbed);
+
+        jPaneClientesTabbed.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel25.setBackground(new java.awt.Color(187, 187, 187));
         jLabel25.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
         jLabel25.setText("C L I E N T E S");
+        jPaneClientesTabbed.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 6, -1, -1));
 
         barraBotonesClientes.setBackground(new java.awt.Color(209, 209, 185));
         barraBotonesClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1422,6 +1428,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         barraBotonesClientes.add(btnActualizarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
+        jPaneClientesTabbed.add(barraBotonesClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
+
         jTableClientes.setToolTipText("");
         jScrollPaneClientes.setViewportView(jTableClientes);
         if (jTableClientes.getColumnModel().getColumnCount() > 0) {
@@ -1430,6 +1438,8 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableClientes.getColumnModel().getColumn(2).setResizable(false);
             jTableClientes.getColumnModel().getColumn(3).setResizable(false);
         }
+
+        jPaneClientesTabbed.add(jScrollPaneClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
         jPanelAgregarClientes.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar Cliente"));
         jPanelAgregarClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1462,7 +1472,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPanelIdClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIdClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                .addComponent(jTextFieldIdCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanelIdClienteLayout.setVerticalGroup(
@@ -1472,7 +1482,12 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        jPanelAgregarClientes.add(jPanelIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
+        jPanelAgregarClientes.add(jPanelIdCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 170, 50));
+
+        btnAgregarCliente.setText("Agregar Cliente");
+        jPanelAgregarClientes.add(btnAgregarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+
+        jPaneClientesTabbed.add(jPanelAgregarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 190, 180));
 
         jPanelBorrarClientes.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1483,6 +1498,11 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         });
         jPanelBorrarClientes.add(jTextFieldIdABorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
+
+        btnBorrarCliente.setText("Borrar Cliente");
+        jPanelBorrarClientes.add(btnBorrarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
+
+        jPaneClientesTabbed.add(jPanelBorrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 234, 143, 100));
 
         jPanelEditarClientes.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Cliente"));
         jPanelEditarClientes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1535,47 +1555,19 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarClientes.add(jPanelNombreNuevoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
-        javax.swing.GroupLayout jPaneClientesTabbedLayout = new javax.swing.GroupLayout(jPaneClientesTabbed);
-        jPaneClientesTabbed.setLayout(jPaneClientesTabbedLayout);
-        jPaneClientesTabbedLayout.setHorizontalGroup(
-            jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraBotonesClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPaneClientesTabbedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPaneClientesTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelBorrarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanelEditarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel25))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPaneClientesTabbedLayout.setVerticalGroup(
-            jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPaneClientesTabbedLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPaneClientesTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEditarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarClientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneClientesTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelBorrarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(barraBotonesClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnEditarCliente.setText("Editar Cliente");
+        jPanelEditarClientes.add(btnEditarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
+
+        jPaneClientesTabbed.add(jPanelEditarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, -1, 200));
 
         jTabbedPane1.addTab("Clientes", jPaneClientesTabbed);
+
+        jPaneEmpleadosTabbed.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel26.setBackground(new java.awt.Color(187, 187, 187));
         jLabel26.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
         jLabel26.setText("E M P L E A D O S");
+        jPaneEmpleadosTabbed.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 6, -1, -1));
 
         barraBotonesEmpleados.setBackground(new java.awt.Color(209, 209, 185));
         barraBotonesEmpleados.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1617,6 +1609,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         barraBotonesEmpleados.add(btnActualizarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
+        jPaneEmpleadosTabbed.add(barraBotonesEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
+
         jTableEmpleados.setToolTipText("");
         jScrollPaneEmpleados.setViewportView(jTableEmpleados);
         if (jTableEmpleados.getColumnModel().getColumnCount() > 0) {
@@ -1625,6 +1619,8 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableEmpleados.getColumnModel().getColumn(2).setResizable(false);
             jTableEmpleados.getColumnModel().getColumn(3).setResizable(false);
         }
+
+        jPaneEmpleadosTabbed.add(jScrollPaneEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
         jPanelAgregarEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder("Agregar Empleado"));
         jPanelAgregarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1667,7 +1663,12 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        jPanelAgregarEmpleado.add(jPanelIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 160, 50));
+        jPanelAgregarEmpleado.add(jPanelIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 160, 50));
+
+        jButton1.setText("Contratar Empleado");
+        jPanelAgregarEmpleado.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        jPaneEmpleadosTabbed.add(jPanelAgregarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 190, 190));
 
         jPanelBorrarEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1678,6 +1679,11 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         });
         jPanelBorrarEmpleado.add(jTextFieldIdABorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
+
+        btnBorrarEmpleado.setText("Borrar Empleado");
+        jPanelBorrarEmpleado.add(btnBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+
+        jPaneEmpleadosTabbed.add(jPanelBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 234, 143, 100));
 
         jPanelEditarEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Empleado"));
         jPanelEditarEmpleado.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1728,43 +1734,12 @@ public class ViewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanelEditarEmpleado.add(jPanelNombreNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
+        jPanelEditarEmpleado.add(jPanelNombreNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        javax.swing.GroupLayout jPaneEmpleadosTabbedLayout = new javax.swing.GroupLayout(jPaneEmpleadosTabbed);
-        jPaneEmpleadosTabbed.setLayout(jPaneEmpleadosTabbedLayout);
-        jPaneEmpleadosTabbedLayout.setHorizontalGroup(
-            jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraBotonesEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPaneEmpleadosTabbedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPaneEmpleadosTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelBorrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(jPanelEditarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel26))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPaneEmpleadosTabbedLayout.setVerticalGroup(
-            jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPaneEmpleadosTabbedLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPaneEmpleadosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelEditarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarEmpleado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPaneEmpleadosTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelBorrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
-                .addComponent(barraBotonesEmpleados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnEditarEmpleado.setText("Editar Empleado");
+        jPanelEditarEmpleado.add(btnEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 40));
+
+        jPaneEmpleadosTabbed.add(jPanelEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 210));
 
         jTabbedPane1.addTab("Empleados", jPaneEmpleadosTabbed);
 
@@ -1871,70 +1846,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelProveedores.setBackground(new Color(231, 231, 216));
     }//GEN-LAST:event_jPanelProveedoresMouseExited
 
-    private void jComboBoxElegirProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxElegirProveedorActionPerformed
-
-    private void jTextFieldNombreNuevoMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoMPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoMPActionPerformed
-
-    private void jTextFieldIdABorrarMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarMPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdABorrarMPActionPerformed
-
-    private void jTextFieldIdABorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdABorrarProductoActionPerformed
-
-    private void jTextFieldNombreNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoProductoActionPerformed
-
-    private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProductoActionPerformed
-
-    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
-
-    private void jTextFieldIdABorrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdABorrarProveedorActionPerformed
-
-    private void jTextFieldNombreNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoProveedorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoProveedorActionPerformed
-
-    private void btnAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarClientesActionPerformed
-
-    private void jTextFieldIdABorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdABorrarClienteActionPerformed
-
-    private void jTextFieldNombreNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoClienteActionPerformed
-
-    private void btnAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarEmpleadosActionPerformed
-
-    private void jTextFieldIdABorrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIdABorrarEmpleadoActionPerformed
-
-    private void jTextFieldNombreNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoEmpleadoActionPerformed
-
-    private void btnActualizarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
-
     private void jPanelVentasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseMoved
         jPanelVentas.setBackground(new Color(216, 200, 232));
     }//GEN-LAST:event_jPanelVentasMouseMoved
@@ -1947,9 +1858,102 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelVentas.setBackground(new Color(231, 231, 216));
     }//GEN-LAST:event_jPanelVentasMouseExited
 
+    private void jTextFieldNombreNuevoEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreNuevoEmpleadoActionPerformed
+
+    private void jTextFieldIdABorrarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarEmpleadoActionPerformed
+
+    private void btnActualizarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnActualizarEmpleadosActionPerformed
+
+    private void btnAgregarEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarEmpleadosActionPerformed
+
+    private void jTextFieldNombreNuevoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreNuevoClienteActionPerformed
+
+    private void jTextFieldIdABorrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarClienteActionPerformed
+
+    private void btnAgregarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarClientesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarClientesActionPerformed
+
+    private void jTextFieldNombreNuevoProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreNuevoProveedorActionPerformed
+
+    private void jTextFieldIdABorrarProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarProveedorActionPerformed
+
+    private void btnAgregarProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
+
+    private void jTextFieldNombreNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreNuevoProductoActionPerformed
+
+    private void jTextFieldIdABorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarProductoActionPerformed
+
+    private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductionActionPerformed
+
+    private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarProductoActionPerformed
+
+    private void jTextFieldNombreNuevoMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoMPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreNuevoMPActionPerformed
+
+    private void jButtonBorrarMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarMPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBorrarMPActionPerformed
+
+    private void jTextFieldIdABorrarMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarMPActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIdABorrarMPActionPerformed
+
+    private void jTextFieldCantidadMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCantidadMPMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCantidadMPMouseClicked
+
+    private void jComboBoxElegirProveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirProveedorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxElegirProveedorActionPerformed
+
+    private void btnActualizarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMpMouseClicked
+        activateRawMaterialEditMenu(true);
+    }//GEN-LAST:event_btnActualizarMpMouseClicked
+
+    private void btnEliminarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMpMouseClicked
+        activateRawMaterialDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarMpMouseClicked
+
+    private void btnAgregarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMpMouseClicked
+        activateRawMaterialPurchaseMenu(true);
+        jTextFieldCantidadMP.requestFocusInWindow();
+    }//GEN-LAST:event_btnAgregarMpMouseClicked
+
     private void jTextFieldIdProductoADevolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdProductoADevolverActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIdProductoADevolverActionPerformed
+
+    private void jComboBoxElegirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxElegirClienteActionPerformed
 
     private void jComboBoxElegirVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirVendedorActionPerformed
         // TODO add your handling code here:
@@ -1962,35 +1966,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     private void btnHistoricoDeVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistoricoDeVentasMouseClicked
         jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_btnHistoricoDeVentasMouseClicked
-
-    private void jComboBoxElegirClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxElegirClienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxElegirClienteActionPerformed
-
-    private void jButtonBorrarMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBorrarMPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonBorrarMPActionPerformed
-
-    private void btnAgregarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMpMouseClicked
-        activateRawMaterialPurchaseMenu(true);
-        jTextFieldCantidadMP.requestFocusInWindow();
-    }//GEN-LAST:event_btnAgregarMpMouseClicked
-
-    private void btnEliminarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMpMouseClicked
-        activateRawMaterialDeleteMenu(true);
-    }//GEN-LAST:event_btnEliminarMpMouseClicked
-
-    private void btnActualizarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMpMouseClicked
-        activateRawMaterialEditMenu(true);
-    }//GEN-LAST:event_btnActualizarMpMouseClicked
-
-    private void jTextFieldCantidadMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCantidadMPMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCantidadMPMouseClicked
-
-    private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnProductionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -2051,13 +2026,25 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnActualizarMp;
     private javax.swing.JButton btnActualizarProducto;
     private javax.swing.JButton btnActualizarProveedores;
+    private javax.swing.JButton btnAgregarCliente;
     private javax.swing.JButton btnAgregarClientes;
     private javax.swing.JButton btnAgregarEmpleados;
     private javax.swing.JButton btnAgregarMp;
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnAgregarProveedores;
+    private javax.swing.JButton btnBorrarCliente;
+    private javax.swing.JButton btnBorrarEmpleado;
+    private javax.swing.JButton btnBorrarProveedor;
+    private javax.swing.JButton btnBorrrarProducto;
     private javax.swing.JButton btnComprar;
+    private javax.swing.JButton btnComprarProducto;
+    private javax.swing.JButton btnContratar;
     private javax.swing.JButton btnDevolver;
+    private javax.swing.JButton btnDevolverProducto;
+    private javax.swing.JButton btnEditarCliente;
+    private javax.swing.JButton btnEditarEmpleado;
+    private javax.swing.JButton btnEditarProducto;
+    private javax.swing.JButton btnEditarProveedor;
     private javax.swing.JButton btnEliminarClientes;
     private javax.swing.JButton btnEliminarEmpleados;
     private javax.swing.JButton btnEliminarMp;
@@ -2065,6 +2052,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarProveedores;
     private javax.swing.JButton btnHistoricoDeVentas;
     private javax.swing.JButton btnProduction;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonBorrarMP;
     private javax.swing.JButton jButtonComprarMP;
     private javax.swing.JButton jButtonEditarMP;
@@ -2074,7 +2062,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxElegirProveedor;
     private javax.swing.JComboBox<String> jComboBoxElegirVendedor;
     private javax.swing.JComboBox<String> jComboBoxProductos;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2110,7 +2097,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAgregarProducto;
     private javax.swing.JPanel jPanelAgregarProveedor;
     private javax.swing.JPanel jPanelBarraLateral;
-    private javax.swing.JPanel jPanelBarraSuperior;
     private javax.swing.JPanel jPanelBorrarClientes;
     private javax.swing.JPanel jPanelBorrarEmpleado;
     private javax.swing.JPanel jPanelBorrarMP;
