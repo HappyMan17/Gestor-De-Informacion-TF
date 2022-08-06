@@ -33,13 +33,6 @@ public class Controller {
 
     //Methods
     public Controller(ViewJFrame view){
-    /*
-    public Controller(ViewJFrame view, ClientDAO clientDAO, ProductDAO productDAO, 
-            ProductPackageDAO productPackageDAO, ProductionDAO productionDAO, 
-            ProductionDetailsDAO productionDetailsDAO, RawMaterialDAO rawMaterialDAO, 
-            SalesDetailsDAO salesDetailsDAO, SellerDAO sellerDAO, 
-            SupplierDAO supplierDAO) {
-    */
         
         this.view = view;
         this.clientDAO = clientDAO;
