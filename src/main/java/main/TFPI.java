@@ -20,16 +20,6 @@ public class TFPI {
 
     public static void main(String[] args) {
         //DAOS
-        ClientDAO clientDAO = new ClientDAO();
-        ProductDAO productDAO = new ProductDAO();
-        ProductPackageDAO productPackageDAO = new ProductPackageDAO(productDAO);
-        ProductionDAO productionDAO = new ProductionDAO();
-        ProductionDetailsDAO productionDetailsDAO = new ProductionDetailsDAO();
-        RawMaterialDAO rawMaterialDAO = new RawMaterialDAO();
-        SalesDetailsDAO salesDetailsDAO = new SalesDetailsDAO();
-        SellerDAO sellerDAO = new SellerDAO();
-        SupplierDAO supplierDAO = new SupplierDAO();
-        
         //View and controller
         ViewJFrame view = new ViewJFrame();
         view.setVisible(true);

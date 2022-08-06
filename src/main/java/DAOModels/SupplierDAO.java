@@ -102,7 +102,7 @@ public class SupplierDAO {
             pstm.setInt(4, supplierCode);
 
             int inserted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
+            JOptionPane.showMessageDialog(null, "Rows inserted in Supplier: " + inserted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
@@ -170,7 +170,7 @@ public class SupplierDAO {
             int supplierCode = supplier.getSupplierCode();
             int supplierId = supplier.getDbId();
 
-            sql = "delete from application.supplier_id where code = ? and supplier_id = ?";
+            sql = "delete from application.supplier where code = ? and supplier_id = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, supplierCode);

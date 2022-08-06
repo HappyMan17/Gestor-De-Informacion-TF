@@ -24,9 +24,8 @@ public class ViewJFrame extends javax.swing.JFrame {
      */
     public ViewJFrame() {
         initComponents();
-        activateRawMaterialPurchaseMenu(false);
-        activateRawMaterialEditMenu(false);
-        activateRawMaterialDeleteMenu(false);
+        viewsDisabled(true);
+        
 
     }
 
@@ -35,6 +34,15 @@ public class ViewJFrame extends javax.swing.JFrame {
      *
      * @param listenController
      */
+    
+    public void viewsDisabled(boolean abierto){
+        activateRawMaterialPurchaseMenu(abierto);
+        activateRawMaterialEditMenu(abierto);
+        activateRawMaterialDeleteMenu(abierto);
+        activateProductCreationMenu(abierto);
+        activateProductEditMenu(abierto);
+        activateProductDeleteMenu(abierto);
+    }
     public void addListenerBtnBuyMP(ActionListener listenController) {
         jButtonComprarMP.addActionListener(listenController);
     }
@@ -178,6 +186,59 @@ public class ViewJFrame extends javax.swing.JFrame {
         
     }
     
+    /** PESTAÑA PRODUCTOS **/
+    
+    public void activateProductCreationMenu(boolean activator) {
+        jPanelAgregarProducto.setVisible(activator);
+    }
+    
+    public void activateProductDeleteMenu(boolean activator) {
+        jPanelBorrarProducto.setVisible(activator);
+    }
+    
+    public void activateProductEditMenu(boolean activator) {
+        jPanelEditarProducto.setVisible(activator);
+    }
+    
+    //// PESTAÑA PROVEEDORES ///////
+    public void activateSupplierCreationMenu(boolean activator) {
+        jPanelAgregarProveedor.setVisible(activator);
+    }
+    
+    public void activateSupplierDeleteMenu(boolean activator) {
+        jPanelBorrarProveedor.setVisible(activator);
+    }
+    
+    public void activateSupplierEditMenu(boolean activator) {
+        jPanelEditarProveedor.setVisible(activator);
+    }
+    
+    /// PESTAÑA CLIENTES ////
+     public void activateClientCreationMenu(boolean activator) {
+        jPanelAgregarClientes.setVisible(activator);
+    }
+    
+    public void activateClientDeleteMenu(boolean activator) {
+        jPanelBorrarClientes.setVisible(activator);
+    }
+    
+    public void activateClientEditMenu(boolean activator) {
+        jPanelEditarClientes.setVisible(activator);
+    }
+    
+    ///// PESTAÑA EMPLEADO //////
+     public void activateSellerCreationMenu(boolean activator) {
+        jPanelAgregarEmpleado.setVisible(activator);
+    }
+    
+    public void activateSellerDeleteMenu(boolean activator) {
+        jPanelBorrarEmpleado.setVisible(activator);
+    }
+    
+    public void activateSellerEditMenu(boolean activator) {
+        jPanelEditarEmpleado.setVisible(activator);
+    }
+    
     /**
      * Retorna el contenido del JText en productos
      * @return 
@@ -231,6 +292,8 @@ public class ViewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanelBarraSuperior = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         jPanelBarraLateral = new javax.swing.JPanel();
         jLabelLogoBarra = new javax.swing.JLabel();
         jPanelProductos = new javax.swing.JPanel();
@@ -386,13 +449,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanelBorrarEmpleado = new javax.swing.JPanel();
         jTextFieldIdABorrarEmpleado = new javax.swing.JTextField();
-        btnBorrarEmpleado = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanelEditarEmpleado = new javax.swing.JPanel();
         jPanelIdAEditarEmpleado = new javax.swing.JPanel();
         jTextFieldIdAEditarEmpleado = new javax.swing.JTextField();
         jPanelNombreNuevoEmpleado = new javax.swing.JPanel();
         jTextFieldNombreNuevoEmpleado = new javax.swing.JTextField();
-        btnEditarEmpleado = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPaneHistoricoVentas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -402,6 +465,16 @@ public class ViewJFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 204));
         setForeground(java.awt.Color.gray);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanelBarraSuperior.setBackground(new java.awt.Color(40, 70, 85));
+        jPanelBarraSuperior.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setBackground(new java.awt.Color(187, 187, 187));
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        jLabel1.setText("G E S T I O N   D E   L A   E M P R E S A");
+        jPanelBarraSuperior.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, 20));
+
+        getContentPane().add(jPanelBarraSuperior, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, 620, 20));
 
         jPanelBarraLateral.setBackground(new java.awt.Color(40, 70, 85));
         jPanelBarraLateral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1311,7 +1384,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnContratar.setText("Contratar Proveedor");
         jPanelAgregarProveedor.add(btnContratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 160, 30));
 
-        jPaneProveedoresTabbed.add(jPanelAgregarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 190, 170));
+        jPaneProveedoresTabbed.add(jPanelAgregarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 190, 220));
 
         jPanelBorrarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1680,8 +1753,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelBorrarEmpleado.add(jTextFieldIdABorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
 
-        btnBorrarEmpleado.setText("Borrar Empleado");
-        jPanelBorrarEmpleado.add(btnBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jButton2.setText("Borrar Empleado");
+        jPanelBorrarEmpleado.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jPaneEmpleadosTabbed.add(jPanelBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 234, 143, 100));
 
@@ -1736,8 +1809,8 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarEmpleado.add(jPanelNombreNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        btnEditarEmpleado.setText("Editar Empleado");
-        jPanelEditarEmpleado.add(btnEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 40));
+        jButton3.setText("Editar Empleado");
+        jPanelEditarEmpleado.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 40));
 
         jPaneEmpleadosTabbed.add(jPanelEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 210));
 
@@ -1775,6 +1848,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPanelMateriaPrimaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelMateriaPrimaMouseClicked
+        activateRawMaterialPurchaseMenu(false);
+        activateRawMaterialEditMenu(false);
+        activateRawMaterialDeleteMenu(false);
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMateriaPrimaMouseClicked
 
@@ -2033,7 +2109,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnAgregarProveedores;
     private javax.swing.JButton btnBorrarCliente;
-    private javax.swing.JButton btnBorrarEmpleado;
     private javax.swing.JButton btnBorrarProveedor;
     private javax.swing.JButton btnBorrrarProducto;
     private javax.swing.JButton btnComprar;
@@ -2042,7 +2117,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnDevolverProducto;
     private javax.swing.JButton btnEditarCliente;
-    private javax.swing.JButton btnEditarEmpleado;
     private javax.swing.JButton btnEditarProducto;
     private javax.swing.JButton btnEditarProveedor;
     private javax.swing.JButton btnEliminarClientes;
@@ -2053,6 +2127,8 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnHistoricoDeVentas;
     private javax.swing.JButton btnProduction;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButtonBorrarMP;
     private javax.swing.JButton jButtonComprarMP;
     private javax.swing.JButton jButtonEditarMP;
@@ -2062,6 +2138,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBoxElegirProveedor;
     private javax.swing.JComboBox<String> jComboBoxElegirVendedor;
     private javax.swing.JComboBox<String> jComboBoxProductos;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -2097,6 +2174,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelAgregarProducto;
     private javax.swing.JPanel jPanelAgregarProveedor;
     private javax.swing.JPanel jPanelBarraLateral;
+    private javax.swing.JPanel jPanelBarraSuperior;
     private javax.swing.JPanel jPanelBorrarClientes;
     private javax.swing.JPanel jPanelBorrarEmpleado;
     private javax.swing.JPanel jPanelBorrarMP;
