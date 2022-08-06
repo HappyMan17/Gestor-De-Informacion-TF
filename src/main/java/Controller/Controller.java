@@ -32,22 +32,25 @@ public class Controller {
     private ArrayList<RawMaterial> rawMaterials = new ArrayList<>();
 
     //Methods
+    public Controller(ViewJFrame view){
+    /*
     public Controller(ViewJFrame view, ClientDAO clientDAO, ProductDAO productDAO, 
             ProductPackageDAO productPackageDAO, ProductionDAO productionDAO, 
             ProductionDetailsDAO productionDetailsDAO, RawMaterialDAO rawMaterialDAO, 
             SalesDetailsDAO salesDetailsDAO, SellerDAO sellerDAO, 
             SupplierDAO supplierDAO) {
+    */
         
         this.view = view;
         this.clientDAO = clientDAO;
-        this.productDAO = productDAO;
-        this.productPackageDAO = productPackageDAO;
-        this.productionDAO = productionDAO;
-        this.productionDetailsDAO = productionDetailsDAO;
-        this.rawMaterialDAO = rawMaterialDAO;
-        this.salesDetailsDAO = salesDetailsDAO;
-        this.sellerDAO = sellerDAO;
-        this.supplierDAO = supplierDAO;
+        this.productDAO = new ProductDAO();
+        this.productPackageDAO = new ProductPackageDAO(productDAO);
+        this.productionDAO = new ProductionDAO();
+        this.productionDetailsDAO = new ProductionDetailsDAO();
+        this.rawMaterialDAO = new RawMaterialDAO();
+        this.salesDetailsDAO = new SalesDetailsDAO();
+        this.sellerDAO = new SellerDAO();
+        this.supplierDAO = new SupplierDAO();
         
         createSuppliers();
         
@@ -64,24 +67,45 @@ public class Controller {
         ArrayList<RawMaterial> rMSupplierTwo = new ArrayList<>();
         ArrayList<RawMaterial> rMSupplierThree = new ArrayList<>();
         
-        RawMaterial papa = new RawMaterial("Papa", 800.0, 1, 1, 001, 100);
-        RawMaterial arroz = new RawMaterial("Arroz", 1500.0, 2, 2, 001, 100);
+        Supplier supOne = new Supplier("La miseria SAS", 10001, 001, 1);
+        Supplier supTwo = new Supplier("Enrico SAS", 10011, 002, 2);
+        Supplier supThree = new Supplier("Quesitos LTDA", 10010, 003, 3);
+        
+        int supOneCode = supOne.getSupplierCode();
+        int supTwoCode = supTwo.getSupplierCode();
+        int supThreeCode = supThree.getSupplierCode();
+        
+        int supOneId = supOne.getDbId();
+        int supTwoId = supTwo.getDbId();
+        int supThreeId = supThree.getDbId();
+        
+        
+        RawMaterial papa = new RawMaterial("Papa", 800.0, 1, 1, supOneCode, 100);
+        papa.setSupplierId(supOneId);
+        RawMaterial arroz = new RawMaterial("Arroz", 1500.0, 2, 2, supOneCode, 100);
+        arroz.setSupplierId(supOneId);
+        
         rMSupplierOne.add(papa);
         rMSupplierOne.add(arroz);
-        RawMaterial carne = new RawMaterial("Carne", 12500.0, 3, 3, 002, 100);
-        RawMaterial pollo = new RawMaterial("Pollo", 9600.0, 4, 4, 002, 100);
+        
+        RawMaterial carne = new RawMaterial("Carne", 12500.0, 3, 3, supTwoCode, 100);
+        carne.setSupplierId(supTwoId);
+        RawMaterial pollo = new RawMaterial("Pollo", 9600.0, 4, 4, supTwoCode, 100);
+        pollo.setSupplierId(supTwoId);
+        
         rMSupplierTwo.add(carne);
         rMSupplierTwo.add(pollo);
-        RawMaterial huevo = new RawMaterial("Huevo", 600.0, 5, 5, 003, 100);
-        RawMaterial harina = new RawMaterial("Harina", 1800.0, 6, 6, 003, 100);
+        
+        RawMaterial huevo = new RawMaterial("Huevo", 600.0, 5, 5, supThreeCode, 100);
+        huevo.setSupplierId(supThreeId);
+        RawMaterial harina = new RawMaterial("Harina", 1800.0, 6, 6, supThreeCode, 100);
+        harina.setSupplierId(supThreeId);
+        
         rMSupplierThree.add(huevo);
         rMSupplierThree.add(harina);
         
-        Supplier supOne = new Supplier("La miseria SAS", 10001, 001, 1);
         supOne.setRawMaterial(rMSupplierOne);
-        Supplier supTwo = new Supplier("Enrico SAS", 10011, 002, 2);
         supTwo.setRawMaterial(rMSupplierTwo);
-        Supplier supThree = new Supplier("Quesitos LTDA", 10010, 003, 3);
         supThree.setRawMaterial(rMSupplierThree);
 
         suppliers.add(supOne);

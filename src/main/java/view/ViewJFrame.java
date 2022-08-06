@@ -157,7 +157,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addToRMTable(ArrayList<RawMaterial> raw){
         removeRowsTable(jTableMateriaP, modelo);
         for(RawMaterial rawM : raw){
-            Object[] fila = {rawM.getDbId(), rawM.getName(), rawM.getAmount()};
+            Object[] fila = {rawM.getDbId(), rawM.getName(), rawM.getAmount(), rawM.getUnitPrice()};
             modelo.addRow(fila);
         }
     }
@@ -780,6 +780,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("CANTIDAD");
+        modelo.addColumn("PRECIO/U");
         jTableMateriaP.setModel(modelo);
         jScrollPane1.setViewportView(jTable1);
         jTableMateriaP.getAccessibleContext().setAccessibleName("");

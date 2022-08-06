@@ -973,7 +973,7 @@
                 <Component class="javax.swing.JTable" name="jTableMateriaP">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="modelo.addColumn(&quot;ID&quot;);&#xa;    modelo.addColumn(&quot;Nombre&quot;);&#xa;    modelo.addColumn(&quot;CANTIDAD&quot;);&#xa;    jTableMateriaP.setModel(modelo);&#xa;jScrollPane1.setViewportView(jTable1);">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="modelo.addColumn(&quot;ID&quot;);&#xa;    modelo.addColumn(&quot;Nombre&quot;);&#xa;    modelo.addColumn(&quot;CANTIDAD&quot;);&#xa;    modelo.addColumn(&quot;PRECIO/U&quot;);&#xa;    jTableMateriaP.setModel(modelo);&#xa;jScrollPane1.setViewportView(jTable1);">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>

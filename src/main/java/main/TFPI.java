@@ -33,9 +33,11 @@ public class TFPI {
         //View and controller
         ViewJFrame view = new ViewJFrame();
         view.setVisible(true);
+        Controller controller = new Controller(view);
+        /*
         Controller controller = new Controller(view, clientDAO, productDAO, 
             productPackageDAO, productionDAO, productionDetailsDAO, 
                 rawMaterialDAO, salesDetailsDAO, sellerDAO, supplierDAO);
-        
+        */
     }
 }
