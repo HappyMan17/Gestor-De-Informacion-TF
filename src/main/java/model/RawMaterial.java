@@ -8,7 +8,7 @@ package model;
  *
  * @author happy
  */
-public class RawMaterial {
+public class RawMaterial implements Cloneable{
     //Attribute
     private String name;
     private int code, supplierCode, amount, dbId;
@@ -17,10 +17,11 @@ public class RawMaterial {
     //Methods
     public RawMaterial(){}
     
-    public RawMaterial(String name, Double unitPrice, int code, int supplierCode, 
+    public RawMaterial(String name, Double unitPrice, int dbId, int code, int supplierCode, 
         int amount){
         this.name = name;
         this.unitPrice = unitPrice;
+        this.dbId = dbId;
         this.code = code;
         this.supplierCode = supplierCode;
         this.amount = amount;
@@ -78,4 +79,13 @@ public class RawMaterial {
         this.dbId = dbId;
     }
     
+    public Object clone() {
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException ex) {
+            System.out.println(" no se puede duplicar");
+        }
+        return obj;
+    }
 }

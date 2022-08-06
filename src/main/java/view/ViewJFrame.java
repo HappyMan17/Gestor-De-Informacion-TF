@@ -6,6 +6,10 @@ package view;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import model.RawMaterial;
 
 /**
  *
@@ -13,6 +17,7 @@ import java.awt.event.ActionListener;
  */
 public class ViewJFrame extends javax.swing.JFrame {
 
+    private DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form ViewJFrame
      */
@@ -95,6 +100,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         jComboBoxElegirMP.removeAllItems();
     }
     
+    public void clearJtxt(){
+        jTextFieldCantidadMP.setText("");
+        jTextFieldIdABorrarMP.setText("");
+        jTextFieldIdAEditarMP.setText("");
+        jTextFieldNombreNuevoMP.setText("");
+    }
+    
     public String getFromComboBoxRawMaterial(){
         Object content;
         content = jComboBoxElegirMP.getSelectedItem();
@@ -102,11 +114,64 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
     
     public int getRawMaterialAmount(){
-        int cantidad;
-        cantidad = Integer.parseInt(jTextFieldCantidadMP.getText());
+        int cantidad = 0;
+        try{
+            cantidad = Integer.parseInt(jTextFieldCantidadMP.getText());
+        }catch(NumberFormatException x){
+            System.out.println("Error No Lee");
+        }
+        
         return cantidad;
     }
-
+    
+    public int getUpdateSectionId(){
+        String txt;
+        int content = 0;
+        try{
+            txt = jTextFieldIdAEditarMP.getText();
+            content = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            System.out.println("no es un número");
+        }
+        return  content;
+    }
+    
+    public String getUpdateSectionName(){
+        String txt = jTextFieldNombreNuevoMP.getText();
+        return  txt;
+        
+    }
+    
+    public int getRawMaterialId(){
+        String jTxt = jTextFieldIdABorrarMP.getText();
+        int id = 0;
+        try{
+            id = Integer.parseInt(jTxt);
+        }catch(NumberFormatException x){
+            System.out.println("Error No Lee");
+        }
+        
+        return id;
+    }
+    //----------------------------------Tablas
+    public void addToRMTable(ArrayList<RawMaterial> raw){
+        removeRowsTable(jTableMateriaP, modelo);
+        for(RawMaterial rawM : raw){
+            Object[] fila = {rawM.getDbId(), rawM.getName(), rawM.getAmount()};
+            modelo.addRow(fila);
+        }
+    }
+    
+    /**
+     * Elimina las filas de la tabla.
+     */
+    public void removeRowsTable(JTable table, DefaultTableModel model){
+        int filas = table.getRowCount();
+        for(int fila = 0; fila < filas; fila++){
+            model.removeRow(0);
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -681,6 +746,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEliminarMp.setContentAreaFilled(false);
         btnEliminarMp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarMp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarMp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMpMouseClicked(evt);
+            }
+        });
         barraBotonesMP.add(btnEliminarMp, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnActualizarMp.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -690,6 +760,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarMp.setContentAreaFilled(false);
         btnActualizarMp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarMp.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarMp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarMpMouseClicked(evt);
+            }
+        });
         barraBotonesMP.add(btnActualizarMp, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
         jPaneMateriaPrimaTabbed.add(barraBotonesMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
@@ -702,7 +777,12 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableMateriaP.getColumnModel().getColumn(2).setResizable(false);
             jTableMateriaP.getColumnModel().getColumn(3).setResizable(false);
         }
-        jTableMateriaP.getAccessibleContext().setAccessibleName("inventarioMateriaPrima");
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("CANTIDAD");
+        jTableMateriaP.setModel(modelo);
+        jScrollPane1.setViewportView(jTable1);
+        jTableMateriaP.getAccessibleContext().setAccessibleName("");
 
         jPaneMateriaPrimaTabbed.add(jScrollPaneMateriaPrima, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
@@ -1829,6 +1909,14 @@ public class ViewJFrame extends javax.swing.JFrame {
     private void btnAgregarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMpMouseClicked
         activateRawMaterialPurchaseMenu(true);
     }//GEN-LAST:event_btnAgregarMpMouseClicked
+
+    private void btnEliminarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMpMouseClicked
+        activateRawMaterialDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarMpMouseClicked
+
+    private void btnActualizarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMpMouseClicked
+        activateRawMaterialEditMenu(true);
+    }//GEN-LAST:event_btnActualizarMpMouseClicked
 
     /**
      * @param args the command line arguments

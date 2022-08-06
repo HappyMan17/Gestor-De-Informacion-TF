@@ -52,8 +52,11 @@ public class Controller {
         createSuppliers();
         
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
-        //this.view.addListenerJComboBoxChooseMP(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
+        this.view.addListenerBtnDeleteMP(new CalculateListener());
+        this.view.addListenerBtnEditMP(new CalculateListener());
+        
+        
     }
     
     public void createSuppliers(){
@@ -61,16 +64,16 @@ public class Controller {
         ArrayList<RawMaterial> rMSupplierTwo = new ArrayList<>();
         ArrayList<RawMaterial> rMSupplierThree = new ArrayList<>();
         
-        RawMaterial papa = new RawMaterial("Papa", 800.0, 1, 001, 100);
-        RawMaterial arroz = new RawMaterial("Arroz", 1500.0, 2, 001, 100);
+        RawMaterial papa = new RawMaterial("Papa", 800.0, 1, 1, 001, 100);
+        RawMaterial arroz = new RawMaterial("Arroz", 1500.0, 2, 2, 001, 100);
         rMSupplierOne.add(papa);
         rMSupplierOne.add(arroz);
-        RawMaterial carne = new RawMaterial("Carne", 12500.0, 3, 002, 100);
-        RawMaterial pollo = new RawMaterial("Pollo", 9600.0, 4, 002, 100);
+        RawMaterial carne = new RawMaterial("Carne", 12500.0, 3, 3, 002, 100);
+        RawMaterial pollo = new RawMaterial("Pollo", 9600.0, 4, 4, 002, 100);
         rMSupplierTwo.add(carne);
         rMSupplierTwo.add(pollo);
-        RawMaterial huevo = new RawMaterial("Huevo", 600.0, 5, 003, 100);
-        RawMaterial harina = new RawMaterial("Harina", 1800.0, 6, 003, 100);
+        RawMaterial huevo = new RawMaterial("Huevo", 600.0, 5, 5, 003, 100);
+        RawMaterial harina = new RawMaterial("Harina", 1800.0, 6, 6, 003, 100);
         rMSupplierThree.add(huevo);
         rMSupplierThree.add(harina);
         
@@ -89,9 +92,22 @@ public class Controller {
     }
     
     public void addToComboboxSupplier(){
+        view.addToComboBoxSupplier("Seleccione un proveedor");
         for( Supplier supli : suppliers ){
             view.addToComboBoxSupplier(supli.getSupplierName());
         }
+    }
+    
+    public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat){
+        for( RawMaterial raw : rawMaterials ){
+            if( rmName == raw.getName() ){
+                raw.modifyAmount(amount);
+                rawMat.modifyAmount(-amount);
+                view.clearJtxt();
+                return true;
+            }
+        }
+        return false;
     }
     
     class CalculateListener implements ActionListener {
@@ -161,9 +177,8 @@ public class Controller {
             
             //ComboBoxes:
             if (e.getActionCommand().equalsIgnoreCase("comboBoxChanged")){
-                    view.clearRMComboBox();
+                view.clearRMComboBox();
                 try{
-                    System.out.println(suppliers.get(0).getRawMaterial());
                     String supName = view.getFromComboBoxSupplier();
                     
                     for( Supplier sup : suppliers ){
@@ -180,7 +195,8 @@ public class Controller {
                     System.out.println(x.getMessage());
                 }
             }
-            //JText
+            
+            //Buy MP
             if (e.getActionCommand().equalsIgnoreCase("Comprar MP")){
                 try{
                     String rwName = view.getFromComboBoxRawMaterial();
@@ -192,18 +208,68 @@ public class Controller {
                         if(sup.getSupplierName().equals(supName)){
                             for( RawMaterial raw : sup.getRawMaterial() ){
                                 if( raw.getName().equals(rwName) ){
-                                    if( raw.getAmount() > JtxtContenido ){
-                                        System.out.println(raw.getName()+" Size:"+
-                                            rawMaterials.size());
-                                        rawMaterials.add(raw);
+                                    if( raw.getAmount() >= JtxtContenido ){
+                                        if( !confirmExistence(rwName, JtxtContenido, raw) ){
+                                            RawMaterial ourRaw = (RawMaterial) raw.clone();
+
+                                            raw.modifyAmount(-JtxtContenido);
+                                            ourRaw.setAmount(JtxtContenido);
+
+                                            rawMaterials.add(ourRaw);
+                                            view.clearJtxt();
+                                        }
                                     }else {
                                         JOptionPane.showMessageDialog(null, 
                                             "El proveedor no cuenta con esa cantidad actualmente");
                                     }
                                 }
                             }
+                            view.addToRMTable(rawMaterials);
                             break;
                         }
+                    }
+                }catch(NumberFormatException x){
+                    System.out.println("Error No Lee");
+                }
+            }
+
+            //Delete MP
+            if (e.getActionCommand().equalsIgnoreCase("Borrar MP")){
+                try{
+                   
+                    int JtxtDeleteRM = view.getRawMaterialId();
+                    
+                    for( RawMaterial raw : rawMaterials ){
+
+                        if(raw.getDbId() == JtxtDeleteRM){
+                            rawMaterials.remove(raw);
+                            view.addToRMTable(rawMaterials);
+                            view.clearJtxt();
+                            break;
+                        }
+
+                    }
+                }catch(NumberFormatException x){
+                    System.out.println("Error No Lee");
+                }
+            }
+            
+            //Update MP
+            if (e.getActionCommand().equalsIgnoreCase("Editar MP")){
+                try{
+                   
+                    int rMId = view.getUpdateSectionId();
+                    String newName = view.getUpdateSectionName();
+                    
+                    for( RawMaterial raw : rawMaterials ){
+
+                        if(raw.getDbId() == rMId){
+                            raw.setName(newName);
+                            view.addToRMTable(rawMaterials);
+                            view.clearJtxt();
+                            break;
+                        }
+
                     }
                 }catch(NumberFormatException x){
                     System.out.println("Error No Lee");
