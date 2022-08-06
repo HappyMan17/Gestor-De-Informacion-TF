@@ -91,13 +91,15 @@ public class SupplierDAO {
             String supplierName = supplier.getSupplierName();
             int supplierNit = supplier.getSupplierNit();
             int supplierCode = supplier.getSupplierCode();
+            int supplierId = supplier.getDbId();
 
-            sql = "INSERT INTO application.supplier (nit, name, code) values (?,?,?)";
+            sql = "INSERT INTO application.supplier (supplier_id, nit, name, code) values (?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, supplierNit);
-            pstm.setString(2, supplierName);
-            pstm.setInt(3, supplierCode);
+            pstm.setInt(1, supplierId);
+            pstm.setInt(2, supplierNit);
+            pstm.setString(3, supplierName);
+            pstm.setInt(4, supplierCode);
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);

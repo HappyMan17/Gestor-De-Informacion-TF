@@ -110,15 +110,21 @@ public class Controller {
     
     public void addToComboboxSupplier(){
         view.addToComboBoxSupplier("Seleccione un proveedor");
-        for( Supplier supli : suppliers ){
-            view.addToComboBoxSupplier(supli.getSupplierName());
+        for( Supplier suppli : suppliers ){
+            view.addToComboBoxSupplier(suppli.getSupplierName());
+            //DataBase
+            //supplierDAO.setSupplier(suppli);
         }
     }
     
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat){
         for( RawMaterial raw : rawMaterials ){
             if( rmName == raw.getName() ){
+                //Local:
                 raw.modifyAmount(amount);
+                //DataBase
+                //rawMaterialDAO.updateRawMaterial(raw);
+                //Supplier:
                 rawMat.modifyAmount(-amount);
                 view.clearJtxt();
                 return true;
@@ -233,6 +239,8 @@ public class Controller {
                                             ourRaw.setAmount(JtxtContenido);
 
                                             rawMaterials.add(ourRaw);
+                                            //DataBase:
+                                            //rawMaterialDAO.setRawMaterial(ourRaw);
                                             view.clearJtxt();
                                         }
                                     }else {
@@ -260,6 +268,8 @@ public class Controller {
 
                         if(raw.getDbId() == JtxtDeleteRM){
                             rawMaterials.remove(raw);
+                            //DataBase
+                            //rawMaterialDAO.deleteRawMaterial(raw);
                             view.addToRMTable(rawMaterials);
                             view.clearJtxt();
                             break;
@@ -282,6 +292,8 @@ public class Controller {
 
                         if(raw.getDbId() == rMId){
                             raw.setName(newName);
+                            //DataBase
+                            //rawMaterialDAO.updateRawMaterial(raw);
                             view.addToRMTable(rawMaterials);
                             view.clearJtxt();
                             break;

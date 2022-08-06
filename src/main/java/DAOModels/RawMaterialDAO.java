@@ -95,15 +95,17 @@ public class RawMaterialDAO {
             int rawMaterialAmount = rawMaterial.getAmount();
             int rawMaterialSupplierId = rawMaterial.getSupplierId();
             int rawMaterialCode = rawMaterial.getCode();
+            int rawMaterialId = rawMaterial.getDbId();
 
-            sql = "INSERT INTO application.rm_inventory (name, price, amount, supplier_id, code) values (?,?,?,?,?)";
+            sql = "INSERT INTO application.rm_inventory (raw_material_id, name, price, amount, supplier_id, code) values (?,?,?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, rawMaterialName);
-            pstm.setDouble(2, rawMaterialPrice);
-            pstm.setInt(3, rawMaterialAmount);
-            pstm.setInt(4, rawMaterialSupplierId);
-            pstm.setInt(5, rawMaterialCode);
+            pstm.setInt(1, rawMaterialId);
+            pstm.setString(2, rawMaterialName);
+            pstm.setDouble(3, rawMaterialPrice);
+            pstm.setInt(4, rawMaterialAmount);
+            pstm.setInt(5, rawMaterialSupplierId);
+            pstm.setInt(6, rawMaterialCode);
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);

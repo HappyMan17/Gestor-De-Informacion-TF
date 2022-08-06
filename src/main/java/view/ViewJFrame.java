@@ -838,6 +838,12 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelCantidad.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige la Cantidad", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
+        jTextFieldCantidadMP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldCantidadMPMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelCantidadLayout = new javax.swing.GroupLayout(jPanelCantidad);
         jPanelCantidad.setLayout(jPanelCantidadLayout);
         jPanelCantidadLayout.setHorizontalGroup(
@@ -1909,6 +1915,7 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private void btnAgregarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMpMouseClicked
         activateRawMaterialPurchaseMenu(true);
+        jTextFieldCantidadMP.requestFocusInWindow();
     }//GEN-LAST:event_btnAgregarMpMouseClicked
 
     private void btnEliminarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMpMouseClicked
@@ -1918,6 +1925,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     private void btnActualizarMpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarMpMouseClicked
         activateRawMaterialEditMenu(true);
     }//GEN-LAST:event_btnActualizarMpMouseClicked
+
+    private void jTextFieldCantidadMPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldCantidadMPMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCantidadMPMouseClicked
 
     /**
      * @param args the command line arguments
