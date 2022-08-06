@@ -1546,13 +1546,8 @@
                   <SubComponents>
                     <Component class="javax.swing.JComboBox" name="jComboBoxProductos">
                       <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Papa Rellena"/>
-                            <StringItem index="1" value="Empanada"/>
-                            <StringItem index="2" value="Tuki"/>
-                            <StringItem index="3" value="Tukin&apos;t"/>
-                          </StringArray>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Papa Rellena&quot;, &quot;Empanada&quot;, &quot;Pastel de Pollo&quot; })" type="code"/>
                         </Property>
                       </Properties>
                       <AuxValues>
@@ -1599,6 +1594,19 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="btnProduction">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Producci&#xf3;n"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnProductionActionPerformed"/>
+                  </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="40" y="130" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanelBorrarProducto">

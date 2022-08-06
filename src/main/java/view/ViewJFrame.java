@@ -18,6 +18,7 @@ import model.RawMaterial;
 public class ViewJFrame extends javax.swing.JFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    private int comboBoxNumber;
     /**
      * Creates new form ViewJFrame
      */
@@ -46,7 +47,12 @@ public class ViewJFrame extends javax.swing.JFrame {
         jButtonEditarMP.addActionListener(listenController);
     }
     
+    public void addListenerBtnProduction(ActionListener listenController) {
+        btnProduction.addActionListener(listenController);
+    }
+    
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController){
+        comboBoxNumber = 1;
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
     
@@ -95,11 +101,25 @@ public class ViewJFrame extends javax.swing.JFrame {
         content = jComboBoxElegirProveedor.getSelectedItem();
         return content.toString();
     }
+    
+    /**
+     * Retorna el número correspondiente al ComboBox
+     * @return 
+     */
+    public int comboBoxNumber(){
+        return comboBoxNumber;
+    }
 
+    /**
+     * Limpia los comboBox de MP
+     */
     public void clearRMComboBox(){
         jComboBoxElegirMP.removeAllItems();
     }
     
+    /**
+     * Limpia los JText utilizados en MP
+     */
     public void clearJtxt(){
         jTextFieldCantidadMP.setText("");
         jTextFieldIdABorrarMP.setText("");
@@ -107,12 +127,20 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreNuevoMP.setText("");
     }
     
+    /**
+     * Retorna el contenido del jComboBoxElegirMP
+     * @return 
+     */
     public String getFromComboBoxRawMaterial(){
         Object content;
         content = jComboBoxElegirMP.getSelectedItem();
         return content.toString();
     }
     
+    /**
+     * Retorna el contenido del jTextFieldCantidadMP
+     * @return 
+     */
     public int getRawMaterialAmount(){
         int cantidad = 0;
         try{
@@ -124,6 +152,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         return cantidad;
     }
     
+    /**
+     * Retorna el contenido del JText en productos Update Id
+     * @return 
+     */
     public int getUpdateSectionId(){
         String txt;
         int content = 0;
@@ -136,12 +168,29 @@ public class ViewJFrame extends javax.swing.JFrame {
         return  content;
     }
     
+    /**
+     * Retorna el contenido del JText en MP Update Name
+     * @return 
+     */
     public String getUpdateSectionName(){
         String txt = jTextFieldNombreNuevoMP.getText();
         return  txt;
         
     }
     
+    /**
+     * Retorna el contenido del JText en productos
+     * @return 
+     */
+    public String getFromProductAmount(){
+        String txt = jTextFieldCantidadProducto.getText();
+        return txt;
+    }
+    
+    /**
+     * Retorna el contenido del jTextFieldIdABorrarMP
+     * @return 
+     */
     public int getRawMaterialId(){
         String jTxt = jTextFieldIdABorrarMP.getText();
         int id = 0;
@@ -265,6 +314,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jComboBoxProductos = new javax.swing.JComboBox<>();
         jPanelCantidadProducto = new javax.swing.JPanel();
         jTextFieldCantidadProducto = new javax.swing.JTextField();
+        btnProduction = new javax.swing.JButton();
         jPanelBorrarProducto = new javax.swing.JPanel();
         jTextFieldIdABorrarProducto = new javax.swing.JTextField();
         jPanelEditarProducto = new javax.swing.JPanel();
@@ -996,7 +1046,7 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEligeProducto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Elige el Producto", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        jComboBoxProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papa Rellena", "Empanada", "Tuki", "Tukin't" }));
+        jComboBoxProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Papa Rellena", "Empanada", "Pastel de Pollo" }));
 
         javax.swing.GroupLayout jPanelEligeProductoLayout = new javax.swing.GroupLayout(jPanelEligeProducto);
         jPanelEligeProducto.setLayout(jPanelEligeProductoLayout);
@@ -1035,6 +1085,14 @@ public class ViewJFrame extends javax.swing.JFrame {
         );
 
         jPanelAgregarProducto.add(jPanelCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, 50));
+
+        btnProduction.setText("Producción");
+        btnProduction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductionActionPerformed(evt);
+            }
+        });
+        jPanelAgregarProducto.add(btnProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
 
         jPanelBorrarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1930,6 +1988,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCantidadMPMouseClicked
 
+    private void btnProductionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -2002,6 +2064,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnEliminarProveedores;
     private javax.swing.JButton btnHistoricoDeVentas;
+    private javax.swing.JButton btnProduction;
     private javax.swing.JButton jButtonBorrarMP;
     private javax.swing.JButton jButtonComprarMP;
     private javax.swing.JButton jButtonEditarMP;

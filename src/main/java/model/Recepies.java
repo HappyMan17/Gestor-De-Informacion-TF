@@ -30,19 +30,19 @@ public class Recepies {
     }
     
     //Methods
-    public boolean createPapaRellena(){
+    public boolean createPapaRellena(int productAmount){
         
         for( RawMaterial ingredient : ingredients ){
-            if( "papa".equals(ingredient.getName()) ){
+            if( "papa".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 papa = true;
             }
-            if( "carne".equals(ingredient.getName()) ){
+            if( "carne".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 carne = true;
             }
-            if( "arroz".equals(ingredient.getName()) ){
+            if( "arroz".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 arroz = true;
             }
-            if( "huevo".equals(ingredient.getName()) || ingredient.getAmount() == 2 ){
+            if( "huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount*2 ){
                 huevo = true;
             }
         }
@@ -50,19 +50,19 @@ public class Recepies {
         return papa && carne && arroz && huevo;
     }
     
-    public boolean createEmpanada(){
+    public boolean createEmpanada(int productAmount){
         
         for( RawMaterial ingredient : ingredients ){
-            if( "papa".equals(ingredient.getName()) ){
+            if( "papa".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 papa = true;
             }
-            if( "carne".equals(ingredient.getName()) ){
+            if( "carne".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 carne = true;
             }
-            if( "harina".equals(ingredient.getName()) ){
+            if( "harina".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 harina = true;
             }
-            if( "huevo".equals(ingredient.getName()) ){
+            if( "huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 huevo = true;
             }
         }
@@ -70,13 +70,13 @@ public class Recepies {
         return papa && carne && harina && huevo;
     }
     
-    public boolean createPastelDePollo(){
+    public boolean createPastelDePollo(int productAmount){
         
         for( RawMaterial ingredient : ingredients ){
-            if( "pollo".equals(ingredient.getName()) ){
+            if( "pollo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 pollo = true;
             }
-            if( "harina".equals(ingredient.getName()) ){
+            if( "harina".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount){
                 harina = true;
             }
         }

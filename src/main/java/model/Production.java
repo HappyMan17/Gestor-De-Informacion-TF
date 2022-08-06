@@ -5,6 +5,7 @@
 package model;
 
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -38,26 +39,29 @@ public class Production extends Recepies{
         this.newProduct = newProduct;
     }
     
-    public void createNewProduct(int productNumber){
-        switch (productNumber){
-            case 0:
-                if (createPapaRellena()){
-                    newProduct = new Product( 1, 2000.0, "papaRellena" );
+    public void createNewProduct(String productName, int productAmount){
+        switch (productName){
+            case "Papa Rellena":
+                if (createPapaRellena(productAmount)){
+                    newProduct = new Product( productAmount, 2000.0, "papaRellena" );
                     resetIngredients();
                     setDate();
                 }
-            case 1:
-                if (createEmpanada()){
-                    newProduct = new Product( 1, 1500.0, "empanada" );
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
+            case "Empanada":
+                if (createEmpanada(productAmount)){
+                    newProduct = new Product( productAmount, 1500.0, "empanada" );
                     resetIngredients();
                     setDate();
                 }
-            case 2:
-                if (createPastelDePollo()){
-                    newProduct = new Product( 1, 3000.0, "pastelDePollo" );
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
+            case "Pastel de pollo":
+                if (createPastelDePollo(productAmount)){
+                    newProduct = new Product( productAmount, 3000.0, "pastelDePollo" );
                     resetIngredients();
                     setDate();
                 }
+                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes necesarios");
         }
     }
 

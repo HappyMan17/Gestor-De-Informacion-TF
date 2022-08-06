@@ -51,7 +51,7 @@ public class Controller {
         this.view.addListenerBtnBuyMP(new CalculateListener());
         this.view.addListenerBtnDeleteMP(new CalculateListener());
         this.view.addListenerBtnEditMP(new CalculateListener());
-        
+        this.view.addListenerBtnProduction(new CalculateListener());
         
     }
     
@@ -199,7 +199,7 @@ public class Controller {
             }
             
             //ComboBoxes:
-            if (e.getActionCommand().equalsIgnoreCase("comboBoxChanged")){
+            if (e.getActionCommand().equalsIgnoreCase("comboBoxChanged") && view.comboBoxNumber() == 1){ //Agregar un int a cada cbox || number == 2)
                 view.clearRMComboBox();
                 try{
                     String supName = view.getFromComboBoxSupplier();
@@ -220,7 +220,7 @@ public class Controller {
             }
             
             //Buy MP
-            if (e.getActionCommand().equalsIgnoreCase("Comprar MP")){
+            if (e.getActionCommand().equalsIgnoreCase("Comprar MP") ){
                 try{
                     String rwName = view.getFromComboBoxRawMaterial();
                     String supName = view.getFromComboBoxSupplier();
@@ -303,6 +303,11 @@ public class Controller {
                 }catch(NumberFormatException x){
                     System.out.println("Error No Lee");
                 }
+            }
+            
+            //Create Product
+            if (e.getActionCommand().equalsIgnoreCase("Producción")){
+                
             }
         }
     }
