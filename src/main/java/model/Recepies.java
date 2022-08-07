@@ -49,20 +49,12 @@ public class Recepies {
                 arroz = true;
                 ingredientsConfirmation.add(ingredient);
             }
-            if( "Huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount*2 ){
+            if( "Huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount ){
                 huevo = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if (papa && carne && arroz && huevo){
-                ingredientsConfirmation.get(0).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(0));
-                ingredientsConfirmation.get(1).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(1));
-                ingredientsConfirmation.get(2).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(2));
-                ingredientsConfirmation.get(3).modifyAmount(-productAmount*2);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(3));
-                ingredientsUsed = ingredientsConfirmation;
+                updateAmounts(ingredientsConfirmation, productAmount);
             }
             
         }
@@ -92,15 +84,7 @@ public class Recepies {
                 ingredientsConfirmation.add(ingredient);
             }
             if (papa && carne && harina && huevo){
-                ingredientsConfirmation.get(0).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(0));
-                ingredientsConfirmation.get(1).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(1));
-                ingredientsConfirmation.get(2).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(2));
-                ingredientsConfirmation.get(3).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(3));
-                ingredientsUsed = ingredientsConfirmation;
+                updateAmounts(ingredientsConfirmation, productAmount);
             }
         }
 
@@ -122,15 +106,25 @@ public class Recepies {
                 ingredientsConfirmation.add(ingredient);
             }
             if (pollo && harina){
-                ingredientsConfirmation.get(0).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(0));
-                ingredientsConfirmation.get(1).modifyAmount(-productAmount);
-                rawMaterialDAO.updateRawMaterial(ingredientsConfirmation.get(1));
-                ingredientsUsed = ingredientsConfirmation;
+                updateAmounts(ingredientsConfirmation, productAmount);
             }
         }
 
         return pollo && harina;
+    }
+    
+    public void updateAmounts(ArrayList<RawMaterial> ingridients, int productAmount){
+        ArrayList<RawMaterial> ingridientsFinal = new ArrayList<>();
+        ingridientsFinal.clear();
+        for( RawMaterial raw : ingridients ){
+            raw.modifyAmount(-productAmount);
+            
+            rawMaterialDAO.updateRawMaterial(raw);
+            RawMaterial ourRaw = (RawMaterial) raw.clone();
+            ourRaw.setAmount(productAmount);
+            ingridientsFinal.add(ourRaw);
+        }
+        ingredientsUsed = ingridientsFinal;
     }
     
     public void setIngredients(ArrayList<RawMaterial> ingredients){
