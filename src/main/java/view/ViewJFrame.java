@@ -7,8 +7,10 @@ package view;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Product;
 import model.RawMaterial;
 
 /**
@@ -18,6 +20,7 @@ import model.RawMaterial;
 public class ViewJFrame extends javax.swing.JFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
+    private DefaultTableModel modeloOne = new DefaultTableModel();
     private int comboBoxNumber;
     /**
      * Creates new form ViewJFrame
@@ -145,6 +148,12 @@ public class ViewJFrame extends javax.swing.JFrame {
         return content.toString();
     }
     
+    public String getFromComboBoxProduct(){
+        Object content;
+        content = jComboBoxProductos.getSelectedItem();
+        return content.toString();
+    }
+    
     /**
      * Retorna el contenido del jTextFieldCantidadMP
      * @return 
@@ -243,9 +252,15 @@ public class ViewJFrame extends javax.swing.JFrame {
      * Retorna el contenido del JText en productos
      * @return 
      */
-    public String getFromProductAmount(){
+    public int getFromProductAmount(){
         String txt = jTextFieldCantidadProducto.getText();
-        return txt;
+        int cantidad = 0;
+        try{
+            cantidad = Integer.parseInt(txt);
+        }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "ingrese un numero");
+        }
+        return cantidad;
     }
     
     /**
@@ -269,6 +284,15 @@ public class ViewJFrame extends javax.swing.JFrame {
         for(RawMaterial rawM : raw){
             Object[] fila = {rawM.getDbId(), rawM.getName(), rawM.getAmount(), rawM.getUnitPrice()};
             modelo.addRow(fila);
+        }
+    }
+    
+    public void addToProductTable(ArrayList<Product> products){
+        removeRowsTable(jTableProductos, modeloOne);
+        for(Product product : products){
+            Object[] fila = {product.getDatabaseId(), product.getName(), 
+                product.getAmount(), product.getPrice()};
+            modeloOne.addRow(fila);
         }
     }
     
@@ -1120,6 +1144,11 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableProductos.getColumnModel().getColumn(2).setResizable(false);
             jTableProductos.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloOne.addColumn("ID");
+        modeloOne.addColumn("Nombre");
+        modeloOne.addColumn("CANTIDAD");
+        modeloOne.addColumn("PRECIO/U");
+        jTableProductos.setModel(modeloOne);
 
         jPanelAgregarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Producto"));
         jPanelAgregarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1206,7 +1235,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             .addGroup(jPanelIdEditarProductoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTextFieldIdAEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(7, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanelEditarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 36, 172, 60));
@@ -1247,7 +1276,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(barraBotonesProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
                         .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1257,7 +1286,7 @@ public class ViewJFrame extends javax.swing.JFrame {
                         .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPaneProductosTabbedLayout.setVerticalGroup(
             jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

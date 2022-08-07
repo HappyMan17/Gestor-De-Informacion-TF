@@ -102,7 +102,7 @@ public class ProductDAO {
             pstm.setString(4, lotNumber);
 
             pstm.executeUpdate();
-
+            JOptionPane.showMessageDialog(null, "Product Row inserted: ");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());

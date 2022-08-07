@@ -158,7 +158,7 @@ public class RawMaterialDAO {
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Código : "
+            JOptionPane.showMessageDialog(null, "Código RM: "
                     + ex.getErrorCode() + "\nError :" + ex.getMessage());
         } finally {
             try {

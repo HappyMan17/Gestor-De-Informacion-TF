@@ -52,6 +52,7 @@ public class Controller {
         addToSuppliers();
         rawMaterials = rawMaterialDAO.getRawMaterial(0);
         view.addToRMTable(rawMaterials);
+        setProductsFromDb();
         
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
@@ -119,7 +120,7 @@ public class Controller {
 
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat) {
         for (RawMaterial raw : rawMaterials) {
-            if (rmName == raw.getName()) {
+            if (rmName.equals(raw.getName())) {
                 //Local:
                 raw.modifyAmount(amount);
                 //DataBase
@@ -132,72 +133,18 @@ public class Controller {
         }
         return false;
     }
+    
+    public void deleteRawMaterialUsed(){
+        for( RawMaterial raw: rawMaterials ){
+            if( raw.getAmount() == 0 ){
+                rawMaterialDAO.deleteRawMaterial(raw);
+            }
+        }
+    }
 
     class CalculateListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            if (e.getActionCommand().equalsIgnoreCase("Agregar")) {
-
-                try {
-                    System.out.println("Agrega RM");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Agrega");
-                }
-
-            }
-            if (e.getActionCommand().equalsIgnoreCase("Eliminar")) {
-
-                try {
-                    System.out.println("Elimina");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Elimina");
-                }
-
-            }
-            if (e.getActionCommand().equalsIgnoreCase("Leer")) {
-
-                try {
-                    System.out.println("Lee");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Lee");
-                }
-
-            }
-            //Products:
-            if (e.getActionCommand().equalsIgnoreCase("Agregar")) {
-
-                try {
-                    System.out.println("Agrega Producto");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Agrega");
-                }
-
-            }
-            if (e.getActionCommand().equalsIgnoreCase("Eliminar")) {
-
-                try {
-                    System.out.println("Elimina");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Elimina");
-                }
-
-            }
-            if (e.getActionCommand().equalsIgnoreCase("Leer")) {
-
-                try {
-                    System.out.println("Lee");
-
-                } catch (NumberFormatException x) {
-                    System.out.println("Error No Lee");
-                }
-
-            }
-
             //ComboBoxes:
             if (e.getActionCommand().equalsIgnoreCase("comboBoxChanged") && view.comboBoxNumber() == 1) { //Agregar un int a cada cbox || number == 2)
 
@@ -319,18 +266,22 @@ public class Controller {
                         productionDAO.setProduction(production);
                         productions = productionDAO.getProduction(0);
                         
+                        productDAO.setProduct(product);
+                        products = productDAO.getProducts(0);
+                        
                         for( RawMaterial raw : product.getIngredients() ){
                             int rawId, rawAmount, productionId;
                             rawId = raw.getDbId();
                             rawAmount = raw.getAmount();
                             productionId = productions.get(productions.size()-1).getDatabaseId();
+                            Product lastProduct = products.get(products.size()-1);
+
                             ProductionDetails details = new ProductionDetails(rawId, rawAmount, productionId);
-                            details.setProductId(product.getDatabaseId());
+                            details.setProductId(lastProduct.getDatabaseId());
+                            
                             productionDetailsDAO.setProductionDetails(details);
                         }
-                        
-                        productDAO.setProduct(product);
-                        products = productDAO.getProducts(0);
+                        //deleteRawMaterialUsed();
                         view.addToProductTable(products);
                     }
                     

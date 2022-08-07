@@ -45,31 +45,34 @@ public class Production extends Recepies{
         switch (productName){
             case "Papa Rellena":
                 if (createPapaRellena(productAmount)){
-                    newProduct = new Product( productAmount, 2000.0, "papaRellena" );
+                    newProduct = new Product( productAmount, 2000.0, "Papa Rellena" );
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
-                }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
                         + "necesarios para la papa");
+                }
             case "Empanada":
                 if (createEmpanada(productAmount)){
-                    newProduct = new Product( productAmount, 1500.0, "empanada" );
+                    newProduct = new Product( productAmount, 1500.0, "Empanada" );
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
-                }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
                         + "necesarios para la empanada");
-            case "Pastel de pollo":
+                }
+            case "Pastel de Pollo":
                 if (createPastelDePollo(productAmount)){
-                    newProduct = new Product( productAmount, 3000.0, "pastelDePollo" );
+                    newProduct = new Product( productAmount, 3000.0, "Pastel De Pollo" );
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
-                }
-                JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
+                }else{
+                    JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
                         + "necesarios para el pastel de pollo");
+                }
         }
     }
 

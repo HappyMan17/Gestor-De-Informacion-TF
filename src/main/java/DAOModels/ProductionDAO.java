@@ -97,7 +97,7 @@ public class ProductionDAO {
             pstm.setString(1, creationDate);
 
             int inserted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
+            JOptionPane.showMessageDialog(null, "Production Row inserted: " + inserted);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
