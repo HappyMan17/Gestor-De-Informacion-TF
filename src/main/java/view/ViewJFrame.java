@@ -175,7 +175,21 @@ public class ViewJFrame extends javax.swing.JFrame {
         return cantidad;
     }
     
-    /**
+    ///////  PESTAÑA PRODUCTOS /////////////
+    
+    public void activateProductCreationMenu(boolean activator) {
+        jPanelAgregarProducto.setVisible(activator);
+    }
+    
+    public void activateProductDeleteMenu(boolean activator) {
+        jPanelBorrarProducto.setVisible(activator);
+    }
+    
+    public void activateProductEditMenu(boolean activator) {
+        jPanelEditarProducto.setVisible(activator);
+    }
+    
+     /**
      * Retorna el contenido del JText en productos Update Id
      * @return 
      */
@@ -198,7 +212,6 @@ public class ViewJFrame extends javax.swing.JFrame {
     public String getUpdateSectionName(){
         String txt = jTextFieldNombreNuevoMP.getText();
         return  txt;
-        
     }
     
     public int getDeleteProductId(){
@@ -213,19 +226,28 @@ public class ViewJFrame extends javax.swing.JFrame {
         return  number;
     }
     
-    
-    /** PESTAÑA PRODUCTOS **/
-    
-    public void activateProductCreationMenu(boolean activator) {
-        jPanelAgregarProducto.setVisible(activator);
+    public int getUpdateProductId(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdAEditarProducto.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            System.out.println("No es un número");
+        }
+        return  number;
     }
     
-    public void activateProductDeleteMenu(boolean activator) {
-        jPanelBorrarProducto.setVisible(activator);
-    }
-    
-    public void activateProductEditMenu(boolean activator) {
-        jPanelEditarProducto.setVisible(activator);
+    public double getUpdateProductPrice(){
+        String txt;
+        double number = 0;
+        try{
+            txt = jTextFieldPrecioNuevoProducto.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            System.out.println("No es un número");
+        }
+        return number;
     }
     
     //// PESTAÑA PROVEEDORES ///////
@@ -429,8 +451,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelEditarProducto = new javax.swing.JPanel();
         jPanelIdEditarProducto = new javax.swing.JPanel();
         jTextFieldIdAEditarProducto = new javax.swing.JTextField();
-        jPanelNombreNuevoProducto = new javax.swing.JPanel();
-        jTextFieldNombreNuevoProducto = new javax.swing.JTextField();
+        jPanelPrecioNuevoProducto = new javax.swing.JPanel();
+        jTextFieldPrecioNuevoProducto = new javax.swing.JTextField();
         btnEditarProducto = new javax.swing.JButton();
         jPaneProveedoresTabbed = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
@@ -1262,32 +1284,32 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarProducto.add(jPanelIdEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 36, 172, 60));
 
-        jPanelNombreNuevoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Nombre nuevo"));
+        jPanelPrecioNuevoProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Precio nuevo"));
 
-        jTextFieldNombreNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldPrecioNuevoProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombreNuevoProductoActionPerformed(evt);
+                jTextFieldPrecioNuevoProductoActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanelNombreNuevoProductoLayout = new javax.swing.GroupLayout(jPanelNombreNuevoProducto);
-        jPanelNombreNuevoProducto.setLayout(jPanelNombreNuevoProductoLayout);
-        jPanelNombreNuevoProductoLayout.setHorizontalGroup(
-            jPanelNombreNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreNuevoProductoLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPrecioNuevoProductoLayout = new javax.swing.GroupLayout(jPanelPrecioNuevoProducto);
+        jPanelPrecioNuevoProducto.setLayout(jPanelPrecioNuevoProductoLayout);
+        jPanelPrecioNuevoProductoLayout.setHorizontalGroup(
+            jPanelPrecioNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrecioNuevoProductoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldNombreNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
+                .addComponent(jTextFieldPrecioNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanelNombreNuevoProductoLayout.setVerticalGroup(
-            jPanelNombreNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreNuevoProductoLayout.createSequentialGroup()
+        jPanelPrecioNuevoProductoLayout.setVerticalGroup(
+            jPanelPrecioNuevoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelPrecioNuevoProductoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldNombreNuevoProducto)
+                .addComponent(jTextFieldPrecioNuevoProducto)
                 .addContainerGap())
         );
 
-        jPanelEditarProducto.add(jPanelNombreNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
+        jPanelEditarProducto.add(jPanelPrecioNuevoProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 102, -1, -1));
 
         btnEditarProducto.setText("Editar Producto");
         jPanelEditarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, -1));
@@ -2025,9 +2047,9 @@ public class ViewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarProveedoresActionPerformed
 
-    private void jTextFieldNombreNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreNuevoProductoActionPerformed
+    private void jTextFieldPrecioNuevoProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioNuevoProductoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreNuevoProductoActionPerformed
+    }//GEN-LAST:event_jTextFieldPrecioNuevoProductoActionPerformed
 
     private void jTextFieldIdABorrarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIdABorrarProductoActionPerformed
         // TODO add your handling code here:
@@ -2263,9 +2285,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelNombreNuevoCliente;
     private javax.swing.JPanel jPanelNombreNuevoEmpleado;
     private javax.swing.JPanel jPanelNombreNuevoMP;
-    private javax.swing.JPanel jPanelNombreNuevoProducto;
     private javax.swing.JPanel jPanelNombreNuevoProveedor;
     private javax.swing.JPanel jPanelNombreProveedor;
+    private javax.swing.JPanel jPanelPrecioNuevoProducto;
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelProveedores;
     private javax.swing.JPanel jPanelSalir;
@@ -2307,8 +2329,8 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldNombreNuevoCliente;
     private javax.swing.JTextField jTextFieldNombreNuevoEmpleado;
     private javax.swing.JTextField jTextFieldNombreNuevoMP;
-    private javax.swing.JTextField jTextFieldNombreNuevoProducto;
     private javax.swing.JTextField jTextFieldNombreNuevoProveedor;
     private javax.swing.JTextField jTextFieldNombreProveedor;
+    private javax.swing.JTextField jTextFieldPrecioNuevoProducto;
     // End of variables declaration//GEN-END:variables
 }

@@ -1723,11 +1723,11 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanelNombreNuevoProducto">
+                <Container class="javax.swing.JPanel" name="jPanelPrecioNuevoProducto">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder title="Nombre nuevo"/>
+                        <TitledBorder title="Precio nuevo"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -1742,7 +1742,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldNombreNuevoProducto" pref="144" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPrecioNuevoProducto" pref="144" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1751,16 +1751,16 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextFieldNombreNuevoProducto" max="32767" attributes="0"/>
+                              <Component id="jTextFieldPrecioNuevoProducto" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldNombreNuevoProducto">
+                    <Component class="javax.swing.JTextField" name="jTextFieldPrecioNuevoProducto">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldNombreNuevoProductoActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldPrecioNuevoProductoActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
