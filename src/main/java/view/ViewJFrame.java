@@ -142,6 +142,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreNuevoMP.setText("");
         jTextFieldIdABorrarProducto.setText("");
         jTextFieldCantidadProducto.setText("");
+        jTextFieldIdAEditarProducto.setText("");
+        jTextFieldPrecioNuevoProducto.setText("");
     }
     
     /**
