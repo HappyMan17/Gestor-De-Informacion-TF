@@ -130,16 +130,21 @@ public class ProductDAO {
             String sql = "";
             String productName = product.getName();
             String productLote = product.getLotNumber();
+            Double productPrice = product.getPrice();
             int productId = product.getDatabaseId();
+            int productAmount = product.getAmount();
             boolean isOnStock = product.getIsOnStock();
 
-            sql = "UPDATE aplication.products SET name = ?, lot_number = ?, is_on_stock = ? where product_id = ?";
+            sql = "UPDATE application.products SET name = ?, lot_number = ?, "
+                + "amount = ?, is_on_stock = ?, price = ? where product_id = ?";
             
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
-            pstm.setBoolean(3, isOnStock);
-            pstm.setInt(4, productId);
+            pstm.setInt(3, productAmount);
+            pstm.setBoolean(4, isOnStock);
+            pstm.setDouble(5, productPrice);
+            pstm.setInt(6, productId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
@@ -171,7 +176,7 @@ public class ProductDAO {
             boolean isOnStock = product.getIsOnStock();
             int productId = product.getDatabaseId();
 
-            sql = "UPDATE aplication.products SET is_on_stock = ? where product_id = ?";
+            sql = "UPDATE application.products SET is_on_stock = ? where product_id = ?";
             //sql = "delete from application.products where name = ? and lot_number = ?";
             
             pstm = con.prepareStatement(sql);

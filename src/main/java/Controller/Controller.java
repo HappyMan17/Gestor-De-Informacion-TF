@@ -60,6 +60,8 @@ public class Controller {
         this.view.addListenerBtnEditMP(new CalculateListener());
         this.view.addListenerBtnProduction(new CalculateListener());
         this.view.addListenerBtnDeleteProduct(new CalculateListener());
+        this.view.addListenerBtnEditProduct(new CalculateListener());
+        
     }
 
     public void addToSuppliers() {
@@ -308,7 +310,7 @@ public class Controller {
                     System.out.println("No se pudo crear el producto");
                 }
             }
-            //Create Product
+            //Delete Product
             if (e.getActionCommand().equalsIgnoreCase("Borrar Producto")) {
                 try{
                     int productToDeleteId = view.getDeleteProductId();
@@ -324,6 +326,29 @@ public class Controller {
                         }
 
                     }
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            //Update Product
+            if (e.getActionCommand().equalsIgnoreCase("Editar Producto")) {
+                try{
+                    int productToUpdateId = view.getUpdateProductId();
+                    Double productToUpdatePrice = view.getUpdateProductPrice();
+                    
+                    for (Product product : products) {
+
+                        if (product.getDatabaseId()== productToUpdateId) {
+                            product.setPrice(productToUpdatePrice);
+                            //DataBase
+                            productDAO.updateProduct(product);
+                            setProductsFromDb();
+                            view.clearJtxt();
+                            break;
+                        }
+
+                    }
+                    
                 }catch(NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");
                 }
