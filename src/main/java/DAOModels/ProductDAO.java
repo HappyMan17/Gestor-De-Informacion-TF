@@ -58,6 +58,7 @@ public class ProductDAO {
                 product.setPrice(rs.getDouble("price"));
                 product.setLotNumber(rs.getString("lot_number"));
                 product.setDatabaseId(rs.getInt("product_id"));
+                product.setIsOnStock(rs.getBoolean("is_on_stock"));
                 //detail
                 listado.add(product);
             }
@@ -92,14 +93,16 @@ public class ProductDAO {
             String productName = product.getName();
             Double productPrice = product.getPrice();
             String lotNumber = product.getLotNumber();
+            boolean isOnStock = product.getIsOnStock();
 
-            sql = "INSERT INTO application.products (amount, name, price, lot_number) values (?,?,?,?)";
+            sql = "INSERT INTO application.products (amount, name, price, lot_number, is_on_stock) values (?,?,?,?,?)";
 
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, productAmount);
             pstm.setString(2, productName);
             pstm.setDouble(3, productPrice);
             pstm.setString(4, lotNumber);
+            pstm.setBoolean(5, isOnStock);
 
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Product Row inserted: ");
@@ -128,12 +131,15 @@ public class ProductDAO {
             String productName = product.getName();
             String productLote = product.getLotNumber();
             int productId = product.getDatabaseId();
+            boolean isOnStock = product.getIsOnStock();
 
-            sql = "UPDATE aplication.products SET name = ?, lot_number = ? where product_id = ?";
+            sql = "UPDATE aplication.products SET name = ?, lot_number = ?, is_on_stock = ? where product_id = ?";
+            
             pstm = con.prepareStatement(sql);
             pstm.setString(1, productName);
             pstm.setString(2, productLote);
-            pstm.setInt(3, productId);
+            pstm.setBoolean(3, isOnStock);
+            pstm.setInt(4, productId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
@@ -162,13 +168,15 @@ public class ProductDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
             String productName = product.getName();
-            String productLote = product.getLotNumber();
+            boolean isOnStock = product.getIsOnStock();
+            int productId = product.getDatabaseId();
 
-            sql = "delete from application.products where name = ? and lot_number = ?";
+            sql = "UPDATE aplication.products SET is_on_stock = ? where product_id = ?";
+            //sql = "delete from application.products where name = ? and lot_number = ?";
             
             pstm = con.prepareStatement(sql);
-            pstm.setString(1, productName);
-            pstm.setString(2, productLote);
+            pstm.setBoolean(1, isOnStock);
+            pstm.setInt(2, productId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted: " + deleted

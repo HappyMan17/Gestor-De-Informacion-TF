@@ -140,6 +140,7 @@ public class Controller {
                 //Local:
                 Localproduct.modifyAmount(amount);
                 //DataBase
+                Localproduct.setIsOnStock(true);
                 productDAO.updateProduct(Localproduct);
                 products = productDAO.getProducts(0);
                 view.clearJtxt();

@@ -13,13 +13,11 @@ import java.util.ArrayList;
  */
 public class Product {
     //Attribute
-    private int amount;
-    private String lotNumber;
+    private int amount, accumulator, databaseId;
+    private String lotNumber, name;
     private Double price;
     private ArrayList<RawMaterial> ingredients;
-    private String name;
-    private int accumulator;
-    private int databaseId;
+    private boolean isOnStock;
     
     //Methods
     public Product(){}
@@ -28,6 +26,7 @@ public class Product {
         this.amount = amount;
         this.price = price;
         this.name = name;
+        this.isOnStock = true;
         setLotNumber();
         
     }
@@ -93,5 +92,14 @@ public class Product {
     public void setDatabaseId(int databaseId) {
         this.databaseId = databaseId;
     }
+
+    public boolean getIsOnStock() {
+        return isOnStock;
+    }
+
+    public void setIsOnStock(boolean isOnStock) {
+        this.isOnStock = isOnStock;
+    }
+    
     
 }

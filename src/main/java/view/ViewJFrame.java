@@ -290,9 +290,11 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addToProductTable(ArrayList<Product> products){
         removeRowsTable(jTableProductos, modeloOne);
         for(Product product : products){
-            Object[] fila = {product.getDatabaseId(), product.getName(), 
-                product.getAmount(), product.getPrice()};
-            modeloOne.addRow(fila);
+            if( product.getIsOnStock() ){
+                Object[] fila = {product.getDatabaseId(), product.getName(), 
+                    product.getAmount(), product.getPrice(), product.getLotNumber()};
+                modeloOne.addRow(fila);
+            }
         }
     }
     
@@ -1148,6 +1150,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         modeloOne.addColumn("Nombre");
         modeloOne.addColumn("CANTIDAD");
         modeloOne.addColumn("PRECIO/U");
+        modeloOne.addColumn("Numero de Lote");
         jTableProductos.setModel(modeloOne);
 
         jPanelAgregarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Producto"));
