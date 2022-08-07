@@ -134,6 +134,21 @@ public class Controller {
         return false;
     }
     
+    public boolean confirmProductExistence(String productName, int amount) {
+        for (Product Localproduct : products) {
+            if (productName.equals(Localproduct.getName())) {
+                //Local:
+                Localproduct.modifyAmount(amount);
+                //DataBase
+                productDAO.updateProduct(Localproduct);
+                products = productDAO.getProducts(0);
+                view.clearJtxt();
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void deleteRawMaterialUsed(){
         for( RawMaterial raw: rawMaterials ){
             if( raw.getAmount() == 0 ){
@@ -265,9 +280,11 @@ public class Controller {
                     if(product != null){
                         productionDAO.setProduction(production);
                         productions = productionDAO.getProduction(0);
-                        
-                        productDAO.setProduct(product);
-                        products = productDAO.getProducts(0);
+                        //
+                        if( !confirmProductExistence(product.getName(), product.getAmount()) ){
+                            productDAO.setProduct(product);
+                            products = productDAO.getProducts(0);
+                        }
                         
                         for( RawMaterial raw : product.getIngredients() ){
                             int rawId, rawAmount, productionId;
@@ -286,7 +303,7 @@ public class Controller {
                     }
                     
                 }catch(NumberFormatException x) {
-                    System.out.println("Error No Lee");
+                    System.out.println("No se pudo crear el producto");
                 }
             }
         }
