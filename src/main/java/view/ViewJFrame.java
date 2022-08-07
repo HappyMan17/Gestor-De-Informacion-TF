@@ -66,13 +66,17 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnBorrrarProducto.addActionListener(listenController);
     }
     
+    public void addListenerBtnEditProduct(ActionListener listenController){
+        btnEditarProducto.addActionListener(listenController);
+    }
+    
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController){
         comboBoxNumber = 1;
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
     
     public void addListenerJComboBoxChooseMP(ActionListener listenController){
-        jComboBoxElegirMP.addActionListener(listenController);
+        jaddListenerBtnEditProductComboBoxElegirMP.addActionListener(listenController);
     }
      
     public void addListenerRawMaterialPurchaseMenu(ActionListener listenController){
