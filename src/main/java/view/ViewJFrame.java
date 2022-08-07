@@ -76,7 +76,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
     
     public void addListenerJComboBoxChooseMP(ActionListener listenController){
-        jaddListenerBtnEditProductComboBoxElegirMP.addActionListener(listenController);
+        jComboBoxElegirMP.addActionListener(listenController);
     }
      
     public void addListenerRawMaterialPurchaseMenu(ActionListener listenController){
