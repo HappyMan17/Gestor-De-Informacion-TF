@@ -62,6 +62,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnProduction.addActionListener(listenController);
     }
     
+    public void addListenerBtnDeleteProduct(ActionListener listenController) {
+        btnBorrrarProducto.addActionListener(listenController);
+    }
+    
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController){
         comboBoxNumber = 1;
         jComboBoxElegirProveedor.addActionListener(listenController);
@@ -136,6 +140,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldIdABorrarMP.setText("");
         jTextFieldIdAEditarMP.setText("");
         jTextFieldNombreNuevoMP.setText("");
+        jTextFieldIdABorrarProducto.setText("");
+        jTextFieldCantidadProducto.setText("");
     }
     
     /**
@@ -194,6 +200,19 @@ public class ViewJFrame extends javax.swing.JFrame {
         return  txt;
         
     }
+    
+    public int getDeleteProductId(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdABorrarProducto.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            System.out.println("No es un número");
+        }
+        return  number;
+    }
+    
     
     /** PESTAÑA PRODUCTOS **/
     

@@ -59,7 +59,7 @@ public class Controller {
         this.view.addListenerBtnDeleteMP(new CalculateListener());
         this.view.addListenerBtnEditMP(new CalculateListener());
         this.view.addListenerBtnProduction(new CalculateListener());
-
+        this.view.addListenerBtnDeleteProduct(new CalculateListener());
     }
 
     public void addToSuppliers() {
@@ -281,7 +281,7 @@ public class Controller {
                     if(product != null){
                         productionDAO.setProduction(production);
                         productions = productionDAO.getProduction(0);
-                        //
+                        
                         if( !confirmProductExistence(product.getName(), product.getAmount()) ){
                             productDAO.setProduct(product);
                             products = productDAO.getProducts(0);
@@ -300,11 +300,32 @@ public class Controller {
                             productionDetailsDAO.setProductionDetails(details);
                         }
                         //deleteRawMaterialUsed();
+                        view.clearJtxt();
                         view.addToProductTable(products);
                     }
                     
                 }catch(NumberFormatException x) {
                     System.out.println("No se pudo crear el producto");
+                }
+            }
+            //Create Product
+            if (e.getActionCommand().equalsIgnoreCase("Borrar Producto")) {
+                try{
+                    int productToDeleteId = view.getDeleteProductId();
+                    for (Product product : products) {
+
+                        if (product.getDatabaseId()== productToDeleteId) {
+                            //DataBase
+                            product.setIsOnStock(false);
+                            productDAO.deleteProduct(product);
+                            setProductsFromDb();
+                            view.clearJtxt();
+                            break;
+                        }
+
+                    }
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
                 }
             }
         }
