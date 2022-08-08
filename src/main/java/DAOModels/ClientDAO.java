@@ -59,6 +59,7 @@ public class ClientDAO {
                 client.setClientName(rs.getString("name"));
                 client.setClientId(rs.getInt("client_code"));
                 client.setDbId(rs.getInt("client_id"));
+                client.setIsActive(rs.getBoolean("is_active"));
 
                 listado.add(client);
             }
@@ -92,11 +93,14 @@ public class ClientDAO {
             String clientName = client.getClientName();
             int clientCode = client.getClientId();
             int clientNIT = client.getNIT();
+            int clientId = client.getDbId();
             
             if( client.getIsIsStore() ){
                 sql = "INSERT INTO application.client (name, client_code, nit) values (?,?,?)";
-            }else{
+            }if( client.getDbId() == 0 ){
                 sql = "INSERT INTO application.client (name, client_code) values (?,?)";
+            }else{
+                sql = "INSERT INTO application.client (client_id, name, client_code) values (?,?,?)";
             }
 
             pstm = con.prepareStatement(sql);
@@ -104,9 +108,14 @@ public class ClientDAO {
                 pstm.setString(1, clientName);
                 pstm.setInt(2, clientCode);
                 pstm.setInt(3, clientNIT);
-            }else{
+            }if(client.getDbId() == 0){
                 pstm.setString(1, clientName);
                 pstm.setInt(2, clientCode);
+            }
+            else{
+                pstm.setInt(1, clientId);
+                pstm.setString(2, clientName);
+                pstm.setInt(3, clientCode);
             }
 
             int inserted = pstm.executeUpdate();
@@ -137,14 +146,15 @@ public class ClientDAO {
             
             String clientNewName = client.getClientName();
             int clientCode = client.getClientId();
+            int clientId = client.getDbId();
             int clientNIT = client.getNIT();
             
-            sql = "update application.client set name = ?, nit = ? where client_code = ?";
+            sql = "update application.client set name = ?, nit = ? where client_id = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientNewName);
             pstm.setInt(2, clientNIT);
-            pstm.setInt(3, clientCode);
+            pstm.setInt(3, clientId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: "+updated);
@@ -174,12 +184,16 @@ public class ClientDAO {
             
             String clientNewName = client.getClientName();
             int clientCode = client.getClientId();
+            int clientId = client.getDbId();
+            boolean clientActive = client.getIsActive();
             
-            sql = "delete from application.client where name = ? and client_code = ?";
+            sql = "update application.client set name = ?, is_active = ? where client_id = ?";
+            //sql = "delete from application.client where name = ? and client_id = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setString(1, clientNewName);
-            pstm.setInt(2, clientCode);
+            pstm.setBoolean(2, clientActive);
+            pstm.setInt(3, clientId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted :"+deleted);

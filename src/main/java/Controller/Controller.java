@@ -30,6 +30,7 @@ public class Controller {
     private SellerDAO sellerDAO;
     private SupplierDAO supplierDAO;
     private ArrayList<Supplier> suppliers = new ArrayList<>();
+    private ArrayList<Client> clients = new ArrayList<>();
     private ArrayList<RawMaterial> rawMaterials = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Production> productions = new ArrayList<>();
@@ -61,6 +62,7 @@ public class Controller {
         this.view.addListenerBtnProduction(new CalculateListener());
         this.view.addListenerBtnDeleteProduct(new CalculateListener());
         this.view.addListenerBtnEditProduct(new CalculateListener());
+        this.view.addListenerBtnCreateClient(new CalculateListener());
         
     }
 
@@ -119,6 +121,11 @@ public class Controller {
         products = productDAO.getProducts(0);
         view.addToProductTable(products);
     }
+    
+    public void setClientFromDb(){
+        clients = clientDAO.getClients(0);
+        view.addToClientTable(clients);
+    }
 
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat) {
         for (RawMaterial raw : rawMaterials) {
@@ -145,6 +152,22 @@ public class Controller {
                 Localproduct.setIsOnStock(true);
                 productDAO.updateProduct(Localproduct);
                 products = productDAO.getProducts(0);
+                view.clearJtxt();
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean confirmClientExistence(String clientName, int clientId) {
+        for (Client client : clients) {
+            if (clientId == client.getClientId()) {
+                //Local:
+                client.setClientName(clientName);
+                //DataBase
+                client.setIsActive(true);
+                clientDAO.updateClientName(client);
+                clients = clientDAO.getClients(0);
                 view.clearJtxt();
                 return true;
             }
@@ -348,6 +371,66 @@ public class Controller {
                         }
 
                     }
+                    
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            //Create Client
+            if (e.getActionCommand().equalsIgnoreCase("Agregar Cliente")) {
+                try{
+                    int clientId = view.getIdToCreateClient();
+                    String clientName = view.getClientName();
+                    
+                    if( !confirmClientExistence(clientName, clientId)){
+                        Client client = new Client(clientName, clientId);
+                        clientDAO.setClients(client);
+                    }
+                    setClientFromDb();
+                    
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            //Delete Client
+            if (e.getActionCommand().equalsIgnoreCase("Borrar Cliente")){
+                try{
+                    int clientId = view.getClientIdToDelete();
+                    for (Client client : clients) {
+
+                        if (client.getDbId() == clientId) {
+                            //DataBase
+                            client.setIsActive(false);
+                            clientDAO.deleteClient(client);
+                            view.clearJtxt();
+                            break;
+                        }
+
+                    }
+                    setClientFromDb();
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            //Update Client
+            if (e.getActionCommand().equalsIgnoreCase("Editar Cliente")){
+                try{
+                    int clientId = view.getIdToUpdateClient();
+                    String newClientName = view.getClientNewName();
+                    
+                    for (Client client : clients) {
+
+                        if (client.getDbId() == clientId) {
+                            //DataBase
+                            client.setIsActive(false);
+                            client.setClientName(newClientName);
+                            clientDAO.updateClientName(client);
+                            view.clearJtxt();
+                            break;
+                        }
+
+                    }
+                    setClientFromDb();
                     
                 }catch(NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");

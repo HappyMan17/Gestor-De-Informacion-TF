@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import model.Client;
 import model.Product;
 import model.RawMaterial;
 
@@ -21,6 +22,7 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private DefaultTableModel modelo = new DefaultTableModel();
     private DefaultTableModel modeloOne = new DefaultTableModel();
+    private DefaultTableModel modeloTwo = new DefaultTableModel();
     private int comboBoxNumber;
     /**
      * Creates new form ViewJFrame
@@ -68,6 +70,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     
     public void addListenerBtnEditProduct(ActionListener listenController){
         btnEditarProducto.addActionListener(listenController);
+    }
+    
+    public void addListenerBtnCreateClient(ActionListener listenController){
+        btnAgregarCliente.addActionListener(listenController);
     }
     
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController){
@@ -148,6 +154,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldCantidadProducto.setText("");
         jTextFieldIdAEditarProducto.setText("");
         jTextFieldPrecioNuevoProducto.setText("");
+        jTextFieldNombreCliente.setText("");
+        jTextFieldIdCliente.setText("");
+        jTextFieldIdABorrarCliente.setText("");
+        jTextFieldNombreNuevoCliente.setText("");   
+        jTextFieldIdAEditarCliente.setText("");
     }
     
     /**
@@ -282,6 +293,52 @@ public class ViewJFrame extends javax.swing.JFrame {
         jPanelEditarClientes.setVisible(activator);
     }
     
+    public String getClientName(){
+        String txt = jTextFieldNombreCliente.getText();
+        return  txt;
+    }
+    
+    public String getClientNewName(){
+        String txt = jTextFieldNombreNuevoCliente.getText();
+        return  txt;
+    }
+    
+    public int getClientIdToDelete(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdABorrarCliente.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
+    public int getIdToCreateClient(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdCliente.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
+    public int getIdToUpdateClient(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdAEditarCliente.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
     ///// PESTAÑA EMPLEADO //////
      public void activateSellerCreationMenu(boolean activator) {
         jPanelAgregarEmpleado.setVisible(activator);
@@ -341,6 +398,16 @@ public class ViewJFrame extends javax.swing.JFrame {
                 Object[] fila = {product.getDatabaseId(), product.getName(), 
                     product.getAmount(), product.getPrice(), product.getLotNumber()};
                 modeloOne.addRow(fila);
+            }
+        }
+    }
+    
+    public void addToClientTable(ArrayList<Client> clients){
+        removeRowsTable(jTableClientes, modeloTwo);
+        for(Client client : clients){
+            if( client.getIsActive() ){
+                Object[] fila = {client.getDbId(), client.getClientName()};
+                modeloTwo.addRow(fila);
             }
         }
     }

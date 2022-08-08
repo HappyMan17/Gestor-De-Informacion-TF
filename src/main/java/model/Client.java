@@ -16,14 +16,17 @@ public class Client {
     private int clientId, dbId, NIT;
     private ArrayList<ProductPackage> productsPackages;
     private ArrayList<Product> products;
-    private boolean isStore;
+    private boolean isStore, isActive;
     
     //Methods
-    public Client(){}
+    public Client(){
+        this.isStore = false;
+    }
     
     public Client(String clientName, int clientId){
         this.clientName = clientName;
         this.clientId = clientId;
+        this.isStore = false;
     }
 
     public String getClientName() {
@@ -80,6 +83,14 @@ public class Client {
 
     public void setIsStore(boolean isStore) {
         this.isStore = isStore;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
     }
     
     
