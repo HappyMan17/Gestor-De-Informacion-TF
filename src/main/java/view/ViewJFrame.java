@@ -343,6 +343,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     
     ///// PESTAÑA EMPLEADO //////
     
+    public void addActionListenerJButtonContratarEmpleado(ActionListener A){
+        jButton1.addActionListener(A);
+    }
+    
     public String getSellerName(){
         String txt = jTextFieldNombreEmpleado.getText();
         return  txt;

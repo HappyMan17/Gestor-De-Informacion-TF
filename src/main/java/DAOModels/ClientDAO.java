@@ -22,7 +22,7 @@ public class ClientDAO {
     public ClientDAO() {}
 
     public ArrayList<Client> getClients(int clientCode) {
-
+        System.out.println("Buenas tardes");
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -94,13 +94,15 @@ public class ClientDAO {
             int clientCode = client.getClientId();
             int clientNIT = client.getNIT();
             int clientId = client.getDbId();
+            boolean clientisActive = client.getIsActive();
+            boolean clientisStore = client.getIsIsStore();
             
             if( client.getIsIsStore() ){
-                sql = "INSERT INTO application.client (name, client_code, nit) values (?,?,?)";
+                sql = "INSERT INTO application.client (name, client_code, nit, is_active, is_store) values (?,?,?,?,?)";
             }if( client.getDbId() == 0 ){
-                sql = "INSERT INTO application.client (name, client_code) values (?,?)";
+                sql = "INSERT INTO application.client (name, client_code, nit, is_active, is_store) values (?,?,?,?)";
             }else{
-                sql = "INSERT INTO application.client (client_id, name, client_code) values (?,?,?)";
+                sql = "INSERT INTO application.client (client_id, name, client_code, is_active, is_store) values (?,?,?,?,?)";
             }
 
             pstm = con.prepareStatement(sql);
@@ -108,14 +110,21 @@ public class ClientDAO {
                 pstm.setString(1, clientName);
                 pstm.setInt(2, clientCode);
                 pstm.setInt(3, clientNIT);
+                pstm.setBoolean(4, clientisActive);
+                pstm.setBoolean(5, clientisStore);
             }if(client.getDbId() == 0){
                 pstm.setString(1, clientName);
                 pstm.setInt(2, clientCode);
+                pstm.setInt(3, clientNIT);
+                pstm.setBoolean(4, clientisActive);
+                pstm.setBoolean(5, clientisStore);
             }
             else{
                 pstm.setInt(1, clientId);
                 pstm.setString(2, clientName);
                 pstm.setInt(3, clientCode);
+                pstm.setBoolean(4, clientisActive);
+                pstm.setBoolean(5, clientisStore);
             }
 
             int inserted = pstm.executeUpdate();

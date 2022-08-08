@@ -19,8 +19,7 @@ import model.Seller;
  */
 public class SellerDAO {
 
-    public SellerDAO() {
-    }
+    public SellerDAO() {}
 
     public ArrayList<Seller> getSeller(int dbId) {
 

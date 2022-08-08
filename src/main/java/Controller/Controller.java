@@ -40,7 +40,7 @@ public class Controller {
     public Controller(ViewJFrame view) {
 
         this.view = view;
-        this.clientDAO = clientDAO;
+        this.clientDAO = new ClientDAO();
         this.productDAO = new ProductDAO();
         this.productPackageDAO = new ProductPackageDAO(productDAO);
         this.productionDAO = new ProductionDAO();
@@ -64,6 +64,7 @@ public class Controller {
         this.view.addListenerBtnDeleteProduct(new CalculateListener());
         this.view.addListenerBtnEditProduct(new CalculateListener());
         this.view.addListenerBtnCreateClient(new CalculateListener());
+        this.view.addActionListenerJButtonContratarEmpleado(new CalculateListener());
         
     }
 
@@ -124,7 +125,7 @@ public class Controller {
     }
     
     public void setClientFromDb(){
-        clients = clientDAO.getClients(0);
+        System.out.println(clients = clientDAO.getClients(0));
         view.addToClientTable(clients);
     }
     
@@ -426,7 +427,10 @@ public class Controller {
                     
                     if( !confirmClientExistence(clientName, clientId)){
                         Client client = new Client(clientName, clientId);
+                        client.setIsActive(true);
                         clientDAO.setClients(client);
+                        clients.add(client);
+                        System.out.println(clients.get(0).getClientName());
                     }
                     setClientFromDb();
                     
@@ -491,6 +495,7 @@ public class Controller {
                     
                     if( !confirmSellerExistence(sellerName, sellerCode)){
                         Seller seller = new Seller(sellerCode, sellerName);
+                        seller.setIsActive(true);
                         sellerDAO.setSeller(seller);
                     }
                     setSellerFromDb();
