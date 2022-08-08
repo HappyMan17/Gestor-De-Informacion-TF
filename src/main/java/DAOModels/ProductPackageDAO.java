@@ -41,7 +41,7 @@ public class ProductPackageDAO {
             if (packageCode == 0) {
                 sql = "SELECT * FROM application.package ORDER BY package_id";
             } else {
-                sql = "SELECT * FROM application.package where package_code = ? "
+                sql = "SELECT * FROM application.package where package_id = ? "
                         + "ORDER BY package_id";
             }
 
