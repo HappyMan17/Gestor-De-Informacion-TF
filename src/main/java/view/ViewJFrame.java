@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import model.Client;
+import model.Seller;
 import model.Product;
 import model.RawMaterial;
 
@@ -23,6 +24,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private DefaultTableModel modelo = new DefaultTableModel();
     private DefaultTableModel modeloOne = new DefaultTableModel();
     private DefaultTableModel modeloTwo = new DefaultTableModel();
+    private DefaultTableModel modeloThree = new DefaultTableModel();
     private int comboBoxNumber;
     /**
      * Creates new form ViewJFrame
@@ -340,6 +342,53 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
     
     ///// PESTAÑA EMPLEADO //////
+    
+    public String getSellerName(){
+        String txt = jTextFieldNombreEmpleado.getText();
+        return  txt;
+    }
+    
+    public int getSellerCode(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdEmpleado.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
+    public int getSellerIdToDelete(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdABorrarEmpleado.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
+    public int getSellerIdToUpdate(){
+        String txt;
+        int number = 0;
+        try{
+            txt = jTextFieldIdAEditarEmpleado.getText();
+            number = Integer.parseInt(txt);
+        }catch(NumberFormatException x){
+            JOptionPane.showMessageDialog(null, "Ingrese un número.");
+        }
+        return number;
+    }
+    
+    public String getSellerNewName(){
+        String txt = jTextFieldNombreNuevoEmpleado.getText();
+        return  txt;
+    }
+    
      public void activateSellerCreationMenu(boolean activator) {
         jPanelAgregarEmpleado.setVisible(activator);
     }
@@ -408,6 +457,16 @@ public class ViewJFrame extends javax.swing.JFrame {
             if( client.getIsActive() ){
                 Object[] fila = {client.getDbId(), client.getClientName()};
                 modeloTwo.addRow(fila);
+            }
+        }
+    }
+    
+    public void addToSellerTable(ArrayList<Seller> sellers){
+        removeRowsTable(jTableEmpleados, modeloThree);
+        for(Seller seller : sellers){
+            if( seller.getIsActive() ){
+                Object[] fila = {seller.getDatabaseId(), seller.getSellerName()};
+                modeloThree.addRow(fila);
             }
         }
     }

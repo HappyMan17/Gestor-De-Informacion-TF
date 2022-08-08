@@ -88,13 +88,23 @@ public class ProductionDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
+            int productionId = production.getDatabaseId();
             String creationDate = production.getDate();
-
-            sql = "INSERT INTO application.production (creation_date) values (?)";
+            
+            if( productionId == 0 ){
+                sql = "INSERT INTO application.production (creation_date) values (?)";
+            }else{
+                sql = "INSERT INTO application.production (production_id, creation_date) values (?,?)";
+            }
 
             pstm = con.prepareStatement(sql);
             
-            pstm.setString(1, creationDate);
+            if(productionId == 0){
+                pstm.setString(1, creationDate);
+            }else{
+                pstm.setInt(1, productionId);
+                pstm.setString(2, creationDate);
+            }
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Production Row inserted: " + inserted);

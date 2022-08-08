@@ -31,6 +31,7 @@ public class Controller {
     private SupplierDAO supplierDAO;
     private ArrayList<Supplier> suppliers = new ArrayList<>();
     private ArrayList<Client> clients = new ArrayList<>();
+    private ArrayList<Seller> sellers = new ArrayList<>();
     private ArrayList<RawMaterial> rawMaterials = new ArrayList<>();
     private ArrayList<Product> products = new ArrayList<>();
     private ArrayList<Production> productions = new ArrayList<>();
@@ -126,6 +127,11 @@ public class Controller {
         clients = clientDAO.getClients(0);
         view.addToClientTable(clients);
     }
+    
+    public void setSellerFromDb(){
+        sellers = sellerDAO.getSeller(0);
+        view.addToSellerTable(sellers);
+    }
 
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat) {
         for (RawMaterial raw : rawMaterials) {
@@ -161,7 +167,7 @@ public class Controller {
     
     public boolean confirmClientExistence(String clientName, int clientId) {
         for (Client client : clients) {
-            if (clientId == client.getClientId()) {
+            if (clientId == client.getClientId() && !client.getIsActive()) {
                 //Local:
                 client.setClientName(clientName);
                 //DataBase
@@ -171,6 +177,31 @@ public class Controller {
                 view.clearJtxt();
                 return true;
             }
+            if (clientId == client.getClientId() && client.getIsActive()) {
+                JOptionPane.showMessageDialog(null, "El cliente ya existe.");
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean confirmSellerExistence(String name, int code) {
+        for (Seller seller : sellers) {
+            if (code == seller.getSellerCode() && !seller.getIsActive()) {
+                //Local:
+                seller.setSellerName(name);
+                //DataBase
+                seller.setIsActive(true);
+                sellerDAO.updateSeller(seller);
+                sellers = sellerDAO.getSeller(0);
+                view.clearJtxt();
+                return true;
+            }
+            if (code == seller.getSellerCode() && seller.getIsActive()) {
+                JOptionPane.showMessageDialog(null, "El empleado ya existe.");
+                return true;
+            }
+            
         }
         return false;
     }
@@ -191,6 +222,7 @@ public class Controller {
 
                 view.clearRMComboBox();
                 try {
+                    
                     String supName = view.getFromComboBoxSupplier();
                     for (Supplier sup : suppliers) {
                         if (sup.getSupplierName().equals(supName)) {
@@ -201,6 +233,7 @@ public class Controller {
                         }
 
                     }
+                    
                 } catch (NullPointerException x) {
                     System.out.println(x.getMessage());
                 }
@@ -209,6 +242,7 @@ public class Controller {
             //Buy MP
             if (e.getActionCommand().equalsIgnoreCase("Comprar MP")) {
                 try {
+                    
                     String rwName = view.getFromComboBoxRawMaterial();
                     String supName = view.getFromComboBoxSupplier();
                     int JtxtContenido = view.getRawMaterialAmount();
@@ -240,6 +274,7 @@ public class Controller {
                             break;
                         }
                     }
+                    
                 } catch (NumberFormatException x) {
                     System.out.println("Error No Lee");
                 }
@@ -263,6 +298,7 @@ public class Controller {
                         }
 
                     }
+                    
                 } catch (NumberFormatException x) {
                     System.out.println("Error No Lee");
                 }
@@ -287,6 +323,7 @@ public class Controller {
                         }
 
                     }
+                    
                 } catch (NumberFormatException x) {
                     System.out.println("Error No Lee");
                 }
@@ -295,6 +332,7 @@ public class Controller {
             //Create Product
             if (e.getActionCommand().equalsIgnoreCase("Producción")) {
                 try{
+                    
                     int cantidadAProducir = view.getFromProductAmount();
                     String comboBoxProduct = view.getFromComboBoxProduct();
                     
@@ -336,6 +374,7 @@ public class Controller {
             //Delete Product
             if (e.getActionCommand().equalsIgnoreCase("Borrar Producto")) {
                 try{
+                    
                     int productToDeleteId = view.getDeleteProductId();
                     for (Product product : products) {
 
@@ -349,6 +388,7 @@ public class Controller {
                         }
 
                     }
+                    
                 }catch(NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");
                 }
@@ -356,6 +396,7 @@ public class Controller {
             //Update Product
             if (e.getActionCommand().equalsIgnoreCase("Editar Producto")) {
                 try{
+                    
                     int productToUpdateId = view.getUpdateProductId();
                     Double productToUpdatePrice = view.getUpdateProductPrice();
                     
@@ -365,8 +406,8 @@ public class Controller {
                             product.setPrice(productToUpdatePrice);
                             //DataBase
                             productDAO.updateProduct(product);
-                            setProductsFromDb();
                             view.clearJtxt();
+                            setProductsFromDb();
                             break;
                         }
 
@@ -379,6 +420,7 @@ public class Controller {
             //Create Client
             if (e.getActionCommand().equalsIgnoreCase("Agregar Cliente")) {
                 try{
+                    
                     int clientId = view.getIdToCreateClient();
                     String clientName = view.getClientName();
                     
@@ -395,6 +437,7 @@ public class Controller {
             //Delete Client
             if (e.getActionCommand().equalsIgnoreCase("Borrar Cliente")){
                 try{
+                    
                     int clientId = view.getClientIdToDelete();
                     for (Client client : clients) {
 
@@ -403,11 +446,12 @@ public class Controller {
                             client.setIsActive(false);
                             clientDAO.deleteClient(client);
                             view.clearJtxt();
+                            setClientFromDb();
                             break;
                         }
 
                     }
-                    setClientFromDb();
+                    
                 }catch(NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");
                 }
@@ -415,6 +459,7 @@ public class Controller {
             //Update Client
             if (e.getActionCommand().equalsIgnoreCase("Editar Cliente")){
                 try{
+                    
                     int clientId = view.getIdToUpdateClient();
                     String newClientName = view.getClientNewName();
                     
@@ -422,15 +467,83 @@ public class Controller {
 
                         if (client.getDbId() == clientId) {
                             //DataBase
-                            client.setIsActive(false);
+                            client.setIsActive(true);
                             client.setClientName(newClientName);
                             clientDAO.updateClientName(client);
                             view.clearJtxt();
+                            setClientFromDb();
                             break;
                         }
 
                     }
-                    setClientFromDb();
+                    
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            
+            //Create Seller
+            if (e.getActionCommand().equalsIgnoreCase("Contratar Empleado")) {
+                try{
+                    
+                    int sellerCode = view.getSellerCode();
+                    String sellerName = view.getSellerName();
+                    
+                    if( !confirmSellerExistence(sellerName, sellerCode)){
+                        Seller seller = new Seller(sellerCode, sellerName);
+                        sellerDAO.setSeller(seller);
+                    }
+                    setSellerFromDb();
+                    
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            
+            //Delete Seller
+            if (e.getActionCommand().equalsIgnoreCase("Borrar Empleado")){
+                try{
+                    
+                    int sellerId = view.getSellerIdToDelete();
+                    
+                    for (Seller seller : sellers) {
+
+                        if (seller.getDatabaseId() == sellerId) {
+                            //DataBase
+                            seller.setIsActive(false);
+                            sellerDAO.deleteSeller(seller);
+                            view.clearJtxt();
+                            setSellerFromDb();
+                            break;
+                        }
+
+                    }
+                    
+                }catch(NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+            
+            //Update Seller
+            if (e.getActionCommand().equalsIgnoreCase("Editar Empleado")){
+                try{
+                    
+                    int sellerId = view.getSellerIdToUpdate();
+                    String newSellerName = view.getSellerNewName();
+                    
+                    for (Seller seller : sellers) {
+
+                        if (seller.getDatabaseId() == sellerId) {
+                            //DataBase
+                            seller.setIsActive(true);
+                            seller.setSellerName(newSellerName);
+                            sellerDAO.updateSeller(seller);
+                            view.clearJtxt();
+                            setClientFromDb();
+                            break;
+                        }
+
+                    }
                     
                 }catch(NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");

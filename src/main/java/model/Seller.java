@@ -13,14 +13,15 @@ import java.util.ArrayList;
 public class Seller {
 
     //Attributes
-    private int sellerId;
+    private int sellerCode;
     private ArrayList<Sales> salesMade;
     private String sellerName;
     private int databaseId;
+    private boolean isActive;
 
     //Methods
-    public Seller(int sellerId, String sellerName) {
-        this.sellerId = sellerId;
+    public Seller(int sellerCode, String sellerName) {
+        this.sellerCode = sellerCode;
         this.sellerName = sellerName;
     }
     
@@ -28,12 +29,12 @@ public class Seller {
         
     }
 
-    public int getSellerId() {
-        return sellerId;
+    public int getSellerCode() {
+        return sellerCode;
     }
 
-    public void setSellerId(int sellerId) {
-        this.sellerId = sellerId;
+    public void setSellerCode(int sellerId) {
+        this.sellerCode = sellerId;
     }
 
     public String getSellerName() {
@@ -84,4 +85,13 @@ public class Seller {
         this.databaseId = databaseId;
     }
 
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    
 }

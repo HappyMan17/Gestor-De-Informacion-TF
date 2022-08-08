@@ -93,13 +93,24 @@ public class SupplierDAO {
             int supplierCode = supplier.getSupplierCode();
             int supplierId = supplier.getDbId();
 
-            sql = "INSERT INTO application.supplier (supplier_id, nit, name, code) values (?,?,?,?)";
+            if( supplierId == 0 ){
+                sql = "INSERT INTO application.supplier (nit, name, code) values (?,?,?)";
+            }else{
+                sql = "INSERT INTO application.supplier (supplier_id, nit, name, code) values (?,?,?,?)";
+            }
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, supplierId);
-            pstm.setInt(2, supplierNit);
-            pstm.setString(3, supplierName);
-            pstm.setInt(4, supplierCode);
+            
+            if( supplierId == 0 ){
+                pstm.setInt(1, supplierNit);
+                pstm.setString(2, supplierName);
+                pstm.setInt(3, supplierCode);
+            }else{
+                pstm.setInt(1, supplierId);
+                pstm.setInt(2, supplierNit);
+                pstm.setString(3, supplierName);
+                pstm.setInt(4, supplierCode);
+            }
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted in Supplier: " + inserted);

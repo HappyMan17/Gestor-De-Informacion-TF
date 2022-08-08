@@ -54,8 +54,9 @@ public class SellerDAO {
             while (rs.next()) {
                 seller = new Seller();
                 seller.setDatabaseId(rs.getInt("seller_id"));
-                seller.setSellerId(rs.getInt("seller_code"));
+                seller.setSellerCode(rs.getInt("seller_code"));
                 seller.setSellerName(rs.getString("name"));
+                seller.setIsActive(rs.getBoolean("is_active"));
 
                 listado.add(seller);
             }
@@ -83,15 +84,28 @@ public class SellerDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
+            int sellerId = seller.getDatabaseId();
             String sellerName = seller.getSellerName();
-            int sellerCode = seller.getSellerId();
-
-            sql = "INSERT INTO application.seller (sellerName,sellerCode) values (?,?)";
-
-            pstm = con.prepareStatement(sql);
+            int sellerCode = seller.getSellerCode();
+            boolean isActive = seller.getIsActive();
             
-            pstm.setString(1, sellerName);
-            pstm.setInt(2, sellerCode);
+            if( sellerId == 0 ){
+                sql = "INSERT INTO application.seller (name, seller_code, is_active) values (?,?,?)";
+            }else{
+                sql = "INSERT INTO application.seller (seller_id, name, seller_code, is_active) values (?,?,?,?)";
+            }
+            
+            pstm = con.prepareStatement(sql);
+            if (sellerId == 0){
+                pstm.setString(1, sellerName);
+                pstm.setInt(2, sellerCode);
+                pstm.setBoolean(3, isActive);
+            }else{
+                pstm.setInt(1, sellerId);
+                pstm.setString(2, sellerName);
+                pstm.setInt(3, sellerCode);
+                pstm.setBoolean(4, isActive);
+            }
 
             pstm.executeUpdate();
 
@@ -120,12 +134,14 @@ public class SellerDAO {
             
             String sellerName = seller.getSellerName();
             int sellerId = seller.getDatabaseId();
+            boolean isActive = seller.getIsActive();
 
-            sql = "UPDATE aplication.seller SET name = ? where seller_id = ?";
+            sql = "UPDATE aplication.seller SET name = ?, is_active = ? where seller_id = ?";
             
             pstm = con.prepareStatement(sql);
             
             pstm.setString(1, sellerName);
+            pstm.setBoolean(1, isActive);
             pstm.setInt(2, sellerId);
 
             int updated = pstm.executeUpdate();
@@ -154,14 +170,18 @@ public class SellerDAO {
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
+            
             String sellerName = seller.getSellerName();
-            int sellerCode = seller.getSellerId();
+            int sellerId = seller.getDatabaseId();
+            boolean isActive = seller.getIsActive();
 
-            sql = "delete from application.seller where name = ? and seller_code = ?";
+            sql = "UPDATE aplication.seller SET name = ?, is_active = ? where seller_id = ?";
+            //sql = "delete from application.seller where name = ? and seller_code = ?";
             
             pstm = con.prepareStatement(sql);
             pstm.setString(1, sellerName);
-            pstm.setInt(2, sellerCode);
+            pstm.setBoolean(2, isActive);
+            pstm.setInt(3, sellerId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted: " + deleted

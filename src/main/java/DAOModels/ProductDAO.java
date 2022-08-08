@@ -90,19 +90,34 @@ public class ProductDAO {
             String sql = "";
 
             int productAmount = product.getAmount();
+            int productId = product.getDatabaseId();
             String productName = product.getName();
             Double productPrice = product.getPrice();
             String lotNumber = product.getLotNumber();
             boolean isOnStock = product.getIsOnStock();
-
-            sql = "INSERT INTO application.products (amount, name, price, lot_number, is_on_stock) values (?,?,?,?,?)";
+            
+            if( productId == 0 ){
+                sql = "INSERT INTO application.products (amount, name, price, lot_number, is_on_stock) values (?,?,?,?,?)";
+            }else{
+                sql = "INSERT INTO application.products (product_id, amount, name, price, lot_number, is_on_stock) values (?,?,?,?,?,?)";
+            }
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, productAmount);
-            pstm.setString(2, productName);
-            pstm.setDouble(3, productPrice);
-            pstm.setString(4, lotNumber);
-            pstm.setBoolean(5, isOnStock);
+            
+            if( productId == 0 ){
+                pstm.setInt(1, productAmount);
+                pstm.setString(2, productName);
+                pstm.setDouble(3, productPrice);
+                pstm.setString(4, lotNumber);
+                pstm.setBoolean(5, isOnStock);
+            }else{
+                pstm.setInt(1, productId);
+                pstm.setInt(2, productAmount);
+                pstm.setString(3, productName);
+                pstm.setDouble(4, productPrice);
+                pstm.setString(5, lotNumber);
+                pstm.setBoolean(6, isOnStock);
+            }
 
             pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Product Row inserted: ");

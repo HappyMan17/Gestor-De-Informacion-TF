@@ -21,7 +21,7 @@ public class RawMaterialDAO {
 
     public RawMaterialDAO() {}
 
-    public ArrayList<RawMaterial> getRawMaterial(int rawMaterialCode) {
+    public ArrayList<RawMaterial> getRawMaterial(int rawMaterialId) {
 
         Connection con = null;
         PreparedStatement pstm = null;
@@ -33,7 +33,7 @@ public class RawMaterialDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (rawMaterialCode == 0) {
+            if (rawMaterialId == 0) {
                 sql = "SELECT * FROM application.rm_inventory ORDER BY raw_material_id";
             } else {
                 sql = "SELECT * FROM application.rm_inventory where code = ? "
@@ -42,8 +42,8 @@ public class RawMaterialDAO {
 
             pstm = con.prepareStatement(sql);
 
-            if (rawMaterialCode != 0) {
-                pstm.setInt(1, rawMaterialCode);
+            if (rawMaterialId != 0) {
+                pstm.setInt(1, rawMaterialId);
             }
 
             rs = pstm.executeQuery();

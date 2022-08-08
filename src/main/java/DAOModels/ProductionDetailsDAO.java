@@ -90,20 +90,32 @@ public class ProductionDetailsDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            //int productionDetailsId = productionDetails.getDetailsId();
+            int productionDetailsId = productionDetails.getDetailsId();
             int productionDetailsRMId = productionDetails.getRawMaterial_id();
             int productionDetailsAmount = productionDetails.getAmountUsed();
             int productionDetailsProductionId = productionDetails.getProductionId();
             int productionDetailsProductId = productionDetails.getProductId();
 
-            sql = "INSERT INTO application.production_details (raw_material_id, amount_used, production_id, product_id) values (?,?,?,?)";
+            if(productionDetailsId == 0){
+                sql = "INSERT INTO application.production_details (raw_material_id, amount_used, production_id, product_id) values (?,?,?,?)";
+            }else{
+                sql = "INSERT INTO application.production_details (details_id, raw_material_id, amount_used, production_id, product_id) values (?,?,?,?,?)";
+            }
 
             pstm = con.prepareStatement(sql);
-            //pstm.setInt(1, productionDetailsId);
-            pstm.setInt(1, productionDetailsRMId);
-            pstm.setInt(2, productionDetailsAmount);
-            pstm.setInt(3, productionDetailsProductionId);
-            pstm.setInt(4, productionDetailsProductId);
+            
+            if(productionDetailsId == 0){
+                pstm.setInt(1, productionDetailsRMId);
+                pstm.setInt(2, productionDetailsAmount);
+                pstm.setInt(3, productionDetailsProductionId);
+                pstm.setInt(4, productionDetailsProductId);
+            }else{
+                pstm.setInt(1, productionDetailsId);
+                pstm.setInt(2, productionDetailsRMId);
+                pstm.setInt(3, productionDetailsAmount);
+                pstm.setInt(4, productionDetailsProductionId);
+                pstm.setInt(5, productionDetailsProductId);
+            }
 
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Details inserted: " + inserted);
