@@ -125,7 +125,7 @@ public class Controller {
     }
     
     public void setClientFromDb(){
-        System.out.println(clients = clientDAO.getClients(0));
+        clients = clientDAO.getClients(0);
         view.addToClientTable(clients);
     }
     
@@ -429,8 +429,6 @@ public class Controller {
                         Client client = new Client(clientName, clientId);
                         client.setIsActive(true);
                         clientDAO.setClients(client);
-                        clients.add(client);
-                        System.out.println(clients.get(0).getClientName());
                     }
                     setClientFromDb();
                     

@@ -22,7 +22,6 @@ public class ClientDAO {
     public ClientDAO() {}
 
     public ArrayList<Client> getClients(int clientCode) {
-        System.out.println("Buenas tardes");
         Connection con = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
