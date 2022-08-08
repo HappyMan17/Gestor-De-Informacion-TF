@@ -135,13 +135,13 @@ public class SellerDAO {
             int sellerId = seller.getDatabaseId();
             boolean isActive = seller.getIsActive();
 
-            sql = "UPDATE aplication.seller SET name = ?, is_active = ? where seller_id = ?";
+            sql = "UPDATE application.seller SET name = ?, is_active = ? where seller_id = ?";
             
             pstm = con.prepareStatement(sql);
             
             pstm.setString(1, sellerName);
-            pstm.setBoolean(1, isActive);
-            pstm.setInt(2, sellerId);
+            pstm.setBoolean(2, isActive);
+            pstm.setInt(3, sellerId);
 
             int updated = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows updated: " + updated
@@ -174,7 +174,7 @@ public class SellerDAO {
             int sellerId = seller.getDatabaseId();
             boolean isActive = seller.getIsActive();
 
-            sql = "UPDATE aplication.seller SET name = ?, is_active = ? where seller_id = ?";
+            sql = "UPDATE application.seller SET name = ?, is_active = ? where seller_id = ?";
             //sql = "delete from application.seller where name = ? and seller_code = ?";
             
             pstm = con.prepareStatement(sql);

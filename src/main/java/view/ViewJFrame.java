@@ -26,13 +26,13 @@ public class ViewJFrame extends javax.swing.JFrame {
     private DefaultTableModel modeloTwo = new DefaultTableModel();
     private DefaultTableModel modeloThree = new DefaultTableModel();
     private int comboBoxNumber;
+
     /**
      * Creates new form ViewJFrame
      */
     public ViewJFrame() {
         initComponents();
         viewsDisabled(true);
-        
 
     }
 
@@ -41,8 +41,7 @@ public class ViewJFrame extends javax.swing.JFrame {
      *
      * @param listenController
      */
-    
-    public void viewsDisabled(boolean abierto){
+    public void viewsDisabled(boolean abierto) {
         activateRawMaterialPurchaseMenu(abierto);
         activateRawMaterialEditMenu(abierto);
         activateRawMaterialDeleteMenu(abierto);
@@ -50,6 +49,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         activateProductEditMenu(abierto);
         activateProductDeleteMenu(abierto);
     }
+
     public void addListenerBtnBuyMP(ActionListener listenController) {
         jButtonComprarMP.addActionListener(listenController);
     }
@@ -61,33 +61,29 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addListenerBtnEditMP(ActionListener listenController) {
         jButtonEditarMP.addActionListener(listenController);
     }
-    
+
     public void addListenerBtnProduction(ActionListener listenController) {
         btnProduction.addActionListener(listenController);
     }
-    
+
     public void addListenerBtnDeleteProduct(ActionListener listenController) {
         btnBorrrarProducto.addActionListener(listenController);
     }
-    
-    public void addListenerBtnEditProduct(ActionListener listenController){
+
+    public void addListenerBtnEditProduct(ActionListener listenController) {
         btnEditarProducto.addActionListener(listenController);
     }
-    
-    public void addListenerBtnCreateClient(ActionListener listenController){
-        btnAgregarCliente.addActionListener(listenController);
-    }
-    
-    public void addListenerJComboBoxChooseSupplier(ActionListener listenController){
+
+    public void addListenerJComboBoxChooseSupplier(ActionListener listenController) {
         comboBoxNumber = 1;
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
-    
-    public void addListenerJComboBoxChooseMP(ActionListener listenController){
+
+    public void addListenerJComboBoxChooseMP(ActionListener listenController) {
         jComboBoxElegirMP.addActionListener(listenController);
     }
-     
-    public void addListenerRawMaterialPurchaseMenu(ActionListener listenController){
+
+    public void addListenerRawMaterialPurchaseMenu(ActionListener listenController) {
         //jPanelAgregarMP.addAncestorListener(listenController);
     }
 
@@ -102,52 +98,58 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void activateRawMaterialEditMenu(boolean activator) {
         jPanelEditarMP.setVisible(activator);
     }
-    
+
     /**
-     * Añade al comboBox de la vista Materia Prima los nombres de los proveedores
-     * @param supplierName 
+     * Añade al comboBox de la vista Materia Prima los nombres de los
+     * proveedores
+     *
+     * @param supplierName
      */
     public void addToComboBoxSupplier(String supplierName) {
         jComboBoxElegirProveedor.addItem(supplierName);
     }
-    
+
     /**
-     * Añade al comboBox de la vista Materia Prima los nombres de las materias primas
-     * @param  
+     * Añade al comboBox de la vista Materia Prima los nombres de las materias
+     * primas
+     *
+     * @param
      */
     public void addToComboBoxRawMaterial(String rawMaterial) {
         jComboBoxElegirMP.addItem(rawMaterial);
     }
-    
+
     /**
      * Consigue el valor en String de la eleccion del comboBox de supplier
-     * @return 
+     *
+     * @return
      */
-    public String getFromComboBoxSupplier(){
+    public String getFromComboBoxSupplier() {
         Object content;
         content = jComboBoxElegirProveedor.getSelectedItem();
         return content.toString();
     }
-    
+
     /**
      * Retorna el número correspondiente al ComboBox
-     * @return 
+     *
+     * @return
      */
-    public int comboBoxNumber(){
+    public int comboBoxNumber() {
         return comboBoxNumber;
     }
 
     /**
      * Limpia los comboBox de MP
      */
-    public void clearRMComboBox(){
+    public void clearRMComboBox() {
         jComboBoxElegirMP.removeAllItems();
     }
-    
+
     /**
      * Limpia los JText utilizados en MP
      */
-    public void clearJtxt(){
+    public void clearJtxt() {
         jTextFieldCantidadMP.setText("");
         jTextFieldIdABorrarMP.setText("");
         jTextFieldIdAEditarMP.setText("");
@@ -159,332 +161,356 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldNombreCliente.setText("");
         jTextFieldIdCliente.setText("");
         jTextFieldIdABorrarCliente.setText("");
-        jTextFieldNombreNuevoCliente.setText("");   
+        jTextFieldNombreNuevoCliente.setText("");
         jTextFieldIdAEditarCliente.setText("");
     }
-    
+
     /**
      * Retorna el contenido del jComboBoxElegirMP
-     * @return 
+     *
+     * @return
      */
-    public String getFromComboBoxRawMaterial(){
+    public String getFromComboBoxRawMaterial() {
         Object content;
         content = jComboBoxElegirMP.getSelectedItem();
         return content.toString();
     }
-    
-    public String getFromComboBoxProduct(){
+
+    public String getFromComboBoxProduct() {
         Object content;
         content = jComboBoxProductos.getSelectedItem();
         return content.toString();
     }
-    
+
     /**
      * Retorna el contenido del jTextFieldCantidadMP
-     * @return 
+     *
+     * @return
      */
-    public int getRawMaterialAmount(){
+    public int getRawMaterialAmount() {
         int cantidad = 0;
-        try{
+        try {
             cantidad = Integer.parseInt(jTextFieldCantidadMP.getText());
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             System.out.println("Error No Lee");
         }
-        
+
         return cantidad;
     }
-    
+
     ///////  PESTAÑA PRODUCTOS /////////////
-    
     public void activateProductCreationMenu(boolean activator) {
         jPanelAgregarProducto.setVisible(activator);
     }
-    
+
     public void activateProductDeleteMenu(boolean activator) {
         jPanelBorrarProducto.setVisible(activator);
     }
-    
+
     public void activateProductEditMenu(boolean activator) {
         jPanelEditarProducto.setVisible(activator);
     }
-    
-     /**
+
+    /**
      * Retorna el contenido del JText en productos Update Id
-     * @return 
+     *
+     * @return
      */
-    public int getUpdateSectionId(){
+    public int getUpdateSectionId() {
         String txt;
         int content = 0;
-        try{
+        try {
             txt = jTextFieldIdAEditarMP.getText();
             content = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             System.out.println("no es un número");
         }
-        return  content;
+        return content;
     }
-    
+
     /**
      * Retorna el contenido del JText en MP Update Name
-     * @return 
+     *
+     * @return
      */
-    public String getUpdateSectionName(){
+    public String getUpdateSectionName() {
         String txt = jTextFieldNombreNuevoMP.getText();
-        return  txt;
+        return txt;
     }
-    
-    public int getDeleteProductId(){
+
+    public int getDeleteProductId() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdABorrarProducto.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
-            System.out.println("No es un número");
-        }
-        return  number;
-    }
-    
-    public int getUpdateProductId(){
-        String txt;
-        int number = 0;
-        try{
-            txt = jTextFieldIdAEditarProducto.getText();
-            number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
-            System.out.println("No es un número");
-        }
-        return  number;
-    }
-    
-    public double getUpdateProductPrice(){
-        String txt;
-        double number = 0;
-        try{
-            txt = jTextFieldPrecioNuevoProducto.getText();
-            number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             System.out.println("No es un número");
         }
         return number;
     }
-    
+
+    public int getUpdateProductId() {
+        String txt;
+        int number = 0;
+        try {
+            txt = jTextFieldIdAEditarProducto.getText();
+            number = Integer.parseInt(txt);
+        } catch (NumberFormatException x) {
+            System.out.println("No es un número");
+        }
+        return number;
+    }
+
+    public double getUpdateProductPrice() {
+        String txt;
+        double number = 0;
+        try {
+            txt = jTextFieldPrecioNuevoProducto.getText();
+            number = Integer.parseInt(txt);
+        } catch (NumberFormatException x) {
+            System.out.println("No es un número");
+        }
+        return number;
+    }
+
     //// PESTAÑA PROVEEDORES ///////
     public void activateSupplierCreationMenu(boolean activator) {
         jPanelAgregarProveedor.setVisible(activator);
     }
-    
+
     public void activateSupplierDeleteMenu(boolean activator) {
         jPanelBorrarProveedor.setVisible(activator);
     }
-    
+
     public void activateSupplierEditMenu(boolean activator) {
         jPanelEditarProveedor.setVisible(activator);
     }
-    
+
     /// PESTAÑA CLIENTES ////
-     public void activateClientCreationMenu(boolean activator) {
+    public void addListenerBtnCreateClient(ActionListener listenController) {
+        btnAgregarCliente.addActionListener(listenController);
+    }
+
+    public void addActionListenerbtnBorrarCliente(ActionListener listener) {
+        btnBorrarCliente.addActionListener(listener);
+    }
+
+    public void addActionListenerbtnEditarCliente(ActionListener listener) {
+        btnEditarCliente.addActionListener(listener);
+    }
+
+    public void activateClientCreationMenu(boolean activator) {
         jPanelAgregarClientes.setVisible(activator);
     }
-    
+
     public void activateClientDeleteMenu(boolean activator) {
         jPanelBorrarClientes.setVisible(activator);
     }
-    
+
     public void activateClientEditMenu(boolean activator) {
         jPanelEditarClientes.setVisible(activator);
     }
-    
-    public String getClientName(){
+
+    public String getClientName() {
         String txt = jTextFieldNombreCliente.getText();
-        return  txt;
+        return txt;
     }
-    
-    public String getClientNewName(){
+
+    public String getClientNewName() {
         String txt = jTextFieldNombreNuevoCliente.getText();
-        return  txt;
+        return txt;
     }
-    
-    public int getClientIdToDelete(){
+
+    public int getClientIdToDelete() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdABorrarCliente.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
-    public int getIdToCreateClient(){
+
+    public int getIdToCreateClient() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdCliente.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
-    public int getIdToUpdateClient(){
+
+    public int getIdToUpdateClient() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdAEditarCliente.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
+
     ///// PESTAÑA EMPLEADO //////
-    
-    public void addActionListenerJButtonContratarEmpleado(ActionListener A){
+    public void addActionListenerJButtonContratarEmpleado(ActionListener A) {
         jButton1.addActionListener(A);
     }
-    
-    public String getSellerName(){
-        String txt = jTextFieldNombreEmpleado.getText();
-        return  txt;
+
+    public void addActionListenerJButtonBorrarEmpleado(ActionListener listener) {
+        jButtonBorrarEmpleado.addActionListener(listener);
     }
     
-    public int getSellerCode(){
+    public void addActionListenerJButtonEditarEmpleado(ActionListener listener) {
+        jButtonEditarEmpleado.addActionListener(listener);
+    }
+
+    public String getSellerName() {
+        String txt = jTextFieldNombreEmpleado.getText();
+        return txt;
+    }
+
+    public int getSellerCode() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdEmpleado.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
-    public int getSellerIdToDelete(){
+
+    public int getSellerIdToDelete() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdABorrarEmpleado.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
-    public int getSellerIdToUpdate(){
+
+    public int getSellerIdToUpdate() {
         String txt;
         int number = 0;
-        try{
+        try {
             txt = jTextFieldIdAEditarEmpleado.getText();
             number = Integer.parseInt(txt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             JOptionPane.showMessageDialog(null, "Ingrese un número.");
         }
         return number;
     }
-    
-    public String getSellerNewName(){
+
+    public String getSellerNewName() {
         String txt = jTextFieldNombreNuevoEmpleado.getText();
-        return  txt;
+        return txt;
     }
-    
-     public void activateSellerCreationMenu(boolean activator) {
+
+    public void activateSellerCreationMenu(boolean activator) {
         jPanelAgregarEmpleado.setVisible(activator);
     }
-    
+
     public void activateSellerDeleteMenu(boolean activator) {
         jPanelBorrarEmpleado.setVisible(activator);
     }
-    
+
     public void activateSellerEditMenu(boolean activator) {
         jPanelEditarEmpleado.setVisible(activator);
     }
-    
+
     /**
      * Retorna el contenido del JText en productos
-     * @return 
+     *
+     * @return
      */
-    public int getFromProductAmount(){
+    public int getFromProductAmount() {
         String txt = jTextFieldCantidadProducto.getText();
         int cantidad = 0;
-        try{
+        try {
             cantidad = Integer.parseInt(txt);
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "ingrese un numero");
         }
         return cantidad;
     }
-    
+
     /**
      * Retorna el contenido del jTextFieldIdABorrarMP
-     * @return 
+     *
+     * @return
      */
-    public int getRawMaterialId(){
+    public int getRawMaterialId() {
         String jTxt = jTextFieldIdABorrarMP.getText();
         int id = 0;
-        try{
+        try {
             id = Integer.parseInt(jTxt);
-        }catch(NumberFormatException x){
+        } catch (NumberFormatException x) {
             System.out.println("Error No Lee");
         }
-        
+
         return id;
     }
+
     //----------------------------------Tablas
-    public void addToRMTable(ArrayList<RawMaterial> raw){
+    public void addToRMTable(ArrayList<RawMaterial> raw) {
         removeRowsTable(jTableMateriaP, modelo);
-        for(RawMaterial rawM : raw){
+        for (RawMaterial rawM : raw) {
             Object[] fila = {rawM.getDbId(), rawM.getName(), rawM.getAmount(), rawM.getUnitPrice()};
             modelo.addRow(fila);
         }
     }
-    
-    public void addToProductTable(ArrayList<Product> products){
+
+    public void addToProductTable(ArrayList<Product> products) {
         removeRowsTable(jTableProductos, modeloOne);
-        for(Product product : products){
-            if( product.getIsOnStock() ){
-                Object[] fila = {product.getDatabaseId(), product.getName(), 
+        for (Product product : products) {
+            if (product.getIsOnStock()) {
+                Object[] fila = {product.getDatabaseId(), product.getName(),
                     product.getAmount(), product.getPrice(), product.getLotNumber()};
                 modeloOne.addRow(fila);
             }
         }
     }
-    
-    public void addToClientTable(ArrayList<Client> clients){
+
+    public void addToClientTable(ArrayList<Client> clients) {
         removeRowsTable(jTableClientes, modeloTwo);
-        for(Client client : clients){
-            if( client.getIsActive() ){
-                Object[] fila = {client.getDbId(), client.getClientName()};
+        for (Client client : clients) {
+            if (client.getIsActive()) {
+                Object[] fila = {client.getDbId(), client.getClientName(), client.getClientId()};
                 modeloTwo.addRow(fila);
             }
         }
     }
-    
-    public void addToSellerTable(ArrayList<Seller> sellers){
+
+    public void addToSellerTable(ArrayList<Seller> sellers) {
         removeRowsTable(jTableEmpleados, modeloThree);
-        for(Seller seller : sellers){
-            if( seller.getIsActive() ){
-                Object[] fila = {seller.getDatabaseId(), seller.getSellerName()};
+        for (Seller seller : sellers) {
+            if (seller.getIsActive()) {
+                Object[] fila = {seller.getDatabaseId(), seller.getSellerName(), seller.getSellerCode()};
                 modeloThree.addRow(fila);
             }
         }
     }
-    
+
     /**
      * Elimina las filas de la tabla.
      */
-    public void removeRowsTable(JTable table, DefaultTableModel model){
+    public void removeRowsTable(JTable table, DefaultTableModel model) {
         int filas = table.getRowCount();
-        for(int fila = 0; fila < filas; fila++){
+        for (int fila = 0; fila < filas; fila++) {
             model.removeRow(0);
         }
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -652,13 +678,13 @@ public class ViewJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanelBorrarEmpleado = new javax.swing.JPanel();
         jTextFieldIdABorrarEmpleado = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jButtonBorrarEmpleado = new javax.swing.JButton();
         jPanelEditarEmpleado = new javax.swing.JPanel();
         jPanelIdAEditarEmpleado = new javax.swing.JPanel();
         jTextFieldIdAEditarEmpleado = new javax.swing.JTextField();
         jPanelNombreNuevoEmpleado = new javax.swing.JPanel();
         jTextFieldNombreNuevoEmpleado = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jButtonEditarEmpleado = new javax.swing.JButton();
         jPaneHistoricoVentas = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -1720,6 +1746,10 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableClientes.getColumnModel().getColumn(2).setResizable(false);
             jTableClientes.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloTwo.addColumn("ID");
+        modeloTwo.addColumn("Nombre");
+        modeloTwo.addColumn("Código del Cliente");
+        jTableClientes.setModel(modeloTwo);
 
         jPaneClientesTabbed.add(jScrollPaneClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
@@ -1901,6 +1931,10 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableEmpleados.getColumnModel().getColumn(2).setResizable(false);
             jTableEmpleados.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloThree.addColumn("ID");
+        modeloThree.addColumn("Nombre");
+        modeloThree.addColumn("Código del Empleado");
+        jTableEmpleados.setModel(modeloThree);
 
         jPaneEmpleadosTabbed.add(jScrollPaneEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
@@ -1962,8 +1996,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelBorrarEmpleado.add(jTextFieldIdABorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 24, 121, -1));
 
-        jButton2.setText("Borrar Empleado");
-        jPanelBorrarEmpleado.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        jButtonBorrarEmpleado.setText("Borrar Empleado");
+        jPanelBorrarEmpleado.add(jButtonBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         jPaneEmpleadosTabbed.add(jPanelBorrarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 234, 143, 100));
 
@@ -2018,8 +2052,8 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelEditarEmpleado.add(jPanelNombreNuevoEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
-        jButton3.setText("Editar Empleado");
-        jPanelEditarEmpleado.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 40));
+        jButtonEditarEmpleado.setText("Editar Empleado");
+        jPanelEditarEmpleado.add(jButtonEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, 40));
 
         jPaneEmpleadosTabbed.add(jPanelEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, -1, 210));
 
@@ -2267,27 +2301,23 @@ public class ViewJFrame extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewJFrame.class  
+            java.util.logging.Logger.getLogger(ViewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ViewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewJFrame.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ViewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewJFrame.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewJFrame.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ViewJFrame.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -2336,10 +2366,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnHistoricoDeVentas;
     private javax.swing.JButton btnProduction;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButtonBorrarEmpleado;
     private javax.swing.JButton jButtonBorrarMP;
     private javax.swing.JButton jButtonComprarMP;
+    private javax.swing.JButton jButtonEditarEmpleado;
     private javax.swing.JButton jButtonEditarMP;
     private javax.swing.JComboBox<String> jComboBoxElegirCliente;
     private javax.swing.JComboBox<String> jComboBoxElegirMP;

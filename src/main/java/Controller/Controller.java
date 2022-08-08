@@ -50,11 +50,7 @@ public class Controller {
         this.sellerDAO = new SellerDAO();
         this.supplierDAO = new SupplierDAO();
 
-        this.suppliers = supplierDAO.getSuppliers(0);
-        addToSuppliers();
-        rawMaterials = rawMaterialDAO.getRawMaterial(0);
-        view.addToRMTable(rawMaterials);
-        setProductsFromDb();
+        startTables();
         
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
@@ -65,6 +61,10 @@ public class Controller {
         this.view.addListenerBtnEditProduct(new CalculateListener());
         this.view.addListenerBtnCreateClient(new CalculateListener());
         this.view.addActionListenerJButtonContratarEmpleado(new CalculateListener());
+        this.view.addActionListenerbtnBorrarCliente(new CalculateListener());
+        this.view.addActionListenerbtnEditarCliente(new CalculateListener());
+        this.view.addActionListenerJButtonEditarEmpleado(new CalculateListener());
+        this.view.addActionListenerJButtonBorrarEmpleado(new CalculateListener());
         
     }
 
@@ -119,9 +119,19 @@ public class Controller {
         }
     }
     
+    public void setSupplierFromDb(){
+        this.suppliers = supplierDAO.getSuppliers(0);
+        addToSuppliers();
+    }
+    
     public void setProductsFromDb(){
         products = productDAO.getProducts(0);
         view.addToProductTable(products);
+    }
+    
+    public void setRMFromDb(){
+        rawMaterials = rawMaterialDAO.getRawMaterial(0);
+        view.addToRMTable(rawMaterials);
     }
     
     public void setClientFromDb(){
@@ -132,6 +142,14 @@ public class Controller {
     public void setSellerFromDb(){
         sellers = sellerDAO.getSeller(0);
         view.addToSellerTable(sellers);
+    }
+    
+    public void startTables(){
+        setRMFromDb();
+        setProductsFromDb();
+        setClientFromDb();
+        setSellerFromDb();
+        setSupplierFromDb();
     }
 
     public boolean confirmExistence(String rmName, int amount, RawMaterial rawMat) {
@@ -542,7 +560,7 @@ public class Controller {
                             seller.setSellerName(newSellerName);
                             sellerDAO.updateSeller(seller);
                             view.clearJtxt();
-                            setClientFromDb();
+                            setSellerFromDb();
                             break;
                         }
 

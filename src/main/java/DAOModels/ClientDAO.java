@@ -95,14 +95,19 @@ public class ClientDAO {
             int clientId = client.getDbId();
             boolean clientisActive = client.getIsActive();
             boolean clientisStore = client.getIsIsStore();
+            System.err.println("1");
             
             if( client.getIsIsStore() ){
+                System.err.println("2");
                 sql = "INSERT INTO application.client (name, client_code, nit, is_active, is_store) values (?,?,?,?,?)";
             }if( client.getDbId() == 0 ){
-                sql = "INSERT INTO application.client (name, client_code, nit, is_active, is_store) values (?,?,?,?)";
+                System.err.println("3");
+                sql = "INSERT INTO application.client (name, client_code, nit, is_active, is_store) values (?,?,?,?,?)";
             }else{
+                System.err.println("4");
                 sql = "INSERT INTO application.client (client_id, name, client_code, is_active, is_store) values (?,?,?,?,?)";
             }
+            System.err.println("5");
 
             pstm = con.prepareStatement(sql);
             if(client.getIsIsStore()){
@@ -131,7 +136,7 @@ public class ClientDAO {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError en ClientDAO metodo set:" + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -139,7 +144,7 @@ public class ClientDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                        + ex.getErrorCode() + "\nError en ClientDAO metodo set2:" + ex.getMessage());
             }
         }
     }

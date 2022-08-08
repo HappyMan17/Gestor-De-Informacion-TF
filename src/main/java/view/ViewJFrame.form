@@ -2319,7 +2319,7 @@
                 <Component class="javax.swing.JTable" name="jTableClientes">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="modeloTwo.addColumn(&quot;ID&quot;);&#xa;    modeloTwo.addColumn(&quot;Nombre&quot;);&#xa;    modeloTwo.addColumn(&quot;C&#xf3;digo del Cliente&quot;);&#xa;    jTableClientes.setModel(modeloTwo);">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
@@ -2737,7 +2737,7 @@
                 <Component class="javax.swing.JTable" name="jTableEmpleados">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="modeloThree.addColumn(&quot;ID&quot;);&#xa;    modeloThree.addColumn(&quot;Nombre&quot;);&#xa;    modeloThree.addColumn(&quot;C&#xf3;digo del Empleado&quot;);&#xa;    jTableEmpleados.setModel(modeloThree);">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>
@@ -2902,7 +2902,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="jButtonBorrarEmpleado">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Borrar Empleado"/>
                   </Properties>
@@ -3013,7 +3013,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="jButtonEditarEmpleado">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Editar Empleado"/>
                   </Properties>
