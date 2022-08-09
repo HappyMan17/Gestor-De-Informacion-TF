@@ -34,7 +34,7 @@ public class SalesDetailsDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            if (salesDetailsId == -1) {
+            if (salesDetailsId == 0) {
                 sql = "SELECT * FROM application.sales_details ORDER BY sales_detail_id";
             } else {
                 sql = "SELECT * FROM application.sales_details where sales_detail_id = ? "
@@ -43,7 +43,7 @@ public class SalesDetailsDAO {
 
             pstm = con.prepareStatement(sql);
 
-            if (salesDetailsId != -1) {
+            if (salesDetailsId != 0) {
                 pstm.setInt(1, salesDetailsId);
             }
 
@@ -95,35 +95,66 @@ public class SalesDetailsDAO {
             int amount = salesDetails.getAmount();
             Double price = salesDetails.getPrice();
 
-            if( productId == 0 ){
-                sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, amount, price) values (?, ?, ?, ?)";
+            if(salesDetailsId == 0){
+                if( productId == 0 ){
+                    sql = "INSERT INTO application.sales_details (package_id, amount, price) values (?, ?, ?)";
+                }
+                if( packageId == 0 ){
+                    sql = "INSERT INTO application.sales_details (product_id, amount, price) values (?, ?, ?)";
+                }else {
+                    sql = "INSERT INTO application.sales_details (package_id, product_id, amount, price) values (?, ?, ?, ?)";
+                }
             }
-            if( packageId == 0 ){
-                sql = "INSERT INTO application.sales_details (sales_detail_id, product_id, amount, price) values (?, ?, ?, ?)";
-            }else {
-                sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, product_id, amount, price) values (?, ?, ?, ?, ?)";
-            }
-
-            pstm = con.prepareStatement(sql);
-            if( productId == 0 ){
-                pstm.setInt(1, salesDetailsId);
-                pstm.setInt(2, packageId);
-                pstm.setInt(3, amount);
-                pstm.setDouble(4, price);
-            }
-            if( packageId == 0 ){
-                pstm.setInt(1, salesDetailsId);
-                pstm.setInt(2, productId);
-                pstm.setInt(3, amount);
-                pstm.setDouble(4, price);
-            }else {
-                pstm.setInt(1, salesDetailsId);
-                pstm.setInt(2, packageId);
-                pstm.setInt(3, productId);
-                pstm.setInt(4, amount);
-                pstm.setDouble(5, price);
+            if(salesDetailsId != 0){
+                if( productId == 0 ){
+                    sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, amount, price) values (?, ?, ?, ?)";
+                }
+                if( packageId == 0 ){
+                    sql = "INSERT INTO application.sales_details (sales_detail_id, product_id, amount, price) values (?, ?, ?, ?)";
+                }else {
+                    sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, product_id, amount, price) values (?, ?, ?, ?, ?)";
+                }
             }
             
+            pstm = con.prepareStatement(sql);
+            if(salesDetailsId == 0){
+                if( productId == 0 ){
+                    pstm.setInt(1, packageId);
+                    pstm.setInt(2, amount);
+                    pstm.setDouble(3, price);
+                }
+                if( packageId == 0 ){
+                    pstm.setInt(1, productId);
+                    pstm.setInt(2, amount);
+                    pstm.setDouble(3, price);
+                }else {
+                    pstm.setInt(1, packageId);
+                    pstm.setInt(2, productId);
+                    pstm.setInt(3, amount);
+                    pstm.setDouble(4, price);
+                }
+            }
+            if(salesDetailsId != 0){
+                if( productId == 0 ){
+                    pstm.setInt(1, salesDetailsId);
+                    pstm.setInt(2, packageId);
+                    pstm.setInt(3, amount);
+                    pstm.setDouble(4, price);
+                }
+                if( packageId == 0 ){
+                    pstm.setInt(1, salesDetailsId);
+                    pstm.setInt(2, productId);
+                    pstm.setInt(3, amount);
+                    pstm.setDouble(4, price);
+                }else {
+                    pstm.setInt(1, salesDetailsId);
+                    pstm.setInt(2, packageId);
+                    pstm.setInt(3, productId);
+                    pstm.setInt(4, amount);
+                    pstm.setDouble(5, price);
+                }
+            }
+                
             int inserted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows inserted: " + inserted);
 
@@ -146,6 +177,8 @@ public class SalesDetailsDAO {
      *
      * @param productPackage
      */
+    
+    /*
     public void updateSalesDetails(SalesDetails salesDetails) {
         Connection con = null;
         PreparedStatement pstm = null;
@@ -186,6 +219,7 @@ public class SalesDetailsDAO {
             }
         }
     }
+    */
 
     public void deleteSalesDetails(SalesDetails salesDetails) {
         Connection con = null;
@@ -197,7 +231,7 @@ public class SalesDetailsDAO {
 
             int salesDetailsId = salesDetails.getSalesDetailId();
 
-            sql = "delete from application.sales_details where sales_detail_id = ?";
+            sql = "update application.sales_details set (is_active) = (?) where sales_detail_id = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, salesDetailsId);

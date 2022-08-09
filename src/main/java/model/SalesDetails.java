@@ -10,11 +10,9 @@ package model;
  */
 public class SalesDetails {
 
-    private int salesDetailId;
-    private int productId;
-    private int packageId;
+    private int salesDetailId, amount, packageId, productId;
     private double price;
-    private int amount;
+    private boolean isActive;
 
     public SalesDetails(int productId, double price, int amount) {
         this.productId = productId;
@@ -72,4 +70,13 @@ public class SalesDetails {
         this.amount = amount;
     }
 
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    
 }

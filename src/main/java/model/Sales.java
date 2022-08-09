@@ -12,48 +12,56 @@ import java.util.ArrayList;
  */
 public class Sales {
     //Attributes
-    private int quantitySold;
     private Client client;
+    private Seller seller;
     private ArrayList<ProductPackage> packageSell;
     private ArrayList<Product> productSell;
+    private int salesDetailsId, databaseId;
     private Double totalSold;
-    private Seller seller;
-    private int databaseId;
+    private String date;
+    private boolean isActive;
     
     //Methods
-    public Sales(int quantitySold, Client client, Seller seller){
-        this.quantitySold = quantitySold;
-        this.client = client;
-        this.seller = seller;
-        this.totalSold = 0.0;
-    }
-    
-    public Sales(int quantitySold, Seller seller){
-        this.quantitySold = quantitySold;
-        this.seller = seller;
-    }
-    
     public Sales(){
         
     }
-
-    public int getQuantitySold() {
-        return quantitySold;
-    }
-
-    public void setQuantitySold(int quantitySold) {
-        this.quantitySold = quantitySold;
+    
+    public Sales(int quantitySold, Client client, Seller seller, int selesDetailsId){
+        this.client = client;
+        this.seller = seller;
+        this.salesDetailsId = selesDetailsId;
+        this.totalSold = 0.0;
     }
     
     public void calculateQuantitySold(){
         for(ProductPackage productPackage: packageSell){
             productPackage.calculateSalePrice();
-            totalSold += productPackage.getSalePrice();
+            
+            Double price = productPackage.getSalePrice();
+            int amount  = productPackage.getProductAmount();
+            
+            totalSold += price * amount;
         }
         
         for(Product product: productSell){
-            totalSold += product.getPrice();
+            
+            Double price = product.getPrice();
+            int amount = product.getAmount();
+            
+            totalSold += price * amount;
         }
+    }
+
+    public int getSalesDetailsId() {
+        return salesDetailsId;
+    }
+
+    public void setSalesDetailsId(int selesDetailsId) {
+        this.salesDetailsId = selesDetailsId;
+    }
+    
+    public void setTotalSold(Double totalSold){
+        this.totalSold = totalSold;
     }
     
     public Double getTotalSold(){
@@ -107,5 +115,22 @@ public class Sales {
     public void setDatabaseId(int databaseId) {
         this.databaseId = databaseId;
     }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+    
     
 }

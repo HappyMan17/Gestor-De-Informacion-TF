@@ -124,7 +124,7 @@ public final class Controller {
 
         possibleSuppliers.get(0).setRawMaterial(rmSupplierInsumosJavi);
         possibleSuppliers.get(1).setRawMaterial(rmSupplierSalsitasManu);
-        System.out.println("rmPos1" + possibleSuppliers.get(0).getRawMaterial());
+
         addToComboBoxNewSupplier();
     }
 
@@ -178,7 +178,6 @@ public final class Controller {
         
         try{
         for (Supplier supplier1 : suppliers) {
-            System.out.println("1" + supplier1.getSupplierName());
             if (supplierOne.equals(supplier1.getSupplierName())){
                 RawMaterial sal = new RawMaterial("Sal", 600.0, 7, 7, supplier1.getDbId(), 100);
                 RawMaterial azucar = new RawMaterial("Azúcar", 1500.0, 2, 2, supplier1.getDbId(), 100);
@@ -187,7 +186,6 @@ public final class Controller {
                 supplier1.setRawMaterial(rMSupplierOne);
             }
             if (supplierTwo.equals(supplier1.getSupplierName())){
-                System.out.println(supplier1.getSupplierName());
                 RawMaterial salsaRosada = new RawMaterial("Salsa Rosada", 7000.0, 8, 8, supplier1.getDbId(), 100);
                 RawMaterial salsaRoja = new RawMaterial("Salsa Roja", 6500.0, 9, 9, supplier1.getDbId(), 100);
                 rMSupplierTwo.add(salsaRosada);
@@ -230,7 +228,6 @@ public final class Controller {
     public void setNewSupplierFromDb() {
         //this.possibleSuppliers = supplierDAO.getSuppliers(0);
         addToPossibleSuppliers();
-        System.out.println("rmPos2" + possibleSuppliers.get(0).getRawMaterial());
     }
 
     public void setProductsFromDb() {
