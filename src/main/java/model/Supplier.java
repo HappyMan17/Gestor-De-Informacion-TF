@@ -16,6 +16,7 @@ public class Supplier {
     private int supplierNit, dbId;
     private ArrayList <RawMaterial> rawMaterial;
     private int supplierCode;
+    private boolean isActive;
 
     //Methods
     public Supplier(){}
@@ -66,5 +67,15 @@ public class Supplier {
     public void setDbId(int dbId) {
         this.dbId = dbId;
     }
+
+    public boolean isIsActive() {
+        return isActive;
+    }
+
+    public void setIsActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+    
+    
     
 }

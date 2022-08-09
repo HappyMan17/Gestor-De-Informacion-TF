@@ -55,6 +55,7 @@ public class SupplierDAO {
                 supplier.setDbId(rs.getInt("supplier_id"));
                 supplier.setSupplierNit(rs.getInt("nit"));
                 supplier.setSupplierCode(rs.getInt("code"));
+                supplier.setIsActive(rs.getBoolean("is_active"));
 
                 listado.add(supplier);
             }
@@ -88,15 +89,16 @@ public class SupplierDAO {
             con = ServiceConnection.getConnection();
             String sql = "";
 
-            String supplierName = supplier.getSupplierName();
             int supplierNit = supplier.getSupplierNit();
+            String supplierName = supplier.getSupplierName();
             int supplierCode = supplier.getSupplierCode();
+            boolean isActive = supplier.isIsActive();
             int supplierId = supplier.getDbId();
 
-            if( supplierId == 0 ){
-                sql = "INSERT INTO application.supplier (nit, name, code) values (?,?,?)";
+            if( supplierId == 0){
+                sql = "INSERT INTO application.supplier (nit, name, code, is_active) values (?,?,?,?)";
             }else{
-                sql = "INSERT INTO application.supplier (supplier_id, nit, name, code) values (?,?,?,?)";
+                sql = "INSERT INTO application.supplier (supplier_id, nit, name, code, is_active) values (?,?,?,?,?)";
             }
 
             pstm = con.prepareStatement(sql);
@@ -105,19 +107,21 @@ public class SupplierDAO {
                 pstm.setInt(1, supplierNit);
                 pstm.setString(2, supplierName);
                 pstm.setInt(3, supplierCode);
+                pstm.setBoolean(4, isActive);
             }else{
                 pstm.setInt(1, supplierId);
                 pstm.setInt(2, supplierNit);
                 pstm.setString(3, supplierName);
                 pstm.setInt(4, supplierCode);
+                pstm.setBoolean(5, isActive);
             }
 
-            int inserted = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows inserted in Supplier: " + inserted);
+            pstm.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Rows inserted in Supplier: ");
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError en SupplierDAO: metodo set1" + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -125,7 +129,7 @@ public class SupplierDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                        + ex.getErrorCode() + "\nError SupplierDAO: método set2" + ex.getMessage());
             }
         }
     }
@@ -143,21 +147,23 @@ public class SupplierDAO {
             int supplierNit = supplier.getSupplierNit();
             int supplierCode = supplier.getSupplierCode();
             int supplierId = supplier.getDbId();
+            boolean supplierIsActive = supplier.isIsActive();
 
-            sql = "update application.supplier set (nit, name, code) = (?, ?, ?) where supplier_id = ?";
+            sql = "update application.supplier set (nit, name, code, is_active) = (?, ?, ?,?) where supplier_id = ?";
 
             pstm = con.prepareStatement(sql);
             pstm.setInt(1, supplierNit);
             pstm.setString(2, supplierName);
             pstm.setInt(3, supplierCode);
-            pstm.setInt(4, supplierId);
+            pstm.setBoolean(4, supplierIsActive);
+            pstm.setInt(5, supplierId);
 
             int updated = pstm.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Rows updated: " + updated);
+            JOptionPane.showMessageDialog(null, "Rows updated" + updated);
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Código : "
-                    + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                    + ex.getErrorCode() + "\nError : Supplier DAO método update" + ex.getMessage());
         } finally {
             try {
                 if (pstm != null) {
@@ -165,7 +171,7 @@ public class SupplierDAO {
                 }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Código : "
-                        + ex.getErrorCode() + "\nError :" + ex.getMessage());
+                        + ex.getErrorCode() + "\nError : Supplier DAO método update" + ex.getMessage());
             }
         }
     }
@@ -177,15 +183,19 @@ public class SupplierDAO {
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
-
+            
+            String supplierName = supplier.getSupplierName();
             int supplierCode = supplier.getSupplierCode();
             int supplierId = supplier.getDbId();
+            boolean supplierIsActive = supplier.isIsActive();
 
-            sql = "delete from application.supplier where code = ? and supplier_id = ?";
+            sql = "update application.supplier SET name = ?, is_active = ? where supplier_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, supplierCode);
-            pstm.setInt(2, supplierId);
+            pstm.setString(1, supplierName);
+            pstm.setBoolean(2, supplierIsActive);
+            pstm.setInt(3, supplierId);
+            
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted :" + deleted);

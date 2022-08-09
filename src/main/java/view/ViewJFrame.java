@@ -14,6 +14,7 @@ import model.Client;
 import model.Seller;
 import model.Product;
 import model.RawMaterial;
+import model.Supplier;
 
 /**
  *
@@ -25,7 +26,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     private DefaultTableModel modeloOne = new DefaultTableModel();
     private DefaultTableModel modeloTwo = new DefaultTableModel();
     private DefaultTableModel modeloThree = new DefaultTableModel();
+    private DefaultTableModel modeloSupplier = new DefaultTableModel();
     private int comboBoxNumber;
+    private int comboBoxNumberNewSupplier;
 
     /**
      * Creates new form ViewJFrame
@@ -75,7 +78,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
 
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController) {
-        comboBoxNumber = 1;
+        comboBoxNumber =  1;
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
 
@@ -118,6 +121,24 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addToComboBoxRawMaterial(String rawMaterial) {
         jComboBoxElegirMP.addItem(rawMaterial);
     }
+    
+    /**
+     * Añade al comboBox de la vista Proveedor, los nombres de los proveedores 
+     * que se pueden crear.
+     */
+    public void addToComboBoxNewSupplier(String supplierName){
+        jComboBoxContratarProveedor.addItem(supplierName);
+    }
+    
+    /**
+     * Consigue el valor en String de la elección del comboBox de proveedor en la 
+     * pestaña Proveedor
+     */
+    public String getFromComboBoxNewSupplier() {
+        Object content;
+        content = jComboBoxContratarProveedor.getSelectedItem();
+        return content.toString();
+    }
 
     /**
      * Consigue el valor en String de la eleccion del comboBox de supplier
@@ -138,6 +159,11 @@ public class ViewJFrame extends javax.swing.JFrame {
     public int comboBoxNumber() {
         return comboBoxNumber;
     }
+    
+    public int getComboBoxNumberNewSupplier(){
+        return comboBoxNumberNewSupplier;
+    }
+
 
     /**
      * Limpia los comboBox de MP
@@ -163,6 +189,10 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldIdABorrarCliente.setText("");
         jTextFieldNombreNuevoCliente.setText("");
         jTextFieldIdAEditarCliente.setText("");
+        jTextFieldIdABorrarProveedor.setText("");
+        jTextFieldIdAEditarProveedor.setText("");
+        jTextFieldNombreNuevoProveedor.setText("");
+        
     }
 
     /**
@@ -196,6 +226,14 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
 
         return cantidad;
+    }
+    
+    public void clearComboBoxElegirProveedor(){
+        jComboBoxElegirProveedor.removeAllItems();
+    }
+    
+    public void clearComboBoxNewProveedor(){
+        jComboBoxContratarProveedor.removeAllItems();
     }
 
     ///////  PESTAÑA PRODUCTOS /////////////
@@ -275,6 +313,24 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
 
     //// PESTAÑA PROVEEDORES ///////
+    
+    public void addActionListenerBtnContratarProveedor(ActionListener listener){
+        btnContratarProveedor.addActionListener(listener);
+    }
+    
+    public void addActionListenerBtnBorrarProveedor(ActionListener listener){
+        btnBorrarProveedor.addActionListener(listener);
+    }
+    
+    public void addActionListenerBtnEditarProveedor(ActionListener listener){
+        btnEditarProveedor.addActionListener(listener);
+    }
+    
+    public void addListenerJComboBoxCreateSupplier(ActionListener listenController) {
+        comboBoxNumberNewSupplier = 3;
+        jComboBoxContratarProveedor.addActionListener(listenController);
+    }
+    
     public void activateSupplierCreationMenu(boolean activator) {
         jPanelAgregarProveedor.setVisible(activator);
     }
@@ -286,6 +342,44 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void activateSupplierEditMenu(boolean activator) {
         jPanelEditarProveedor.setVisible(activator);
     }
+    
+    public int getIdSupplierToDelete() {
+        String txt;
+        int content = 0;
+        try {
+            txt = jTextFieldIdABorrarProveedor.getText();
+            content = Integer.parseInt(txt);
+        } catch (NumberFormatException x) {
+            System.out.println("no es un número");
+        }
+        return content;
+    }
+    
+    public int getIdSupplierToEdit() {
+        String txt;
+        int content = 0;
+        try {
+            txt = jTextFieldIdAEditarProveedor.getText();
+            content = Integer.parseInt(txt);
+        } catch (NumberFormatException x) {
+            System.out.println("no es un número");
+        }
+        return content;
+    }
+    
+    public String getNewNameSupplierToEdit() {
+        String txt = "";
+        try {
+            txt = jTextFieldNombreNuevoProveedor.getText();
+        } catch (NumberFormatException x) {
+            System.out.println("no es un número");
+        }
+        return txt;
+    }
+    
+    
+    
+    
 
     /// PESTAÑA CLIENTES ////
     public void addListenerBtnCreateClient(ActionListener listenController) {
@@ -501,6 +595,17 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void addToSupplierTable(ArrayList<Supplier> suppliers) {
+        removeRowsTable(jTableProveedores, modeloSupplier);
+        for (Supplier supplier : suppliers) {
+            if (supplier.isIsActive()) {
+                Object[] fila = {supplier.getDbId(), supplier.getSupplierNit(), 
+                supplier.getSupplierName()};
+                modeloSupplier.addRow(fila);
+            }
+        }
+    }
 
     /**
      * Elimina las filas de la tabla.
@@ -625,11 +730,9 @@ public class ViewJFrame extends javax.swing.JFrame {
         jScrollPaneProveedores = new javax.swing.JScrollPane();
         jTableProveedores = new javax.swing.JTable();
         jPanelAgregarProveedor = new javax.swing.JPanel();
-        jPanelNombreProveedor = new javax.swing.JPanel();
-        jTextFieldNombreProveedor = new javax.swing.JTextField();
-        jPanelNitProveedor = new javax.swing.JPanel();
-        jTextFieldNitProveedor = new javax.swing.JTextField();
-        btnContratar = new javax.swing.JButton();
+        btnContratarProveedor = new javax.swing.JButton();
+        jPanelElegirProveedor = new javax.swing.JPanel();
+        jComboBoxContratarProveedor = new javax.swing.JComboBox<>();
         jPanelBorrarProveedor = new javax.swing.JPanel();
         jTextFieldIdABorrarProveedor = new javax.swing.JTextField();
         btnBorrarProveedor = new javax.swing.JButton();
@@ -1570,56 +1673,41 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableProveedores.getColumnModel().getColumn(2).setResizable(false);
             jTableProveedores.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloSupplier.addColumn("ID");
+        modeloSupplier.addColumn("NIT");
+        modeloSupplier.addColumn("Nombre del Proveedor");
+        jTableProveedores.setModel(modeloSupplier);
 
         jPaneProveedoresTabbed.add(jScrollPaneProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
         jPanelAgregarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Contratar Proveedor"));
         jPanelAgregarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelNombreProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre del Proveedor", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        btnContratarProveedor.setText("Contratar Proveedor");
+        jPanelAgregarProveedor.add(btnContratarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 160, 30));
 
-        javax.swing.GroupLayout jPanelNombreProveedorLayout = new javax.swing.GroupLayout(jPanelNombreProveedor);
-        jPanelNombreProveedor.setLayout(jPanelNombreProveedorLayout);
-        jPanelNombreProveedorLayout.setHorizontalGroup(
-            jPanelNombreProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreProveedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldNombreProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                .addContainerGap())
+        jPanelElegirProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Elegir Proveedor"));
+
+        javax.swing.GroupLayout jPanelElegirProveedorLayout = new javax.swing.GroupLayout(jPanelElegirProveedor);
+        jPanelElegirProveedor.setLayout(jPanelElegirProveedorLayout);
+        jPanelElegirProveedorLayout.setHorizontalGroup(
+            jPanelElegirProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelElegirProveedorLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jComboBoxContratarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
-        jPanelNombreProveedorLayout.setVerticalGroup(
-            jPanelNombreProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNombreProveedorLayout.createSequentialGroup()
-                .addComponent(jTextFieldNombreProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanelAgregarProveedor.add(jPanelNombreProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
-
-        jPanelNitProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NIT del Proveedor", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-
-        javax.swing.GroupLayout jPanelNitProveedorLayout = new javax.swing.GroupLayout(jPanelNitProveedor);
-        jPanelNitProveedor.setLayout(jPanelNitProveedorLayout);
-        jPanelNitProveedorLayout.setHorizontalGroup(
-            jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelNitProveedorLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldNitProveedor, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanelNitProveedorLayout.setVerticalGroup(
-            jPanelNitProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelNitProveedorLayout.createSequentialGroup()
-                .addComponent(jTextFieldNitProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        jPanelElegirProveedorLayout.setVerticalGroup(
+            jPanelElegirProveedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelElegirProveedorLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jComboBoxContratarProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanelAgregarProveedor.add(jPanelNitProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 170, 50));
+        jPanelAgregarProveedor.add(jPanelElegirProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 170, 80));
 
-        btnContratar.setText("Contratar Proveedor");
-        jPanelAgregarProveedor.add(btnContratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 160, 30));
-
-        jPaneProveedoresTabbed.add(jPanelAgregarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 190, 220));
+        jPaneProveedoresTabbed.add(jPanelAgregarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 190, 170));
 
         jPanelBorrarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1634,7 +1722,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnBorrarProveedor.setText("Borrar Proveedor");
         jPanelBorrarProveedor.add(btnBorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        jPaneProveedoresTabbed.add(jPanelBorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 143, 110));
+        jPaneProveedoresTabbed.add(jPanelBorrarProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 143, 110));
 
         jPanelEditarProveedor.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Proveedor"));
         jPanelEditarProveedor.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -2352,7 +2440,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnBorrrarProducto;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnComprarProducto;
-    private javax.swing.JButton btnContratar;
+    private javax.swing.JButton btnContratarProveedor;
     private javax.swing.JButton btnDevolver;
     private javax.swing.JButton btnDevolverProducto;
     private javax.swing.JButton btnEditarCliente;
@@ -2371,6 +2459,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonComprarMP;
     private javax.swing.JButton jButtonEditarEmpleado;
     private javax.swing.JButton jButtonEditarMP;
+    private javax.swing.JComboBox<String> jComboBoxContratarProveedor;
     private javax.swing.JComboBox<String> jComboBoxElegirCliente;
     private javax.swing.JComboBox<String> jComboBoxElegirMP;
     private javax.swing.JComboBox<String> jComboBoxElegirProductoAComprar;
@@ -2430,6 +2519,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelEditarMP;
     private javax.swing.JPanel jPanelEditarProducto;
     private javax.swing.JPanel jPanelEditarProveedor;
+    private javax.swing.JPanel jPanelElegirProveedor;
     private javax.swing.JPanel jPanelEligeMP;
     private javax.swing.JPanel jPanelEligeProducto;
     private javax.swing.JPanel jPanelEligeProductoAComprar;
@@ -2445,14 +2535,12 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelIdEditarProducto;
     private javax.swing.JPanel jPanelIdEmpleado;
     private javax.swing.JPanel jPanelMateriaPrima;
-    private javax.swing.JPanel jPanelNitProveedor;
     private javax.swing.JPanel jPanelNombreCliente;
     private javax.swing.JPanel jPanelNombreEmpleado;
     private javax.swing.JPanel jPanelNombreNuevoCliente;
     private javax.swing.JPanel jPanelNombreNuevoEmpleado;
     private javax.swing.JPanel jPanelNombreNuevoMP;
     private javax.swing.JPanel jPanelNombreNuevoProveedor;
-    private javax.swing.JPanel jPanelNombreProveedor;
     private javax.swing.JPanel jPanelPrecioNuevoProducto;
     private javax.swing.JPanel jPanelProductos;
     private javax.swing.JPanel jPanelProveedores;
@@ -2489,14 +2577,12 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldIdCliente;
     private javax.swing.JTextField jTextFieldIdEmpleado;
     private javax.swing.JTextField jTextFieldIdProductoADevolver;
-    private javax.swing.JTextField jTextFieldNitProveedor;
     private javax.swing.JTextField jTextFieldNombreCliente;
     private javax.swing.JTextField jTextFieldNombreEmpleado;
     private javax.swing.JTextField jTextFieldNombreNuevoCliente;
     private javax.swing.JTextField jTextFieldNombreNuevoEmpleado;
     private javax.swing.JTextField jTextFieldNombreNuevoMP;
     private javax.swing.JTextField jTextFieldNombreNuevoProveedor;
-    private javax.swing.JTextField jTextFieldNombreProveedor;
     private javax.swing.JTextField jTextFieldPrecioNuevoProducto;
     // End of variables declaration//GEN-END:variables
 }
