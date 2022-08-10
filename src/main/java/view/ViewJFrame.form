@@ -592,10 +592,10 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTableMateriaP1">
+                <Component class="javax.swing.JTable" name="jTableVentas">
                   <Properties>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" postCode="modeloSales.addColumn(&quot;Nombre del Cliente&quot;);&#xa;    modeloSales.addColumn(&quot;Nombre del Vendedor&quot;);&#xa;    modeloSales.addColumn(&quot;Total vendido&quot;);&#xa;    modeloSales.addColumn(&quot;ID de detalles de Venta&quot;);&#xa;    jTableVentas.setModel(modeloSales);">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                           <Title/>

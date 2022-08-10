@@ -14,6 +14,7 @@ import model.Client;
 import model.Seller;
 import model.Product;
 import model.RawMaterial;
+import model.Sales;
 import model.Supplier;
 
 /**
@@ -27,6 +28,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     private DefaultTableModel modeloTwo = new DefaultTableModel();
     private DefaultTableModel modeloThree = new DefaultTableModel();
     private DefaultTableModel modeloSupplier = new DefaultTableModel();
+    private DefaultTableModel modeloSales = new DefaultTableModel();
     private int comboBoxNumber;
     private int comboBoxNumberNewSupplier;
     private int comboBoxNumberProduct;
@@ -48,39 +50,39 @@ public class ViewJFrame extends javax.swing.JFrame {
         content = jComboBoxElegirProductoAComprar.getSelectedItem();
         return content.toString();
     }
+
     public String getFromComboBoxSellerChoseed() {
         Object content;
         content = jComboBoxElegirVendedor.getSelectedItem();
         return content.toString();
     }
+
     public String getFromComboBoxClientChoosed() {
         Object content;
         content = jComboBoxElegirCliente.getSelectedItem();
         return content.toString();
     }
-    
-    public void addToComboBoxMakeSale(String product){
+
+    public void addToComboBoxMakeSale(String product) {
         jComboBoxElegirProductoAComprar.removeAllItems();
         jComboBoxElegirProductoAComprar.addItem(product);
     }
-       
-    public void addToComboBoxSellerChoosed(String product){
+
+    public void addToComboBoxSellerChoosed(String product) {
         jComboBoxElegirVendedor.removeAllItems();
         jComboBoxElegirVendedor.addItem(product);
     }
-    
-    public void addToComboBoxClientChoosed(String product){
+
+    public void addToComboBoxClientChoosed(String product) {
         jComboBoxElegirCliente.removeAllItems();
         jComboBoxElegirCliente.addItem(product);
     }
-    
 
-    
-    public void addListenerBtnComprarProducto(ActionListener listenController){
+    public void addListenerBtnComprarProducto(ActionListener listenController) {
         btnComprarProducto.addActionListener(listenController);
     }
-    
-     public int getQuantityToBuy() {
+
+    public int getQuantityToBuy() {
         String txt;
         int content = 0;
         try {
@@ -91,7 +93,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
         return content;
     }
-    
+
     /**
      * Action Listener y activador de menú de la pestaña MATERIA PRIMA
      *
@@ -142,14 +144,13 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
 
     public void addListenerJComboBoxChooseSupplier(ActionListener listenController) {
-        comboBoxNumber =  1;
+        comboBoxNumber = 1;
         jComboBoxElegirProveedor.addActionListener(listenController);
     }
 
     public void addListenerJComboBoxChooseMP(ActionListener listenController) {
         jComboBoxElegirMP.addActionListener(listenController);
     }
-    
 
     public void addListenerRawMaterialPurchaseMenu(ActionListener listenController) {
         //jPanelAgregarMP.addAncestorListener(listenController);
@@ -166,17 +167,15 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void activateRawMaterialEditMenu(boolean activator) {
         jPanelEditarMP.setVisible(activator);
     }
-    
+
     public void activateBuyMenu(boolean activator) {
         jPanelComprar.setVisible(activator);
     }
-    
+
     public void activateDeleteSaleMenu(boolean activator) {
         jPanelBorrarVenta.setVisible(activator);
     }
-    
-    
-   
+
     /**
      * Añade al comboBox de la vista Materia Prima los nombres de los
      * proveedores
@@ -196,18 +195,18 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addToComboBoxRawMaterial(String rawMaterial) {
         jComboBoxElegirMP.addItem(rawMaterial);
     }
-    
+
     /**
-     * Añade al comboBox de la vista Proveedor, los nombres de los proveedores 
+     * Añade al comboBox de la vista Proveedor, los nombres de los proveedores
      * que se pueden crear.
      */
-    public void addToComboBoxNewSupplier(String supplierName){
+    public void addToComboBoxNewSupplier(String supplierName) {
         jComboBoxContratarProveedor.addItem(supplierName);
     }
-    
+
     /**
-     * Consigue el valor en String de la elección del comboBox de proveedor en la 
-     * pestaña Proveedor
+     * Consigue el valor en String de la elección del comboBox de proveedor en
+     * la pestaña Proveedor
      */
     public String getFromComboBoxNewSupplier() {
         Object content;
@@ -234,11 +233,10 @@ public class ViewJFrame extends javax.swing.JFrame {
     public int comboBoxNumber() {
         return comboBoxNumber;
     }
-    
-    public int getComboBoxNumberNewSupplier(){
+
+    public int getComboBoxNumberNewSupplier() {
         return comboBoxNumberNewSupplier;
     }
-
 
     /**
      * Limpia los comboBox de MP
@@ -267,7 +265,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         jTextFieldIdABorrarProveedor.setText("");
         jTextFieldIdAEditarProveedor.setText("");
         jTextFieldNombreNuevoProveedor.setText("");
-        
+
     }
 
     /**
@@ -302,12 +300,12 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         return cantidad;
     }
-    
-    public void clearComboBoxElegirProveedor(){
+
+    public void clearComboBoxElegirProveedor() {
         jComboBoxElegirProveedor.removeAllItems();
     }
-    
-    public void clearComboBoxNewProveedor(){
+
+    public void clearComboBoxNewProveedor() {
         jComboBoxContratarProveedor.removeAllItems();
     }
 
@@ -388,24 +386,23 @@ public class ViewJFrame extends javax.swing.JFrame {
     }
 
     //// PESTAÑA PROVEEDORES ///////
-    
-    public void addActionListenerBtnContratarProveedor(ActionListener listener){
+    public void addActionListenerBtnContratarProveedor(ActionListener listener) {
         btnContratarProveedor.addActionListener(listener);
     }
-    
-    public void addActionListenerBtnBorrarProveedor(ActionListener listener){
+
+    public void addActionListenerBtnBorrarProveedor(ActionListener listener) {
         btnBorrarProveedor.addActionListener(listener);
     }
-    
-    public void addActionListenerBtnEditarProveedor(ActionListener listener){
+
+    public void addActionListenerBtnEditarProveedor(ActionListener listener) {
         btnEditarProveedor.addActionListener(listener);
     }
-    
+
     public void addListenerJComboBoxCreateSupplier(ActionListener listenController) {
         comboBoxNumberNewSupplier = 3;
         jComboBoxContratarProveedor.addActionListener(listenController);
     }
-    
+
     public void activateSupplierCreationMenu(boolean activator) {
         jPanelAgregarProveedor.setVisible(activator);
     }
@@ -417,7 +414,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void activateSupplierEditMenu(boolean activator) {
         jPanelEditarProveedor.setVisible(activator);
     }
-    
+
     public int getIdSupplierToDelete() {
         String txt;
         int content = 0;
@@ -429,7 +426,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
         return content;
     }
-    
+
     public int getIdSupplierToEdit() {
         String txt;
         int content = 0;
@@ -441,7 +438,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
         return content;
     }
-    
+
     public String getNewNameSupplierToEdit() {
         String txt = "";
         try {
@@ -451,10 +448,6 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
         return txt;
     }
-    
-    
-    
-    
 
     /// PESTAÑA CLIENTES ////
     public void addListenerBtnCreateClient(ActionListener listenController) {
@@ -535,7 +528,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addActionListenerJButtonBorrarEmpleado(ActionListener listener) {
         jButtonBorrarEmpleado.addActionListener(listener);
     }
-    
+
     public void addActionListenerJButtonEditarEmpleado(ActionListener listener) {
         jButtonEditarEmpleado.addActionListener(listener);
     }
@@ -670,21 +663,32 @@ public class ViewJFrame extends javax.swing.JFrame {
             }
         }
     }
-    
+
     public void addToSupplierTable(ArrayList<Supplier> suppliers) {
         removeRowsTable(jTableProveedores, modeloSupplier);
         for (Supplier supplier : suppliers) {
             if (supplier.isIsActive()) {
-                Object[] fila = {supplier.getDbId(), supplier.getSupplierNit(), 
-                supplier.getSupplierName()};
+                Object[] fila = {supplier.getDbId(), supplier.getSupplierNit(),
+                    supplier.getSupplierName()};
                 modeloSupplier.addRow(fila);
             }
         }
     }
 
-    /**
-     * Elimina las filas de la tabla.
-     */
+    public void addToSalesTable(ArrayList<Sales> sales) {
+        removeRowsTable(jTableVentas, modeloSales);
+        for (Sales sale : sales) {
+            if (sale.getIsActive()) {
+                Object[] fila = {sale.getClient().getClientName(), sale.getSeller().getSellerName(),
+                    sale.getTotalSold(), sale.getSalesDetailsId()};
+                modeloSales.addRow(fila);
+            }
+        }
+    }
+        
+        /**
+         * Elimina las filas de la tabla.
+         */
     public void removeRowsTable(JTable table, DefaultTableModel model) {
         int filas = table.getRowCount();
         for (int fila = 0; fila < filas; fila++) {
@@ -734,7 +738,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnDevolver = new javax.swing.JButton();
         btnHistoricoDeVentas = new javax.swing.JButton();
         jScrollPaneVentas = new javax.swing.JScrollPane();
-        jTableMateriaP1 = new javax.swing.JTable();
+        jTableVentas = new javax.swing.JTable();
         jPanelComprar = new javax.swing.JPanel();
         jPanelEligeProductoAComprar = new javax.swing.JPanel();
         jComboBoxElegirProductoAComprar = new javax.swing.JComboBox<>();
@@ -1128,14 +1132,19 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPaneVentasTabbed.add(barraBotonesVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
 
-        jTableMateriaP1.setToolTipText("");
-        jScrollPaneVentas.setViewportView(jTableMateriaP1);
-        if (jTableMateriaP1.getColumnModel().getColumnCount() > 0) {
-            jTableMateriaP1.getColumnModel().getColumn(0).setResizable(false);
-            jTableMateriaP1.getColumnModel().getColumn(1).setResizable(false);
-            jTableMateriaP1.getColumnModel().getColumn(2).setResizable(false);
-            jTableMateriaP1.getColumnModel().getColumn(3).setResizable(false);
+        jTableVentas.setToolTipText("");
+        jScrollPaneVentas.setViewportView(jTableVentas);
+        if (jTableVentas.getColumnModel().getColumnCount() > 0) {
+            jTableVentas.getColumnModel().getColumn(0).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(1).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(2).setResizable(false);
+            jTableVentas.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloSales.addColumn("Nombre del Cliente");
+        modeloSales.addColumn("Nombre del Vendedor");
+        modeloSales.addColumn("Total vendido");
+        modeloSales.addColumn("ID de detalles de Venta");
+        jTableVentas.setModel(modeloSales);
 
         jPaneVentasTabbed.add(jScrollPaneVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 110));
 
@@ -2305,7 +2314,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         activateRawMaterialPurchaseMenu(false);
         activateRawMaterialEditMenu(false);
         activateRawMaterialDeleteMenu(false);
-        
+
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMateriaPrimaMouseClicked
 
@@ -2757,9 +2766,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     private javax.swing.JTable jTableClientes;
     private javax.swing.JTable jTableEmpleados;
     private javax.swing.JTable jTableMateriaP;
-    private javax.swing.JTable jTableMateriaP1;
     private javax.swing.JTable jTableProductos;
     private javax.swing.JTable jTableProveedores;
+    private javax.swing.JTable jTableVentas;
     private javax.swing.JTextField jTextFieldCantidadAComprar;
     private javax.swing.JTextField jTextFieldCantidadMP;
     private javax.swing.JTextField jTextFieldCantidadProducto;
