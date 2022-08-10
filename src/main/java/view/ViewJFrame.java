@@ -679,7 +679,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         removeRowsTable(jTableVentas, modeloSales);
         for (Sales sale : sales) {
             if (sale.getIsActive()) {
-                Object[] fila = {sale.getClient().getClientName(), sale.getSeller().getSellerName(),
+                Object[] fila = {sale.getDatabaseId(), sale.getClient().getClientName(), sale.getSeller().getSellerName(),
                     sale.getTotalSold(), sale.getSalesDetailsId()};
                 modeloSales.addRow(fila);
             }
@@ -1140,6 +1140,7 @@ public class ViewJFrame extends javax.swing.JFrame {
             jTableVentas.getColumnModel().getColumn(2).setResizable(false);
             jTableVentas.getColumnModel().getColumn(3).setResizable(false);
         }
+        modeloSales.addColumn("ID de Venta");
         modeloSales.addColumn("Nombre del Cliente");
         modeloSales.addColumn("Nombre del Vendedor");
         modeloSales.addColumn("Total vendido");
