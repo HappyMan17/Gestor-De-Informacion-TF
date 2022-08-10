@@ -54,8 +54,8 @@ public class SalesDAO {
                 sales = new Sales();
                 sales.setDatabaseId(rs.getInt("sales_id"));
                 sales.setSalesDetailsId(rs.getInt("details_id"));
-                sales.getClient().setClientId(rs.getInt("client_id"));
-                sales.getSeller().setDatabaseId(rs.getInt("seller_id"));
+                sales.setClientId(rs.getInt("client_id"));
+                sales.setSellerId(rs.getInt("seller_id"));
                 sales.setTotalSold(rs.getDouble("total_sell"));
                 sales.setIsActive(rs.getBoolean("is_active"));
                 sales.setDate(rs.getString("date"));
@@ -91,8 +91,8 @@ public class SalesDAO {
 
             int dbIdSales = sales.getDatabaseId();
             int salesDetailsId = sales.getSalesDetailsId();
-            int clientId = sales.getClient().getClientId();
-            int sellerId = sales.getSeller().getDatabaseId();
+            int clientId = sales.getClientId();
+            int sellerId = sales.getSellerId();
             double totalSold = sales.getTotalSold();
             boolean isActive = sales.getIsActive();
             String date = sales.getDate();

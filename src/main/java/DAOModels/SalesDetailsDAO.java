@@ -52,6 +52,7 @@ public class SalesDetailsDAO {
 
             while (rs.next()) {
                 salesDetails = new SalesDetails();
+                salesDetails.setSalesDetailId(rs.getInt("sales_detail_id"));
                 salesDetails.setProductId(rs.getInt("product_id"));
                 salesDetails.setPackageId(rs.getInt("package_id"));
                 salesDetails.setAmount(rs.getInt("amount"));
@@ -94,18 +95,24 @@ public class SalesDetailsDAO {
             int packageId = salesDetails.getPackageId();
             int amount = salesDetails.getAmount();
             Double price = salesDetails.getPrice();
+            boolean isActive = salesDetails.getIsActive();
 
             if(salesDetailsId == 0){
+                sql = "INSERT INTO application.sales_details (package_id, product_id, amount, price, is_active) values (?, ?, ?, ?, ?)";
+                /*
                 if( productId == 0 ){
                     sql = "INSERT INTO application.sales_details (package_id, amount, price) values (?, ?, ?)";
                 }
                 if( packageId == 0 ){
-                    sql = "INSERT INTO application.sales_details (product_id, amount, price) values (?, ?, ?)";
+                    sql = "INSERT INTO application.sales_details (product_id, amount, price, is_active) values (?, ?, ?, ?)";
                 }else {
                     sql = "INSERT INTO application.sales_details (package_id, product_id, amount, price) values (?, ?, ?, ?)";
                 }
+                */
             }
             if(salesDetailsId != 0){
+                sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, product_id, amount, price, is_active) values (?, ?, ?, ?, ?, ?)";
+                /*
                 if( productId == 0 ){
                     sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, amount, price) values (?, ?, ?, ?)";
                 }
@@ -114,10 +121,18 @@ public class SalesDetailsDAO {
                 }else {
                     sql = "INSERT INTO application.sales_details (sales_detail_id, package_id, product_id, amount, price) values (?, ?, ?, ?, ?)";
                 }
+                */
             }
             
             pstm = con.prepareStatement(sql);
+            
             if(salesDetailsId == 0){
+                pstm.setInt(1, packageId);
+                pstm.setInt(2, productId);
+                pstm.setInt(3, amount);
+                pstm.setDouble(4, price);
+                pstm.setBoolean(5, isActive);
+                /*
                 if( productId == 0 ){
                     pstm.setInt(1, packageId);
                     pstm.setInt(2, amount);
@@ -127,14 +142,23 @@ public class SalesDetailsDAO {
                     pstm.setInt(1, productId);
                     pstm.setInt(2, amount);
                     pstm.setDouble(3, price);
+                    pstm.setBoolean(3, isActive);
                 }else {
                     pstm.setInt(1, packageId);
                     pstm.setInt(2, productId);
                     pstm.setInt(3, amount);
                     pstm.setDouble(4, price);
                 }
+                */
             }
             if(salesDetailsId != 0){
+                pstm.setInt(1, salesDetailsId);
+                pstm.setInt(2, packageId);
+                pstm.setInt(3, productId);
+                pstm.setInt(4, amount);
+                pstm.setDouble(5, price);
+                pstm.setBoolean(6, isActive);
+                /*
                 if( productId == 0 ){
                     pstm.setInt(1, salesDetailsId);
                     pstm.setInt(2, packageId);
@@ -153,6 +177,7 @@ public class SalesDetailsDAO {
                     pstm.setInt(4, amount);
                     pstm.setDouble(5, price);
                 }
+                */
             }
                 
             int inserted = pstm.executeUpdate();
@@ -230,11 +255,13 @@ public class SalesDetailsDAO {
             String sql = "";
 
             int salesDetailsId = salesDetails.getSalesDetailId();
+            boolean isActive = salesDetails.getIsActive();
 
             sql = "update application.sales_details set (is_active) = (?) where sales_detail_id = ?";
 
             pstm = con.prepareStatement(sql);
-            pstm.setInt(1, salesDetailsId);
+            pstm.setBoolean(1, isActive);
+            pstm.setInt(2, salesDetailsId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted :" + deleted);

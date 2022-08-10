@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author happy
  */
-public class Product {
+public class Product implements Cloneable{
     //Attribute
     private int amount, accumulator, databaseId;
     private String lotNumber, name;
@@ -101,5 +101,13 @@ public class Product {
         this.isOnStock = isOnStock;
     }
     
-    
+    public Object clone() {
+        Object obj = null;
+        try {
+            obj = super.clone();
+        } catch (CloneNotSupportedException ex) {
+            System.out.println(" no se puede duplicar");
+        }
+        return obj;
+    }
 }

@@ -39,19 +39,19 @@ public class Recepies {
         ArrayList<RawMaterial> ingredientsConfirmation = new ArrayList<>();
         for (RawMaterial ingredient : ingredients) {
             if ("Papa".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                papa = true;
+                this.papa = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Carne".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                carne = true;
+                this.carne = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Arroz".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                arroz = true;
+                this.arroz = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                huevo = true;
+                this.huevo = true;
                 ingredientsConfirmation.add(ingredient);
             }
         }
@@ -68,27 +68,26 @@ public class Recepies {
 
         for (RawMaterial ingredient : ingredients) {
             if ("Papa".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                papa = true;
+                this.papa = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Carne".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                carne = true;
+                this.carne = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Harina".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                harina = true;
+                this.harina = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Huevo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                huevo = true;
+                this.huevo = true;
                 ingredientsConfirmation.add(ingredient);
             }
         }
-            if (papa && carne && harina && huevo) {
-                updateAmounts(ingredientsConfirmation, productAmount);
-            }
+        if (papa && carne && harina && huevo) {
+            updateAmounts(ingredientsConfirmation, productAmount);
+        }
         
-
         return papa && carne && harina && huevo;
     }
 
@@ -99,11 +98,11 @@ public class Recepies {
 
         for (RawMaterial ingredient : ingredients) {
             if ("Pollo".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                pollo = true;
+                this.pollo = true;
                 ingredientsConfirmation.add(ingredient);
             }
             if ("Harina".equals(ingredient.getName()) && ingredient.getAmount() >= productAmount) {
-                harina = true;
+                this.harina = true;
                 ingredientsConfirmation.add(ingredient);
             }
         }
@@ -117,6 +116,7 @@ public class Recepies {
     public void updateAmounts(ArrayList<RawMaterial> ingridients, int productAmount) {
         ArrayList<RawMaterial> ingridientsFinal = new ArrayList<>();
         ingridientsFinal.clear();
+        
         for (RawMaterial raw : ingridients) {
             raw.modifyAmount(-productAmount);
             rawMaterialDAO.updateRawMaterial(raw);
@@ -124,6 +124,7 @@ public class Recepies {
             ourRaw.setAmount(productAmount);
             ingridientsFinal.add(ourRaw);
         }
+        
         ingredientsUsed = ingridientsFinal;
     }
 

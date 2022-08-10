@@ -27,6 +27,7 @@ public final class Controller {
     private ProductionDetailsDAO productionDetailsDAO;
     private RawMaterialDAO rawMaterialDAO;
     private SalesDetailsDAO salesDetailsDAO;
+    private SalesDAO salesDAO;
     private SellerDAO sellerDAO;
     private SupplierDAO supplierDAO;
     private ArrayList<Supplier> suppliers = new ArrayList<>();
@@ -38,6 +39,7 @@ public final class Controller {
     private ArrayList<Supplier> possibleSuppliers = new ArrayList<>();
     private String supplierOne = "Insumos Javi";
     private String supplierTwo = "Salsitas Manu";
+    private ArrayList<SalesDetails> salesDetails = new ArrayList<>();
     private ArrayList<Sales> sales = new ArrayList<>();
 
     //Methods
@@ -50,6 +52,7 @@ public final class Controller {
         this.productionDAO = new ProductionDAO();
         this.productionDetailsDAO = new ProductionDetailsDAO();
         this.rawMaterialDAO = new RawMaterialDAO();
+        this.salesDAO = new SalesDAO();
         this.salesDetailsDAO = new SalesDetailsDAO();
         this.sellerDAO = new SellerDAO();
         this.supplierDAO = new SupplierDAO();
@@ -405,6 +408,24 @@ public final class Controller {
             }
         }
     }
+    
+    public Client getClient(String clientName){
+        for (Client client : clients) {
+            if( clientName.equalsIgnoreCase(client.getClientName()) ){
+                return  client;
+            }
+        }
+        return null;
+    }
+    
+    public Seller getSeller(String sellerName){
+        for (Seller seller : sellers) {
+            if( sellerName.equalsIgnoreCase(seller.getSellerName()) ){
+                return  seller;
+            }
+        }
+        return null;
+    }
 
     class CalculateListener implements ActionListener {
 
@@ -529,7 +550,10 @@ public final class Controller {
                     
                     Production production = new Production(comboBoxProduct);
                     production.setIngredients(rawMaterials);
+                    
                     production.createNewProduct(cantidadAProducir);
+                    rawMaterials = rawMaterialDAO.getRawMaterial(0);
+                    
                     Product product = production.getNewProduct();
                     
                     if (product != null) {
@@ -575,6 +599,7 @@ public final class Controller {
                         if (product.getDatabaseId() == productToDeleteId) {
                             //DataBase
                             product.setIsOnStock(false);
+                            product.setAmount(0);
                             productDAO.deleteProduct(product);
                             setProductsFromDb();
                             view.clearJtxt();
@@ -827,7 +852,7 @@ public final class Controller {
                 }
             }
 
-            // make sale
+            //Make sale
             if (e.getActionCommand().equalsIgnoreCase("Comprar Producto")) {
                 try {
                     String productChoosed = view.getFromComboBoxMakeSale();
@@ -835,6 +860,44 @@ public final class Controller {
                     String clientChoosed = view.getFromComboBoxClientChoosed();
                     int productQuantity = view.getQuantityToBuy();
 
+                    for (Product product : products) {
+                        if(productChoosed.equalsIgnoreCase(product.getName()) 
+                            && product.getAmount() >= productQuantity){
+                            
+                            product.modifyAmount(-productQuantity);
+                            productDAO.updateProduct(product);
+                            setProductsFromDb();
+                            
+                            Product productSold = (Product) product.clone();
+                            productSold.setAmount(productQuantity);
+                            
+                            SalesDetails saleDetails = new SalesDetails(productSold);
+                            salesDetailsDAO.setSalesDetails(saleDetails);
+                            salesDetails = salesDetailsDAO.getSalesDetails(0);
+                            Client client = getClient(clientChoosed);
+                            Seller seller = getSeller(sellerChoosed);
+                            
+                            int clientId = client.getDbId();
+                            int sellerId = seller.getDatabaseId();
+
+                            if( clientId != 0 && sellerId != 0){
+                                int saleDetailId = 
+                                    salesDetails.get(salesDetails.size()-1).getSalesDetailId();
+                                
+                                Sales sale = new Sales(productQuantity, clientId, sellerId, 
+                                    saleDetailId);
+                                sale.addProductToSell(productSold);
+                                salesDAO.setProduct(sale);
+                                sales = salesDAO.getSales(0);
+                                
+                                //Solucionar con un InnerJoy
+                                view.addToSalesTable(sales, client.getClientName(), 
+                                    seller.getSellerName());
+                            }
+                        }
+                    }
+                    
+                    
                 } catch (NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");
                 }

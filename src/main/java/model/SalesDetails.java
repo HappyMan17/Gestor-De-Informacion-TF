@@ -14,6 +14,13 @@ public class SalesDetails {
     private double price;
     private boolean isActive;
 
+    public SalesDetails(Product product){
+        this.productId = product.getDatabaseId();
+        this.price = product.getPrice();
+        this.amount = product.getAmount();
+        this.isActive = true;
+    }
+    
     public SalesDetails(int productId, double price, int amount) {
         this.productId = productId;
         this.price = price;

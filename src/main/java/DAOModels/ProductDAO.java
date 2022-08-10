@@ -187,16 +187,19 @@ public class ProductDAO {
         try {
             con = ServiceConnection.getConnection();
             String sql = "";
+            
             String productName = product.getName();
             boolean isOnStock = product.getIsOnStock();
             int productId = product.getDatabaseId();
+            int productAmount = product.getAmount();
 
-            sql = "UPDATE application.products SET is_on_stock = ? where product_id = ?";
+            sql = "UPDATE application.products SET is_on_stock = ?, amount = ? where product_id = ?";
             //sql = "delete from application.products where name = ? and lot_number = ?";
             
             pstm = con.prepareStatement(sql);
             pstm.setBoolean(1, isOnStock);
-            pstm.setInt(2, productId);
+            pstm.setInt(2, productAmount);
+            pstm.setInt(3, productId);
 
             int deleted = pstm.executeUpdate();
             JOptionPane.showMessageDialog(null, "Rows deleted: " + deleted

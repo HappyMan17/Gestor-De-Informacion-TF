@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -12,10 +13,10 @@ import java.util.ArrayList;
  */
 public class Sales {
     //Attributes
-    private Client client;
-    private Seller seller;
-    private ArrayList<ProductPackage> packageSell;
-    private ArrayList<Product> productSell;
+    private int clientId;
+    private int sellerId;
+    private ArrayList<ProductPackage> packageSell = new ArrayList<>();
+    private ArrayList<Product> productSell = new ArrayList<>();
     private int salesDetailsId, databaseId;
     private Double totalSold;
     private String date;
@@ -26,11 +27,13 @@ public class Sales {
         
     }
     
-    public Sales(int quantitySold, Client client, Seller seller, int selesDetailsId){
-        this.client = client;
-        this.seller = seller;
+    public Sales(int quantitySold, int clientId, int sellerId, int selesDetailsId){
+        this.clientId = clientId;
+        this.sellerId = sellerId;
         this.salesDetailsId = selesDetailsId;
         this.totalSold = 0.0;
+        this.isActive = true;
+        setDate();
     }
     
     public void calculateQuantitySold(){
@@ -42,7 +45,7 @@ public class Sales {
             
             totalSold += price * amount;
         }
-        
+        System.out.println(totalSold);
         for(Product product: productSell){
             
             Double price = product.getPrice();
@@ -50,6 +53,7 @@ public class Sales {
             
             totalSold += price * amount;
         }
+        System.out.println(totalSold);
     }
 
     public int getSalesDetailsId() {
@@ -68,20 +72,20 @@ public class Sales {
         return totalSold;
     }
 
-    public Client getClient() {
-        return client;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
     }
 
-    public Seller getSeller() {
-        return seller;
+    public int getSellerId() {
+        return sellerId;
     }
 
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    public void setSellerId(int sellerId) {
+        this.sellerId = sellerId;
     }
 
     public ArrayList<ProductPackage> getPackageSell() {
@@ -106,6 +110,7 @@ public class Sales {
     
     public void addProductToSell(Product product){
         this.productSell.add(product);
+        calculateQuantitySold();
     }
 
     public int getDatabaseId() {
@@ -123,6 +128,10 @@ public class Sales {
     public void setDate(String date) {
         this.date = date;
     }
+    
+    public void setDate() {
+        this.date = LocalDate.now()+"";
+    }
 
     public boolean getIsActive() {
         return isActive;
@@ -131,6 +140,4 @@ public class Sales {
     public void setIsActive(boolean isActive) {
         this.isActive = isActive;
     }
-    
-    
 }

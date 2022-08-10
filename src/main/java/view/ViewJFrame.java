@@ -675,11 +675,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         }
     }
 
-    public void addToSalesTable(ArrayList<Sales> sales) {
+    public void addToSalesTable(ArrayList<Sales> sales, String clientName, String sellerName) {
         removeRowsTable(jTableVentas, modeloSales);
         for (Sales sale : sales) {
             if (sale.getIsActive()) {
-                Object[] fila = {sale.getDatabaseId(), sale.getClient().getClientName(), sale.getSeller().getSellerName(),
+                Object[] fila = {sale.getDatabaseId(), clientName, sellerName,
                     sale.getTotalSold(), sale.getSalesDetailsId()};
                 modeloSales.addRow(fila);
             }
