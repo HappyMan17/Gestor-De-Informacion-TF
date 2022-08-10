@@ -38,7 +38,7 @@ public class ViewJFrame extends javax.swing.JFrame {
      */
     public ViewJFrame() {
         initComponents();
-        viewsDisabled(true);
+        viewsDisabled(false);
 
     }
 
@@ -104,6 +104,17 @@ public class ViewJFrame extends javax.swing.JFrame {
         activateProductCreationMenu(abierto);
         activateProductEditMenu(abierto);
         activateProductDeleteMenu(abierto);
+        activateSupplierCreationMenu(abierto);
+        activateSupplierDeleteMenu(abierto);
+        activateSupplierEditMenu(abierto);
+        activateClientCreationMenu(abierto);
+        activateClientDeleteMenu(abierto);
+        activateClientEditMenu(abierto);
+        activateSellerCreationMenu(abierto);
+        activateSellerDeleteMenu(abierto);
+        activateSellerEditMenu(abierto);
+        activateBuyMenu(abierto);
+        activateDeleteSaleMenu(abierto);
     }
 
     public void addListenerBtnBuyMP(ActionListener listenController) {
@@ -155,7 +166,17 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void activateRawMaterialEditMenu(boolean activator) {
         jPanelEditarMP.setVisible(activator);
     }
-
+    
+    public void activateBuyMenu(boolean activator) {
+        jPanelComprar.setVisible(activator);
+    }
+    
+    public void activateDeleteSaleMenu(boolean activator) {
+        jPanelBorrarVenta.setVisible(activator);
+    }
+    
+    
+   
     /**
      * Añade al comboBox de la vista Materia Prima los nombres de los
      * proveedores
@@ -1070,6 +1091,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnComprar.setContentAreaFilled(false);
         btnComprar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnComprar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnComprar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnComprarMouseClicked(evt);
+            }
+        });
         barraBotonesVentas.add(btnComprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 59));
 
         btnDevolver.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1079,6 +1105,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnDevolver.setContentAreaFilled(false);
         btnDevolver.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnDevolver.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnDevolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDevolverMouseClicked(evt);
+            }
+        });
         barraBotonesVentas.add(btnDevolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnHistoricoDeVentas.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1251,6 +1282,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarMp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgregarMpMouseClicked(evt);
+            }
+        });
+        btnAgregarMp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarMpActionPerformed(evt);
             }
         });
         barraBotonesMP.add(btnAgregarMp, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 0, -1, 59));
@@ -1459,9 +1495,12 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Materia Prima", jPaneMateriaPrimaTabbed);
 
+        jPaneProductosTabbed.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel20.setBackground(new java.awt.Color(187, 187, 187));
         jLabel20.setFont(new java.awt.Font("Arial Black", 1, 8)); // NOI18N
         jLabel20.setText("P R O D U C T O S");
+        jPaneProductosTabbed.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 6, -1, -1));
 
         barraBotonesProductos.setBackground(new java.awt.Color(209, 209, 185));
         barraBotonesProductos.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1473,6 +1512,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarProducto.setContentAreaFilled(false);
         btnAgregarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarProducto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarProductoMouseClicked(evt);
+            }
+        });
         btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProductoActionPerformed(evt);
@@ -1487,6 +1531,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEliminarProducto.setContentAreaFilled(false);
         btnEliminarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarProducto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarProductoMouseClicked(evt);
+            }
+        });
         barraBotonesProductos.add(btnEliminarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnActualizarProducto.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1496,7 +1545,14 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarProducto.setContentAreaFilled(false);
         btnActualizarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarProducto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarProductoMouseClicked(evt);
+            }
+        });
         barraBotonesProductos.add(btnActualizarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
+
+        jPaneProductosTabbed.add(barraBotonesProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
 
         jTableProductos.setToolTipText("");
         jScrollPaneProductos.setViewportView(jTableProductos);
@@ -1512,6 +1568,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         modeloOne.addColumn("PRECIO/U");
         modeloOne.addColumn("Numero de Lote");
         jTableProductos.setModel(modeloOne);
+
+        jPaneProductosTabbed.add(jScrollPaneProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 24, 574, 122));
 
         jPanelAgregarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Producto"));
         jPanelAgregarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1566,6 +1624,8 @@ public class ViewJFrame extends javax.swing.JFrame {
         });
         jPanelAgregarProducto.add(btnProduction, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
 
+        jPaneProductosTabbed.add(jPanelAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 174, 199, 183));
+
         jPanelBorrarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("ID a Borrar"));
         jPanelBorrarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1578,6 +1638,8 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         btnBorrrarProducto.setText("Borrar Producto");
         jPanelBorrarProducto.add(btnBorrrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
+
+        jPaneProductosTabbed.add(jPanelBorrarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(247, 224, 143, 92));
 
         jPanelEditarProducto.setBorder(javax.swing.BorderFactory.createTitledBorder("Editar Producto"));
         jPanelEditarProducto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -1633,45 +1695,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEditarProducto.setText("Editar Producto");
         jPanelEditarProducto.add(btnEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 120, -1));
 
-        javax.swing.GroupLayout jPaneProductosTabbedLayout = new javax.swing.GroupLayout(jPaneProductosTabbed);
-        jPaneProductosTabbed.setLayout(jPaneProductosTabbedLayout);
-        jPaneProductosTabbedLayout.setHorizontalGroup(
-            jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(barraBotonesProductos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                        .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPaneProductosTabbedLayout.setVerticalGroup(
-            jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel20)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPaneProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPaneProductosTabbedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(jPanelBorrarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPaneProductosTabbedLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanelEditarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(barraBotonesProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jPaneProductosTabbed.add(jPanelEditarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(402, 158, 189, 199));
 
         jTabbedPane1.addTab("Productos", jPaneProductosTabbed);
 
@@ -1692,6 +1716,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarProveedores.setContentAreaFilled(false);
         btnAgregarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarProveedoresMouseClicked(evt);
+            }
+        });
         btnAgregarProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProveedoresActionPerformed(evt);
@@ -1706,6 +1735,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEliminarProveedores.setContentAreaFilled(false);
         btnEliminarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarProveedoresMouseClicked(evt);
+            }
+        });
         barraBotonesProveedores.add(btnEliminarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnActualizarProveedores.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1715,6 +1749,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarProveedores.setContentAreaFilled(false);
         btnActualizarProveedores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarProveedores.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarProveedores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarProveedoresMouseClicked(evt);
+            }
+        });
         barraBotonesProveedores.add(btnActualizarProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
         jPaneProveedoresTabbed.add(barraBotonesProveedores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
@@ -1853,6 +1892,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarClientes.setContentAreaFilled(false);
         btnAgregarClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarClientesMouseClicked(evt);
+            }
+        });
         btnAgregarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarClientesActionPerformed(evt);
@@ -1867,6 +1911,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEliminarClientes.setContentAreaFilled(false);
         btnEliminarClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarClientesMouseClicked(evt);
+            }
+        });
         barraBotonesClientes.add(btnEliminarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnActualizarClientes.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -1876,6 +1925,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarClientes.setContentAreaFilled(false);
         btnActualizarClientes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarClientes.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarClientesMouseClicked(evt);
+            }
+        });
         barraBotonesClientes.add(btnActualizarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, -1, 59));
 
         jPaneClientesTabbed.add(barraBotonesClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 375, 608, -1));
@@ -2033,6 +2087,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnAgregarEmpleados.setContentAreaFilled(false);
         btnAgregarEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregarEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnAgregarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadosMouseClicked(evt);
+            }
+        });
         btnAgregarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarEmpleadosActionPerformed(evt);
@@ -2047,6 +2106,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnEliminarEmpleados.setContentAreaFilled(false);
         btnEliminarEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEliminarEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpleadosMouseClicked(evt);
+            }
+        });
         barraBotonesEmpleados.add(btnEliminarEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, -1, 59));
 
         btnActualizarEmpleados.setFont(new java.awt.Font("Calibri Light", 1, 12)); // NOI18N
@@ -2056,6 +2120,11 @@ public class ViewJFrame extends javax.swing.JFrame {
         btnActualizarEmpleados.setContentAreaFilled(false);
         btnActualizarEmpleados.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnActualizarEmpleados.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnActualizarEmpleados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnActualizarEmpleadosMouseClicked(evt);
+            }
+        });
         btnActualizarEmpleados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnActualizarEmpleadosActionPerformed(evt);
@@ -2236,6 +2305,7 @@ public class ViewJFrame extends javax.swing.JFrame {
         activateRawMaterialPurchaseMenu(false);
         activateRawMaterialEditMenu(false);
         activateRawMaterialDeleteMenu(false);
+        
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_jPanelMateriaPrimaMouseClicked
 
@@ -2249,6 +2319,9 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private void jPanelProductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProductosMouseClicked
         jTabbedPane1.setSelectedIndex(2);
+        activateProductCreationMenu(false);
+        activateProductEditMenu(false);
+        activateProductDeleteMenu(false);
     }//GEN-LAST:event_jPanelProductosMouseClicked
 
     private void jPanelProductosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProductosMouseMoved
@@ -2261,6 +2334,9 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private void jPanelProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProveedoresMouseClicked
         jTabbedPane1.setSelectedIndex(3);
+        activateSupplierCreationMenu(false);
+        activateSupplierDeleteMenu(false);
+        activateSupplierEditMenu(false);
     }//GEN-LAST:event_jPanelProveedoresMouseClicked
 
     private void jPanelProveedoresMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelProveedoresMouseMoved
@@ -2269,6 +2345,9 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private void jPanelClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientesMouseClicked
         jTabbedPane1.setSelectedIndex(4);
+        activateClientCreationMenu(false);
+        activateClientDeleteMenu(false);
+        activateClientEditMenu(false);
     }//GEN-LAST:event_jPanelClientesMouseClicked
 
     private void jPanelClientesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelClientesMouseMoved
@@ -2281,6 +2360,9 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     private void jPanelEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEmpleadosMouseClicked
         jTabbedPane1.setSelectedIndex(5);
+        activateSellerCreationMenu(false);
+        activateSellerDeleteMenu(false);
+        activateSellerEditMenu(false);
     }//GEN-LAST:event_jPanelEmpleadosMouseClicked
 
     private void jPanelEmpleadosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelEmpleadosMouseMoved
@@ -2292,7 +2374,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelEmpleadosMouseExited
 
     private void jPanelSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalirMouseClicked
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jPanelSalirMouseClicked
 
     private void jPanelSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelSalirMouseMoved
@@ -2312,6 +2394,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanelVentasMouseMoved
 
     private void jPanelVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelVentasMouseClicked
+
+        activateBuyMenu(false);
+        activateDeleteSaleMenu(false);
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_jPanelVentasMouseClicked
 
@@ -2427,6 +2512,66 @@ public class ViewJFrame extends javax.swing.JFrame {
     private void btnHistoricoDeVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHistoricoDeVentasMouseClicked
         jTabbedPane1.setSelectedIndex(6);
     }//GEN-LAST:event_btnHistoricoDeVentasMouseClicked
+
+    private void btnAgregarMpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarMpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarMpActionPerformed
+
+    private void btnAgregarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProductoMouseClicked
+        activateProductCreationMenu(true);
+    }//GEN-LAST:event_btnAgregarProductoMouseClicked
+
+    private void btnEliminarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProductoMouseClicked
+        activateProductDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarProductoMouseClicked
+
+    private void btnActualizarProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarProductoMouseClicked
+        activateProductEditMenu(true);
+    }//GEN-LAST:event_btnActualizarProductoMouseClicked
+
+    private void btnAgregarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarProveedoresMouseClicked
+        activateSupplierCreationMenu(true);
+    }//GEN-LAST:event_btnAgregarProveedoresMouseClicked
+
+    private void btnEliminarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarProveedoresMouseClicked
+        activateSupplierDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarProveedoresMouseClicked
+
+    private void btnActualizarProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarProveedoresMouseClicked
+        activateSupplierEditMenu(true);
+    }//GEN-LAST:event_btnActualizarProveedoresMouseClicked
+
+    private void btnAgregarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarClientesMouseClicked
+        activateClientCreationMenu(true);
+    }//GEN-LAST:event_btnAgregarClientesMouseClicked
+
+    private void btnEliminarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarClientesMouseClicked
+        activateClientDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarClientesMouseClicked
+
+    private void btnActualizarClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarClientesMouseClicked
+        activateClientEditMenu(true);
+    }//GEN-LAST:event_btnActualizarClientesMouseClicked
+
+    private void btnAgregarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadosMouseClicked
+        activateSellerCreationMenu(true);
+    }//GEN-LAST:event_btnAgregarEmpleadosMouseClicked
+
+    private void btnEliminarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadosMouseClicked
+        activateSellerDeleteMenu(true);
+    }//GEN-LAST:event_btnEliminarEmpleadosMouseClicked
+
+    private void btnActualizarEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadosMouseClicked
+        activateSellerEditMenu(true);
+    }//GEN-LAST:event_btnActualizarEmpleadosMouseClicked
+
+    private void btnComprarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnComprarMouseClicked
+        activateBuyMenu(true);
+    }//GEN-LAST:event_btnComprarMouseClicked
+
+    private void btnDevolverMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDevolverMouseClicked
+        activateDeleteSaleMenu(true);
+    }//GEN-LAST:event_btnDevolverMouseClicked
 
     /**
      * @param args the command line arguments
