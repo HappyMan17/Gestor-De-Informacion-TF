@@ -2376,7 +2376,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="3" title="ID del Cliente"/>
+                        <TitledBorder justification="3" title="C&#xf3;digo del Cliente"/>
                       </Border>
                     </Property>
                   </Properties>
@@ -2794,7 +2794,7 @@
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                        <TitledBorder justification="3" title="ID del Empleado"/>
+                        <TitledBorder justification="3" title="C&#xf3;digo del Empleado"/>
                       </Border>
                     </Property>
                   </Properties>

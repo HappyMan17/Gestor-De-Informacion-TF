@@ -38,6 +38,7 @@ public final class Controller {
     private ArrayList<Supplier> possibleSuppliers = new ArrayList<>();
     private String supplierOne = "Insumos Javi";
     private String supplierTwo = "Salsitas Manu";
+    private ArrayList<Sales> sales = new ArrayList<>();
 
     //Methods
     public Controller(ViewJFrame view) {
@@ -52,10 +53,11 @@ public final class Controller {
         this.salesDetailsDAO = new SalesDetailsDAO();
         this.sellerDAO = new SellerDAO();
         this.supplierDAO = new SupplierDAO();
-        
+
         startTables();
         setRawMaterial();
-        
+        startComboBoxVentasView();
+
         this.view.addListenerJComboBoxChooseSupplier(new CalculateListener());
         this.view.addListenerBtnBuyMP(new CalculateListener());
         this.view.addListenerBtnDeleteMP(new CalculateListener());
@@ -73,6 +75,8 @@ public final class Controller {
         this.view.addActionListenerBtnBorrarProveedor(new CalculateListener());
         this.view.addActionListenerBtnEditarProveedor(new CalculateListener());
         this.view.addListenerJComboBoxCreateSupplier(new CalculateListener());
+        this.view.addListenerBtnComprarProducto(new CalculateListener());
+
     }
 
     public String getSupplierOne() {
@@ -89,6 +93,40 @@ public final class Controller {
 
     public void setSupplierTwo(String supplierTwo) {
         this.supplierTwo = supplierTwo;
+    }
+    
+    public void startComboBoxVentasView(){
+        setComboBoxProductsToBuy();
+        setComboBoxSellerChoosed();
+        setComboBoxClientChoosed();
+    }
+    
+
+    public void setComboBoxProductsToBuy() {
+        for (Product product : products) {
+            if (product.getIsOnStock()) {
+                String productName = product.getName();
+                view.addToComboBoxMakeSale(productName);
+            }
+        }
+    }
+    
+    public void setComboBoxSellerChoosed() {
+        for (Seller seller : sellers) {
+            if (seller.getIsActive()) {
+                String sellerName = seller.getSellerName();
+                view.addToComboBoxSellerChoosed(sellerName);
+            }
+        }
+    }
+    
+    public void setComboBoxClientChoosed() {
+        for (Client client : clients) {
+            if (client.getIsActive()) {
+                String clientName = client.getClientName();
+                view.addToComboBoxClientChoosed(clientName);
+            }
+        }
     }
 
     public void addToPossibleSuppliers() {
@@ -171,29 +209,29 @@ public final class Controller {
 
         addToComboboxSupplier();
     }
-    
-    public void setRawMaterial(){
+
+    public void setRawMaterial() {
         ArrayList<RawMaterial> rMSupplierOne = new ArrayList<>();
-        ArrayList<RawMaterial> rMSupplierTwo = new ArrayList<>();  
-        
-        try{
-        for (Supplier supplier1 : suppliers) {
-            if (supplierOne.equals(supplier1.getSupplierName())){
-                RawMaterial sal = new RawMaterial("Sal", 600.0, 7, 7, supplier1.getDbId(), 100);
-                RawMaterial azucar = new RawMaterial("Azúcar", 1500.0, 2, 2, supplier1.getDbId(), 100);
-                rMSupplierOne.add(sal);
-                rMSupplierOne.add(azucar);
-                supplier1.setRawMaterial(rMSupplierOne);
+        ArrayList<RawMaterial> rMSupplierTwo = new ArrayList<>();
+
+        try {
+            for (Supplier supplier1 : suppliers) {
+                if (supplierOne.equals(supplier1.getSupplierName())) {
+                    RawMaterial sal = new RawMaterial("Sal", 600.0, 7, 7, supplier1.getDbId(), 100);
+                    RawMaterial azucar = new RawMaterial("Azúcar", 1500.0, 2, 2, supplier1.getDbId(), 100);
+                    rMSupplierOne.add(sal);
+                    rMSupplierOne.add(azucar);
+                    supplier1.setRawMaterial(rMSupplierOne);
+                }
+                if (supplierTwo.equals(supplier1.getSupplierName())) {
+                    RawMaterial salsaRosada = new RawMaterial("Salsa Rosada", 7000.0, 8, 8, supplier1.getDbId(), 100);
+                    RawMaterial salsaRoja = new RawMaterial("Salsa Roja", 6500.0, 9, 9, supplier1.getDbId(), 100);
+                    rMSupplierTwo.add(salsaRosada);
+                    rMSupplierTwo.add(salsaRoja);
+                    supplier1.setRawMaterial(rMSupplierTwo);
+                }
             }
-            if (supplierTwo.equals(supplier1.getSupplierName())){
-                RawMaterial salsaRosada = new RawMaterial("Salsa Rosada", 7000.0, 8, 8, supplier1.getDbId(), 100);
-                RawMaterial salsaRoja = new RawMaterial("Salsa Roja", 6500.0, 9, 9, supplier1.getDbId(), 100);
-                rMSupplierTwo.add(salsaRosada);
-                rMSupplierTwo.add(salsaRoja);
-                supplier1.setRawMaterial(rMSupplierTwo);
-            }
-        }
-        }catch(NullPointerException x){
+        } catch (NullPointerException x) {
             JOptionPane.showMessageDialog(null, "Error pointer" + x);
         }
     }
@@ -203,7 +241,7 @@ public final class Controller {
         for (Supplier suppli : suppliers) {
             if (suppli.isIsActive() == true) {
                 view.addToComboBoxSupplier(suppli.getSupplierName());
-                
+
             }
         }
     }
@@ -212,9 +250,9 @@ public final class Controller {
         view.clearComboBoxNewProveedor();
         view.addToComboBoxNewSupplier("Seleccione un proveedor");
         for (Supplier suppli : suppliers) {
-            if (!suppli.isIsActive()){
-            view.addToComboBoxNewSupplier(suppli.getSupplierName());
-        }
+            if (!suppli.isIsActive()) {
+                view.addToComboBoxNewSupplier(suppli.getSupplierName());
+            }
         }
     }
 
@@ -233,6 +271,7 @@ public final class Controller {
     public void setProductsFromDb() {
         products = productDAO.getProducts(0);
         view.addToProductTable(products);
+        setComboBoxProductsToBuy();
     }
 
     public void setRMFromDb() {
@@ -243,11 +282,13 @@ public final class Controller {
     public void setClientFromDb() {
         clients = clientDAO.getClients(0);
         view.addToClientTable(clients);
+        setComboBoxClientChoosed();
     }
 
     public void setSellerFromDb() {
         sellers = sellerDAO.getSeller(0);
         view.addToSellerTable(sellers);
+        setComboBoxSellerChoosed();
     }
 
     public void paintSuppliers() {
@@ -375,7 +416,7 @@ public final class Controller {
                     String supName = view.getFromComboBoxSupplier();
                     for (Supplier sup : suppliers) {
                         if (sup.getSupplierName().equalsIgnoreCase(supName)) {
-                            
+
                             for (RawMaterial raw : sup.getRawMaterial()) {
                                 view.addToComboBoxRawMaterial(raw.getName());
                             }
@@ -385,7 +426,7 @@ public final class Controller {
                     }
 
                 } catch (NullPointerException x) {
-                    System.out.println("aca sale" + x.getMessage());
+                    System.out.println("Error Eleccion JComboBox Pestaña Materia Prima" + x.getMessage());
                 }
             }
 
@@ -485,12 +526,12 @@ public final class Controller {
 
                     int cantidadAProducir = view.getFromProductAmount();
                     String comboBoxProduct = view.getFromComboBoxProduct();
-
+                    
                     Production production = new Production(comboBoxProduct);
                     production.setIngredients(rawMaterials);
                     production.createNewProduct(cantidadAProducir);
                     Product product = production.getNewProduct();
-
+                    
                     if (product != null) {
                         productionDAO.setProduction(production);
                         productions = productionDAO.getProduction(0);
@@ -515,6 +556,9 @@ public final class Controller {
                         //deleteRawMaterialUsed();
                         view.clearJtxt();
                         view.addToProductTable(products);
+                        
+                        setRMFromDb();
+                        //view.addToRMTable(rawMaterials);
                     }
 
                 } catch (NumberFormatException x) {
@@ -714,7 +758,7 @@ public final class Controller {
                                     supplierDAO.setSupplier(supplierChoosed);
                                     suppliers = supplierDAO.getSuppliers(0);
                                     view.clearJtxt();
-  
+
                                 }
                                 addToComboBoxNewSupplier();
                                 setSupplierFromDb();
@@ -761,14 +805,14 @@ public final class Controller {
                         if (supplier.getDbId() == supplierId) {
                             //DataBase
                             supplier.setIsActive(true);
-                            if (supplier.getSupplierName().equals(supplierOne)){
+                            if (supplier.getSupplierName().equals(supplierOne)) {
                                 supplierOne = newSupplierName;
                             }
-                            if (supplier.getSupplierName().equals(supplierTwo)){
+                            if (supplier.getSupplierName().equals(supplierTwo)) {
                                 supplierTwo = newSupplierName;
                             }
                             supplier.setSupplierName(newSupplierName);
-                            
+
                             supplierDAO.updateSupplier(supplier);
                             view.clearJtxt();
                             setSupplierFromDb();
@@ -777,6 +821,19 @@ public final class Controller {
                         }
 
                     }
+
+                } catch (NumberFormatException x) {
+                    JOptionPane.showMessageDialog(null, "Ingrese un número");
+                }
+            }
+
+            // make sale
+            if (e.getActionCommand().equalsIgnoreCase("Comprar Producto")) {
+                try {
+                    String productChoosed = view.getFromComboBoxMakeSale();
+                    String sellerChoosed = view.getFromComboBoxSellerChoseed();
+                    String clientChoosed = view.getFromComboBoxClientChoosed();
+                    int productQuantity = view.getQuantityToBuy();
 
                 } catch (NumberFormatException x) {
                     JOptionPane.showMessageDialog(null, "Ingrese un número");

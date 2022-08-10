@@ -29,6 +29,9 @@ public class ViewJFrame extends javax.swing.JFrame {
     private DefaultTableModel modeloSupplier = new DefaultTableModel();
     private int comboBoxNumber;
     private int comboBoxNumberNewSupplier;
+    private int comboBoxNumberProduct;
+    private int comboBoxNumberSeller;
+    private int comboBoxNumberClient;
 
     /**
      * Creates new form ViewJFrame
@@ -39,6 +42,56 @@ public class ViewJFrame extends javax.swing.JFrame {
 
     }
 
+    /// PESTAÑA VENTAS
+    public String getFromComboBoxMakeSale() {
+        Object content;
+        content = jComboBoxElegirProductoAComprar.getSelectedItem();
+        return content.toString();
+    }
+    public String getFromComboBoxSellerChoseed() {
+        Object content;
+        content = jComboBoxElegirVendedor.getSelectedItem();
+        return content.toString();
+    }
+    public String getFromComboBoxClientChoosed() {
+        Object content;
+        content = jComboBoxElegirCliente.getSelectedItem();
+        return content.toString();
+    }
+    
+    public void addToComboBoxMakeSale(String product){
+        jComboBoxElegirProductoAComprar.removeAllItems();
+        jComboBoxElegirProductoAComprar.addItem(product);
+    }
+       
+    public void addToComboBoxSellerChoosed(String product){
+        jComboBoxElegirVendedor.removeAllItems();
+        jComboBoxElegirVendedor.addItem(product);
+    }
+    
+    public void addToComboBoxClientChoosed(String product){
+        jComboBoxElegirCliente.removeAllItems();
+        jComboBoxElegirCliente.addItem(product);
+    }
+    
+
+    
+    public void addListenerBtnComprarProducto(ActionListener listenController){
+        btnComprarProducto.addActionListener(listenController);
+    }
+    
+     public int getQuantityToBuy() {
+        String txt;
+        int content = 0;
+        try {
+            txt = jTextFieldCantidadAComprar.getText();
+            content = Integer.parseInt(txt);
+        } catch (NumberFormatException x) {
+            System.out.println("no es un número");
+        }
+        return content;
+    }
+    
     /**
      * Action Listener y activador de menú de la pestaña MATERIA PRIMA
      *
@@ -85,6 +138,7 @@ public class ViewJFrame extends javax.swing.JFrame {
     public void addListenerJComboBoxChooseMP(ActionListener listenController) {
         jComboBoxElegirMP.addActionListener(listenController);
     }
+    
 
     public void addListenerRawMaterialPurchaseMenu(ActionListener listenController) {
         //jPanelAgregarMP.addAncestorListener(listenController);
@@ -1864,7 +1918,7 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelAgregarClientes.add(jPanelNombreCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
 
-        jPanelIdCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID del Cliente", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanelIdCliente.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Código del Cliente", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         javax.swing.GroupLayout jPanelIdClienteLayout = new javax.swing.GroupLayout(jPanelIdCliente);
         jPanelIdCliente.setLayout(jPanelIdClienteLayout);
@@ -2049,7 +2103,7 @@ public class ViewJFrame extends javax.swing.JFrame {
 
         jPanelAgregarEmpleado.add(jPanelNombreEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, -1));
 
-        jPanelIdEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ID del Empleado", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanelIdEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Código del Empleado", javax.swing.border.TitledBorder.RIGHT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         javax.swing.GroupLayout jPanelIdEmpleadoLayout = new javax.swing.GroupLayout(jPanelIdEmpleado);
         jPanelIdEmpleado.setLayout(jPanelIdEmpleadoLayout);

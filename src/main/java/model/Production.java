@@ -49,9 +49,11 @@ public class Production extends Recepies{
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
-                        + "necesarios para la papa");
+                        + "necesarios para la papa"); 
+                    break;
                 }
             case "Empanada":
                 if (createEmpanada(productAmount)){
@@ -59,9 +61,11 @@ public class Production extends Recepies{
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
                         + "necesarios para la empanada");
+                    break;
                 }
             case "Pastel de Pollo":
                 if (createPastelDePollo(productAmount)){
@@ -69,9 +73,11 @@ public class Production extends Recepies{
                     newProduct.setIngredients(this.getIngredientsUsed());
                     resetIngredients();
                     setDate();
+                    break;
                 }else{
                     JOptionPane.showMessageDialog(null, "Ni tiene los ingredientes "
                         + "necesarios para el pastel de pollo");
+                    break;
                 }
         }
     }
